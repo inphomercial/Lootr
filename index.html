@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Lootr</title>
+         <link type="text/css" rel="stylesheet" href="style.css">
+
+        <script src="libs/rot.js"></script>
+        <script src="libs/underscore.js"></script>
+
+        <script src="engine/lootr.js"></script>
+    </head>
+    <body>
+        <h1>Lootr</h1>
+
+        <div id="gameDisplay"></div>
+        <div id="hudDisplay"></div>
+
+        <script>
+
+            window.onload = function() {
+                // Check if rot.js can work on this browser
+                if (!ROT.isSupported()) {
+                    document.body.appendChild("<h1>Your browser does not support the Rot.js library</h1>");
+                    return;
+                }
+
+                // Initialize lootr
+                Lootr.init();
+                // Add the container to our HTML page
+                var gameDisplay = document.getElementById('gameDisplay');
+                gameDisplay.appendChild(Lootr.getGameDisplay());
+
+                var hudDisplay = document.getElementById('hudDisplay');
+                hudDisplay.appendChild(Lootr.getHudDisplay());
+                
+                // Load the start screen
+                // Lootr.switchScreen(Lootr.Screen.startScreen);
+            }
+
+        </script>
+    </body>
+</html>

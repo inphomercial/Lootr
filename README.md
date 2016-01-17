@@ -1,1 +1,1 @@
-# Lootr
+# Lootr Rogue-like
