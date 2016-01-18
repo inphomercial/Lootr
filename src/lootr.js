@@ -1,12 +1,16 @@
+'use strict';
 
 var Lootr = ( function( window ) {
 
     var _gameDisplay = null;
     var _hudDisplay = null;
+    var _currentScreen = null;
     var _GAME_DISPLAY_WIDTH = 100;
     var _GAME_DISPLAY_HEIGHT = 20;
     var _HUD_DISPLAY_WIDTH = 40;
     var _HUD_DISPLAY_HEIGHT = 20;
+
+    var Screens = {};
 
     function init() {
          console.log("Lootr Init Ran");
@@ -22,19 +26,55 @@ var Lootr = ( function( window ) {
     }
 
     function getHudDisplay() {
+        return _hudDisplay;
+    }
+
+    function getHudDisplayContainer() {
         return _hudDisplay.getContainer();
     }
 
     function getGameDisplay() {
+        return _gameDisplay;
+    }
+
+    function getGameDisplayContainer() {
         return _gameDisplay.getContainer();
     }
+
+    function getCurrentScreen() {
+        return _currentScreen;
+    }
+
+    function switchScreen( screen ) {
+        // If we had a screen before, call the Exit method before switching
+        if ( _currentScreen !== null ) {
+            _currentScreen.exit();
+        }
+
+        // Clear both displays
+        getGameDisplay().clear();
+        getHudDisplay().clear();
+
+        // Update our current screen, call Enter
+        _currentScreen = screen;
+        _currentScreen.enter();
+
+        // Render our game and hud
+        _currentScreen.renderGame(getGameDisplay());
+        _currentScreen.renderHud(getHudDisplay());
+    }
+
 
     return {
         init: init,
         run: run,
+        Screens: Screens,
 
+        switchScreen: switchScreen,
         getHudDisplay: getHudDisplay,
-        getGameDisplay: getGameDisplay
+        getHudDisplayContainer: getHudDisplayContainer,
+        getGameDisplay: getGameDisplay,
+        getGameDisplayContainer: getGameDisplayContainer
     }
 
 })( window );

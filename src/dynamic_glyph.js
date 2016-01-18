@@ -1,3 +1,4 @@
+'use strict';
 
 Lootr.DynamicGlyph = function ( args ) {
 
@@ -5,6 +6,8 @@ Lootr.DynamicGlyph = function ( args ) {
     Lootr.Glyph.call(this, args);
 
     this._name = args.name || 'blah';
+    this._x = args.x;
+    this._y = args.y;
     this._components = args.components || null;
 }
 
@@ -13,6 +16,14 @@ Lootr.DynamicGlyph.extend(Lootr.Glyph);
 
 Lootr.DynamicGlyph.prototype.getName = function() {
     return this._name;
+}
+
+Lootr.DynamicGlyph.prototype.getX = function() {
+    return this._x;
+}
+
+Lootr.DynamicGlyph.prototype.getY = function() {
+    return this._y;
 }
 
 Lootr.DynamicGlyph.prototype.getComponents = function() {

@@ -1,3 +1,4 @@
+'use strict';
 
 Lootr.Entity = function ( args ) {
 

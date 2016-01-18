@@ -11,6 +11,9 @@
         <script src="src/glyph.js"></script>
         <script src="src/dynamic_glyph.js"></script>
         <script src="src/entity.js"></script>
+
+        <script src="src/screens/start.js"></script>
+        <script src="src/screens/play.js"></script>
     </head>
     <body>
         <h1>Lootr</h1>
@@ -19,6 +22,7 @@
         <div id="hudDisplay"></div>
 
         <script>
+        //    'use strict';
 
             window.onload = function() {
                 // Check if rot.js can work on this browser
@@ -31,13 +35,13 @@
                 Lootr.init();
                 // Add the container to our HTML page
                 var gameDisplay = document.getElementById('gameDisplay');
-                gameDisplay.appendChild(Lootr.getGameDisplay());
+                gameDisplay.appendChild(Lootr.getGameDisplayContainer());
 
                 var hudDisplay = document.getElementById('hudDisplay');
-                hudDisplay.appendChild(Lootr.getHudDisplay());
+                hudDisplay.appendChild(Lootr.getHudDisplayContainer());
 
                 // Load the start screen
-                // Lootr.switchScreen(Lootr.Screen.startScreen);
+                Lootr.switchScreen(Lootr.Screens.start);
                 //
 
             }
