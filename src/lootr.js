@@ -19,10 +19,12 @@ var Lootr = ( function( window ) {
         _hudDisplay = new ROT.Display({width: _HUD_DISPLAY_WIDTH, height: _HUD_DISPLAY_HEIGHT});
     }
 
-    function run() {
-        // processInput()
-        // update()
-        // render()
+    function getGameDisplayWidth() {
+        return _GAME_DISPLAY_WIDTH;
+    }
+
+    function getGameDisplayHeight() {
+        return _GAME_DISPLAY_HEIGHT;
     }
 
     function getHudDisplay() {
@@ -67,9 +69,10 @@ var Lootr = ( function( window ) {
 
     return {
         init: init,
-        run: run,
         Screens: Screens,
 
+        getGameDisplayWidth: getGameDisplayWidth,
+        getGameDisplayHeight: getGameDisplayHeight,
         switchScreen: switchScreen,
         getHudDisplay: getHudDisplay,
         getHudDisplayContainer: getHudDisplayContainer,
