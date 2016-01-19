@@ -1,6 +1,5 @@
 
 Lootr.Glyph = function ( args ) {
-
     this._char = args.char || " ";
     this._foreground = args.foreground || 'white';
     this._originalForeground = this._foreground;

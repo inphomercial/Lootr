@@ -6,11 +6,12 @@ var Lootr = ( function( window ) {
     var _hudDisplay = null;
     var _currentScreen = null;
     var _GAME_DISPLAY_WIDTH = 100;
-    var _GAME_DISPLAY_HEIGHT = 20;
+    var _GAME_DISPLAY_HEIGHT = 40;
     var _HUD_DISPLAY_WIDTH = 40;
-    var _HUD_DISPLAY_HEIGHT = 20;
+    var _HUD_DISPLAY_HEIGHT = 40;
 
     var Screens = {};
+    var Maps = {};
 
     function init() {
          console.log("Lootr Init Ran");
@@ -70,6 +71,7 @@ var Lootr = ( function( window ) {
     return {
         init: init,
         Screens: Screens,
+        Maps: Maps,
 
         getGameDisplayWidth: getGameDisplayWidth,
         getGameDisplayHeight: getGameDisplayHeight,

@@ -11,7 +11,14 @@
         <script src="src/glyph.js"></script>
         <script src="src/dynamic_glyph.js"></script>
         <script src="src/entity.js"></script>
+        <script src="src/tile.js"></script>
 
+        <script src="src/templates/tiles.js"></script>
+
+        <script src="src/map.js"></script>
+        <script src="src/maps/overworld.js"></script>
+
+        <script src="src/screens/display/display.js"></script>
         <script src="src/screens/start.js"></script>
         <script src="src/screens/play.js"></script>
     </head>
@@ -41,7 +48,7 @@
                 hudDisplay.appendChild(Lootr.getHudDisplayContainer());
 
                 // Load the start screen
-                Lootr.switchScreen(Lootr.Screens.start);
+                Lootr.switchScreen(new Lootr.Screens.Display(Lootr.Screens.Start));
                 //
 
             }
