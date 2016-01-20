@@ -12,6 +12,7 @@ var Lootr = ( function( window ) {
 
     var Screens = {};
     var Maps = {};
+    var World = {};
 
     function init() {
          console.log("Lootr Init Ran");
@@ -72,6 +73,7 @@ var Lootr = ( function( window ) {
         init: init,
         Screens: Screens,
         Maps: Maps,
+        World: World,
 
         getGameDisplayWidth: getGameDisplayWidth,
         getGameDisplayHeight: getGameDisplayHeight,

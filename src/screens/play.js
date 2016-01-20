@@ -15,7 +15,8 @@ Lootr.Screens.Play = {
         // }
 
         var map = new Lootr.Maps.Overworld();
-        console.log(map);
+        Lootr.World.addMap(map);
+        console.log(Lootr.World);
 
         map.renderMap( display );
     },

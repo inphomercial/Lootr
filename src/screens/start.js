@@ -5,6 +5,9 @@ Lootr.Screens.Start = {
 
     enter: function() {
         console.log("Entered Start Screen");
+
+        console.log("generating world!");
+        Lootr.World = new Lootr.WorldHolder();
     },
 
     renderGame: function ( display ) {
