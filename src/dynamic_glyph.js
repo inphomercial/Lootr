@@ -26,6 +26,14 @@ Lootr.DynamicGlyph.prototype.getY = function() {
     return this._y;
 }
 
+Lootr.DynamicGlyph.prototype.setX = function( x ) {
+    return this._x = x;
+}
+
+Lootr.DynamicGlyph.prototype.setY = function( y ) {
+    return this._y = y;
+}
+
 Lootr.DynamicGlyph.prototype.getComponents = function() {
     return this._components;
 }

@@ -68,6 +68,16 @@ var Lootr = ( function( window ) {
         _currentScreen.renderHud(getHudDisplay());
     }
 
+    function refreshScreens() {
+        // Clear both displays
+        getGameDisplay().clear();
+        getHudDisplay().clear();
+
+        // Render our game and hud
+        _currentScreen.renderGame(getGameDisplay());
+        _currentScreen.renderHud(getHudDisplay());
+    }
+
 
     return {
         init: init,
@@ -78,10 +88,13 @@ var Lootr = ( function( window ) {
         getGameDisplayWidth: getGameDisplayWidth,
         getGameDisplayHeight: getGameDisplayHeight,
         switchScreen: switchScreen,
+        getCurrentScreen: getCurrentScreen,
         getHudDisplay: getHudDisplay,
         getHudDisplayContainer: getHudDisplayContainer,
         getGameDisplay: getGameDisplay,
-        getGameDisplayContainer: getGameDisplayContainer
+        getGameDisplayContainer: getGameDisplayContainer,
+
+        refreshScreens: refreshScreens
     }
 
 })( window );

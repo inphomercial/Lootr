@@ -4,8 +4,8 @@ Lootr.Map = function ( tiles ) {
 
     this._tiles = tiles;
 
-    this._items = [];
-    this._entities = [];
+    this._items = {};
+    this._entities = {};
 };
 
 Lootr.Map.prototype.getItems = function() {
@@ -32,6 +32,28 @@ Lootr.Map.prototype.getMap = function() {
     return this._tiles;
 }
 
+Lootr.Map.prototype.setTileColor = function(x, y, color) {
+    var tile = this.getTile(x, y);
+
+    tile.foreground = color;
+}
+
+Lootr.Map.prototype.addEntityAt = function( x, y, entity ) {
+
+    // check if tile is empty
+
+    // Check if x and y are in bounds
+
+    // Set entities position
+    entity.setX(x);
+    entity.setY(y);
+
+    var key = x + ", " + y;
+
+    // Add entity to the map
+    this._entities[key] = entity;
+}
+
 Lootr.Map.prototype.isExplored = function( x, y ) {
     return this._tiles[x][y].getIsExplored();
 }
@@ -43,6 +65,15 @@ Lootr.Map.prototype.renderMap = function( display ) {
             display.draw(x, y, tile.getChar(), tile.getForeground(), tile.getBackground());
         }
     }
+}
+
+Lootr.Map.prototype.renderEntities = function ( display ) {
+    var entities = this.getEntities();
+
+    _.each(entities, function ( entity ) {
+        console.log(entity);
+        display.draw(entity.getX(), entity.getY(), entity.getChar(), entity.getForeground(), entity.getBackground());
+    });
 }
 
 // Create the empty map

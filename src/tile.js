@@ -1,7 +1,6 @@
 'use strict';
 
 Lootr.Tile = function ( args ) {
-
     this._isExplored = false;
 
     // Tile extends DynamicGlyph getting all its attributes

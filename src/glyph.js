@@ -21,3 +21,11 @@ Lootr.Glyph.prototype.getOriginalForeground = function() {
 Lootr.Glyph.prototype.getBackground = function() {
     return this._background;
 }
+
+Lootr.Glyph.prototype.setForeground = function ( color ) {
+    this._foreground = color;
+}
+
+Lootr.Glyph.prototype.setBackground = function ( color ) {
+    this._background = color;
+}

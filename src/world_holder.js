@@ -1,8 +1,6 @@
 'use strict';
 
 Lootr.WorldHolder = function ( args ) {
-
-    this._spaces = null;
     this._maps = [];
 };
 

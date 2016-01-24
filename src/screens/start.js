@@ -13,6 +13,8 @@ Lootr.Screens.Start = {
     renderGame: function ( display ) {
         console.log("renderGame Start Screen");
 
+        display.drawText(10, 5, "Lootr 2014 - 2016");
+
     //     var x = 0;
     //     function frame() {
     //         display.clear();
@@ -28,6 +30,8 @@ Lootr.Screens.Start = {
 
     renderHud: function ( display ) {
         console.log("renderHud Start Screen");
+
+        display.drawText(10, 5, "Lootr 2014 - 2016");
 
         // var y = 0;
         // function frame() {

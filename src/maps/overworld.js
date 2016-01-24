@@ -7,18 +7,17 @@ Lootr.Maps.Overworld = function ( args ) {
 
     var map = this.generateWorld();
 
-
+    // // Overoworld extends Map getting all its attributes
+    // Passing in the generated tiles
+    Lootr.Map.call(this, map);
 
     // Add entities to map
     //
     // Add items to map
     //
     // Add player to map
-    //
-    // // Overoworld extends Map getting all its attributes
-    // Passing in the generated tiles
-    Lootr.Map.call(this, map);
-
+    var player = new Lootr.Player({name: "inpho", char: "@", foreground: "red"});
+    this.addEntityAt(10, 10, player);
 }
 Lootr.Maps.Overworld.extend(Lootr.Map);
 
