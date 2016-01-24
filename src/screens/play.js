@@ -9,6 +9,8 @@ Lootr.Screens.Play = {
 
         this._map = new Lootr.Maps.Overworld();
         Lootr.World.addMap(this._map);
+        this._map.getEngine().start();
+
         console.log(Lootr.World);
     },
 
@@ -22,17 +24,6 @@ Lootr.Screens.Play = {
         //
         // Draw entities
         this._map.renderEntities( display );
-        //
-        // Draw Player
-        //Lootr.getGameDisplay().draw(10, 10, this._player.getForeground(), this._player.getBackground());
-
-        // for(var i = 0; i < Lootr.getGameDisplayWidth(); i++) {
-        //     var t = new Lootr.Tile(Lootr.Tiles.wallTile);
-        //     display.draw(i, i, t.getChar(), t.getForeground(), t.getBackground());
-        // }
-
-
-
     },
 
     renderHud: function ( display ) {

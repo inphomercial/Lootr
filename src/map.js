@@ -6,6 +6,10 @@ Lootr.Map = function ( tiles ) {
 
     this._items = {};
     this._entities = {};
+
+    // Create the Scheduler and Engine
+    this._scheduler = new ROT.Scheduler.Speed();
+    this._engine = new ROT.Engine(this._scheduler);
 };
 
 Lootr.Map.prototype.getItems = function() {
@@ -32,13 +36,24 @@ Lootr.Map.prototype.getMap = function() {
     return this._tiles;
 }
 
-Lootr.Map.prototype.setTileColor = function(x, y, color) {
+Lootr.Map.prototype.getEngine = function() {
+    return this._engine;
+}
+
+Lootr.Map.prototype.setTileColor = function( x, y, color ) {
     var tile = this.getTile(x, y);
 
     tile.foreground = color;
 }
 
+Lootr.Map.prototype.removeEntityAt = function ( x, y, entity ) {
+
+}
+
 Lootr.Map.prototype.addEntityAt = function( x, y, entity ) {
+
+    // Add map to entity
+    entity.setMap(this);
 
     // check if tile is empty
 
@@ -52,6 +67,9 @@ Lootr.Map.prototype.addEntityAt = function( x, y, entity ) {
 
     // Add entity to the map
     this._entities[key] = entity;
+
+    // Add our entity to the map scheduler
+    this._scheduler.add(entity, true);
 }
 
 Lootr.Map.prototype.isExplored = function( x, y ) {
