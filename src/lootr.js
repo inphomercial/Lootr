@@ -7,7 +7,7 @@ var Lootr = ( function( window ) {
     var _currentScreen = null;
     var _GAME_DISPLAY_WIDTH = 100;
     var _GAME_DISPLAY_HEIGHT = 40;
-    var _HUD_DISPLAY_WIDTH = 40;
+    var _HUD_DISPLAY_WIDTH = 20;
     var _HUD_DISPLAY_HEIGHT = 40;
 
     var Screens = {};
@@ -17,8 +17,8 @@ var Lootr = ( function( window ) {
     function init() {
          console.log("Lootr Init Ran");
 
-        _gameDisplay = new ROT.Display({width: _GAME_DISPLAY_WIDTH, height: _GAME_DISPLAY_HEIGHT});
-        _hudDisplay = new ROT.Display({width: _HUD_DISPLAY_WIDTH, height: _HUD_DISPLAY_HEIGHT});
+        _gameDisplay = new ROT.Display({width: _GAME_DISPLAY_WIDTH, height: _GAME_DISPLAY_HEIGHT, fontSize: 18});
+        _hudDisplay = new ROT.Display({width: _HUD_DISPLAY_WIDTH, height: _HUD_DISPLAY_HEIGHT, fontSize: 18});
     }
 
     function getGameDisplayWidth() {

@@ -31,7 +31,7 @@ Lootr.Screens.Start = {
     renderHud: function ( display ) {
         console.log("renderHud Start Screen");
 
-        display.drawText(10, 5, "Lootr 2014 - 2016");
+        display.drawText(1, 2, "Lootr 2014 - 2016");
 
         // var y = 0;
         // function frame() {

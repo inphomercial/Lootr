@@ -59,7 +59,8 @@ Lootr.Map.prototype.addEntityAt = function( x, y, entity ) {
     entity.setX(x);
     entity.setY(y);
 
-    var key = x + ", " + y;
+    // var key = x + ", " + y;
+    var key = this.makeKey(x, y);
 
     // Add entity to the map
     this._entities[key] = entity;
@@ -72,10 +73,14 @@ Lootr.Map.prototype.addItemAt = function( x, y, item ) {
     item.setX(x);
     item.setY(y);
 
-    var key = x + ", " + y;
+    var key = this.makeKey(x, y);
 
     // Add Item to the map
     this._items[key] = item;
+}
+
+Lootr.Map.prototype.makeKey = function ( x, y ) {
+    return x + ", " + y;
 }
 
 Lootr.Map.prototype.isExplored = function( x, y ) {

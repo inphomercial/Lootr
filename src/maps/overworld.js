@@ -12,9 +12,11 @@ Lootr.Maps.Overworld = function ( args ) {
     Lootr.Map.call(this, map);
 
     // Add entities to map
+    var goblin = Lootr.EntitiesRepository.create('Goblin');
+    this.addEntityAt(14, 7, goblin);
     //
     // Add items to map
-    var woodenSword = new Lootr.Item(Lootr.Items.WoodenSword);
+    var woodenSword = Lootr.ItemsRepository.create('WoodenSword');
     this.addItemAt(7, 7, woodenSword);
 
     //
