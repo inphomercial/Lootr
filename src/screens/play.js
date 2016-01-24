@@ -20,7 +20,8 @@ Lootr.Screens.Play = {
         // Draw map first
         this._map.renderMap( display );
         //
-        // Draw Items
+        // Draw Items\
+        this._map.renderItems( display );
         //
         // Draw entities
         this._map.renderEntities( display );

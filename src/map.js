@@ -46,10 +46,6 @@ Lootr.Map.prototype.setTileColor = function( x, y, color ) {
     tile.foreground = color;
 }
 
-Lootr.Map.prototype.removeEntityAt = function ( x, y, entity ) {
-
-}
-
 Lootr.Map.prototype.addEntityAt = function( x, y, entity ) {
 
     // Add map to entity
@@ -72,6 +68,16 @@ Lootr.Map.prototype.addEntityAt = function( x, y, entity ) {
     this._scheduler.add(entity, true);
 }
 
+Lootr.Map.prototype.addItemAt = function( x, y, item ) {
+    item.setX(x);
+    item.setY(y);
+
+    var key = x + ", " + y;
+
+    // Add Item to the map
+    this._items[key] = item;
+}
+
 Lootr.Map.prototype.isExplored = function( x, y ) {
     return this._tiles[x][y].getIsExplored();
 }
@@ -91,6 +97,15 @@ Lootr.Map.prototype.renderEntities = function ( display ) {
     _.each(entities, function ( entity ) {
         console.log(entity);
         display.draw(entity.getX(), entity.getY(), entity.getChar(), entity.getForeground(), entity.getBackground());
+    });
+}
+
+Lootr.Map.prototype.renderItems = function ( display ) {
+    var items = this.getItems();
+
+    _.each(items, function ( item ) {
+        console.log(item);
+        display.draw(item.getX(), item.getY(), item.getChar(), item.getForeground(), item.getBackground());
     });
 }
 

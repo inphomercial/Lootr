@@ -14,6 +14,9 @@ Lootr.Maps.Overworld = function ( args ) {
     // Add entities to map
     //
     // Add items to map
+    var woodenSword = new Lootr.Item(Lootr.Items.WoodenSword);
+    this.addItemAt(7, 7, woodenSword);
+
     //
     // Add player to map
     var player = new Lootr.Player({name: "inpho", char: "@", foreground: "red"});
