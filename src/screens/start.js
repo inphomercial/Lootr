@@ -20,6 +20,10 @@ Lootr.Screens.Start = {
 
     exit: function() {
         console.log("Exited Start Screen");
+    },
+
+    handleInput( inputType, inputData ) {
+        Lootr.switchScreen(new Lootr.Screens.Display(Lootr.Screens.Play));
     }
 }
 

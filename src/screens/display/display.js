@@ -7,6 +7,7 @@ Lootr.Screens.Display = function( template ) {
     this.renderGame = template.renderGame;
     this.renderHud = template.renderHud;
     this.exit = template.exit;
+    this.handleInput = template.handleInput;
 }
 
 Lootr.Screens.Display.prototype.setup = function () {
@@ -27,4 +28,8 @@ Lootr.Screens.Display.prototype.renderHud = function () {
 
 Lootr.Screens.Display.prototype.exit = function () {
     console.log("Display exit");
+}
+
+Lootr.Screens.Display.prototype.handleInput = function (inputType, inputDate) {
+    console.log("Handling Input");
 }

@@ -19,6 +19,20 @@ var Lootr = ( function( window ) {
 
         _gameDisplay = new ROT.Display({width: _GAME_DISPLAY_WIDTH, height: _GAME_DISPLAY_HEIGHT, fontSize: 18});
         _hudDisplay = new ROT.Display({width: _HUD_DISPLAY_WIDTH, height: _HUD_DISPLAY_HEIGHT, fontSize: 18});
+
+        var bindEventToScreen = function(event) {
+			window.addEventListener(event, function(e) {
+				// When an event is received, send it to the
+				// screen if there is one
+				if (_currentScreen !== null) {
+					// Send the event type and data to the screen
+					_currentScreen.handleInput(event, e);
+				}
+			});
+		}
+
+		// Bind keyboard input events
+		bindEventToScreen('keydown');
     }
 
     function getGameDisplayWidth() {

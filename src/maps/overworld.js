@@ -31,16 +31,25 @@ Lootr.Maps.Overworld.prototype.generateWorld = function () {
 
     // Setup generator
     var generator = new ROT.Map.Cellular(this._width, this._height);
-    generator.randomize(.5);
+    generator.randomize(.8);
 
     // Update our map
     generator.create( function ( x, y, v ) {
         if ( v === 1 ) {
             temp_map[x][y] = new Lootr.Tiles.WallTile();
         } else {
-            temp_map[x][y] = new Lootr.Tiles.GemTile();
+            temp_map[x][y] = new Lootr.Tiles.WaterDeepTile();
         }
     });
+
+    for ( var x = 0; x < temp_map.length; x++ ) {
+        for ( var y = 0; y < temp_map[0].length; y++) {
+            var ran = ROT.RNG.getUniformInt(0, 100);
+            if (ran > 90) {
+                temp_map[x][y] = new Lootr.Tiles.WaterShallowTile();
+            }
+        }
+    }
 
     return temp_map;
 }
