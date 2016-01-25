@@ -6,47 +6,31 @@ Lootr.Screens.Start = {
     enter: function() {
         console.log("Entered Start Screen");
 
-        console.log("generating world!");
+        console.log("Generating world!");
         Lootr.World = new Lootr.WorldHolder();
     },
 
     renderGame: function ( display ) {
-        console.log("renderGame Start Screen");
-
-        display.drawText(10, 5, "Lootr 2014 - 2016");
-
-    //     var x = 0;
-    //     function frame() {
-    //         display.clear();
-    //         display.drawText(x++, 2, "Game");
-    //
-    //         if(x == Lootr.getGameDisplayWidth()) {
-    //             clearInterval(id);
-    //         }
-    //     }
-    //
-    //     var id = setInterval(frame, 50);
+        display.drawText(1, 1, "Lootr 2014 - 2016");
     },
 
     renderHud: function ( display ) {
-        console.log("renderHud Start Screen");
-
-        display.drawText(1, 2, "Lootr 2014 - 2016");
-
-        // var y = 0;
-        // function frame() {
-        //     display.clear();
-        //     display.drawText(2, y++, "HUD");
-        //
-        //     if(y == Lootr.getGameDisplayHeight()) {
-        //         clearInterval(id);
-        //     }
-        // }
-        //
-        // var id = setInterval(frame, 90);
+        display.drawText(1, 1, "Lootr 2014 - 2016");
     },
 
     exit: function() {
         console.log("Exited Start Screen");
     }
 }
+
+// var y = 0;
+// function frame() {
+//     display.clear();
+//     display.drawText(2, y++, "HUD");
+//
+//     if(y == Lootr.getGameDisplayHeight()) {
+//         clearInterval(id);
+//     }
+// }
+//
+// var id = setInterval(frame, 90);

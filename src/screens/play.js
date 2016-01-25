@@ -7,9 +7,10 @@ Lootr.Screens.Play = {
     enter: function() {
         console.log("Entered Play Screen");
 
+        // Start by creating OverWorld
         this._map = new Lootr.Maps.Overworld();
-        Lootr.World.addMap(this._map);
         this._map.getEngine().start();
+        Lootr.World.addMap(this._map);
 
         console.log(Lootr.World);
     },
@@ -20,7 +21,7 @@ Lootr.Screens.Play = {
         // Draw map first
         this._map.renderMap( display );
         //
-        // Draw Items\
+        // Draw Items
         this._map.renderItems( display );
         //
         // Draw entities
@@ -28,7 +29,7 @@ Lootr.Screens.Play = {
     },
 
     renderHud: function ( display ) {
-        display.drawText(4, 4, "HUD");
+        display.drawText(1, 1, "HUD");
     },
 
     exit: function() {
