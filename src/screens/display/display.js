@@ -2,12 +2,18 @@
 
 Lootr.Screens.Display = function( template ) {
 
-    this._caption = template.caption || "default";
-    this.enter = template.enter;
-    this.renderGame = template.renderGame;
-    this.renderHud = template.renderHud;
-    this.exit = template.exit;
-    this.handleInput = template.handleInput;
+    console.log('template', template);
+
+    this._caption = "no caption";
+    this.enter = null;
+    this.renderGame = null;
+    this.renderHud = null;
+    this.renderLog = null;
+    this.exit = null;
+    this.handleInput = null;
+
+    // Replace our defaults with template values
+    Object.assign(this, template);
 }
 
 Lootr.Screens.Display.prototype.setup = function () {
@@ -20,6 +26,10 @@ Lootr.Screens.Display.prototype.enter = function () {
 
 Lootr.Screens.Display.prototype.renderGame = function () {
     console.log("Display renderGame");
+}
+
+Lootr.Screens.Display.prototype.renderLog = function () {
+    console.log("Display renderLog");
 }
 
 Lootr.Screens.Display.prototype.renderHud = function () {

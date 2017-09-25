@@ -2,28 +2,30 @@
 
 Lootr.Entity = function ( args ) {
 
-    // Entity extends DynamicGlyph getting all its attributes
-    // DynamicGlyph extends Glyph
+    // Entity extends DynamicGlyph setting all its attributes
     Lootr.DynamicGlyph.call(this, args);
 
-    // Set via args
+	// Set Defaults
+    this._name = 'unnamed';
     this._isAlive = true;
-    this._speed = args.speed || 10;
-
-    // Initial entity state
+    this._speed = 10;
     this._turns = 0;
     this._map = null;
-    this._uid = Lootr.Utilities.getUID();
-}
 
-// Make Entity inherit all methods from DynamicGlyph
+    // Replace our defaults with template values
+    Object.assign(this, args);
+}
 Lootr.Entity.extend(Lootr.DynamicGlyph);
 
 Lootr.Entity.prototype.getTurns = function() {
     return this._turns;
 }
 
-Lootr.Entity.prototype.getUid = function() {
+Lootr.Entity.prototype.getName = function() {
+    return this._name;
+}
+
+Lootr.Entity.prototype.generateUUID = function() {
     return this._uid;
 }
 

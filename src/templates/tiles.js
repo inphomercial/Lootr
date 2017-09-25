@@ -2,26 +2,35 @@
 
 Lootr.Tiles = {};
 
-Lootr.Tiles.WallTile = function () {
-    this.char = "#";
-    this.foreground = "orange";
-
-    Lootr.Tile.call(this, this);
+Lootr.Tiles.FloorTile = {
+    _char: ".",
+    _foreground: "salmon"
 }
-Lootr.Tiles.WallTile.extend(Lootr.Tile);
 
-Lootr.Tiles.WaterDeepTile = function () {
-    this.char = "#";
-    this.foreground = "blue";
-
-    Lootr.Tile.call(this, this);
+Lootr.Tiles.WallTile = {
+    _char: "#",
+    _foreground: "orange",
+    _isSolid: true
 }
-Lootr.Tiles.WaterDeepTile.extend(Lootr.Tile);
 
-Lootr.Tiles.WaterShallowTile = function () {
-    this.char = "#";
-    this.foreground = "lightblue";
-
-    Lootr.Tile.call(this, this);
+Lootr.Tiles.RubyTile = {
+    _char: "*",
+    _foreground: "red",
+    _isSolid: true
 }
-Lootr.Tiles.WaterShallowTile.extend(Lootr.Tile);
+
+Lootr.Tiles.GoldTile = {
+    _char: "*",
+    _foreground: "gold",
+    _isSolid: true
+}
+
+Lootr.Tiles.WaterDeepTile = {
+    _char: "#",
+    _foreground: "blue"
+}
+
+Lootr.Tiles.WaterShallowTile = {
+    _char: "#",
+    _foreground: "lightblue"
+}

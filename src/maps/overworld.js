@@ -12,15 +12,16 @@ Lootr.Maps.Overworld = function ( args ) {
     Lootr.Map.call(this, map);
 
     // Add entities to map
-    var goblin = Lootr.EntitiesRepository.create('Goblin');
+    var goblin = new Lootr.Entity(Lootr.Entities.Goblin);
     this.addEntityAt(14, 7, goblin);
 
     // Add items to map
-    var woodenSword = Lootr.ItemsRepository.create('WoodenSword');
+    var woodenSword = new Lootr.Item(Lootr.Items.WoodenSword);
     this.addItemAt(7, 7, woodenSword);
 
     // Add player to map
-    var player = new Lootr.Player({name: "inpho", char: "@", foreground: "red"});
+    var player = new Lootr.Player({_x: 10, _y: 10});
+    Lootr.setPlayer(player);
     this.addEntityAt(10, 10, player);
 }
 Lootr.Maps.Overworld.extend(Lootr.Map);
@@ -31,25 +32,74 @@ Lootr.Maps.Overworld.prototype.generateWorld = function () {
 
     // Setup generator
     var generator = new ROT.Map.Cellular(this._width, this._height);
-    generator.randomize(.8);
 
     // Update our map
+    // x on screen
+    // y on screen
+    // v seems to be 1 or 0
+    // First Create Floor
+    generator.randomize(1);
     generator.create( function ( x, y, v ) {
         if ( v === 1 ) {
-            temp_map[x][y] = new Lootr.Tiles.WallTile();
-        } else {
-            temp_map[x][y] = new Lootr.Tiles.WaterDeepTile();
+            // temp_map[x][y] = new Lootr.Tiles.FloorTile();
+            temp_map[x][y] = new Lootr.Tile(Lootr.Tiles.FloorTile);
         }
     });
 
-    for ( var x = 0; x < temp_map.length; x++ ) {
-        for ( var y = 0; y < temp_map[0].length; y++) {
-            var ran = ROT.RNG.getUniformInt(0, 100);
-            if (ran > 90) {
-                temp_map[x][y] = new Lootr.Tiles.WaterShallowTile();
-            }
+    // Build Walls
+    generator.randomize(.5);
+    generator.create( function ( x, y, v ) {
+        if ( v === 1 ) {
+            temp_map[x][y] = new Lootr.Tile(Lootr.Tiles.WallTile);
+            // temp_map[x][y] = new Lootr.Tiles.WallTile();
         }
-    }
+    });
+
+    // Generate DeepWater
+    generator.randomize(.14);
+    generator.create( function ( x, y, v ) {
+        if ( v === 1 ) {
+            temp_map[x][y] = new Lootr.Tile(Lootr.Tiles.WaterDeepTile);
+            // temp_map[x][y] = new Lootr.Tiles.WaterDeepTile();
+        }
+    });
+
+    // Generate ShallowWater
+    generator.randomize(.24);
+    generator.create( function ( x, y, v ) {
+        if ( v === 1 ) {
+            temp_map[x][y] = new Lootr.Tile(Lootr.Tiles.WaterShallowTile);
+            // temp_map[x][y] = new Lootr.Tiles.WaterShallowTile();
+        }
+    });
+
+    // Generate Ruby
+    generator.randomize(.05);
+    generator.create( function ( x, y, v ) {
+        if ( v === 1 ) {
+            temp_map[x][y] = new Lootr.Tile(Lootr.Tiles.RubyTile);
+            // temp_map[x][y] = new Lootr.Tiles.RubyTile();
+        }
+    });
+
+    // Generate Gold
+    generator.randomize(.08);
+    generator.create( function ( x, y, v ) {
+        if ( v === 1 ) {
+            temp_map[x][y] = new Lootr.Tile(Lootr.Tiles.GoldTile);
+            // temp_map[x][y] = new Lootr.Tiles.GoldTile();
+        }
+    });
+
+
+    // for ( var x = 0; x < temp_map.length; x++ ) {
+    //     for ( var y = 0; y < temp_map[0].length; y++) {
+    //         var ran = ROT.RNG.getUniformInt(0, 100);
+    //         if (ran > 74) {
+    //             temp_map[x][y] = new Lootr.Tiles.WaterShallowTile();
+    //         }
+    //     }
+    // }
 
     return temp_map;
 }

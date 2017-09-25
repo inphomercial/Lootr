@@ -1,11 +1,15 @@
 'use strict';
 
-Lootr.EntitiesRepository = {};
+Lootr.Entities = {};
 
-// Create our central Entities repository
-Lootr.EntitiesRepository = new Lootr.Repository('entities', Lootr.Entity);
+// Lootr.Entities.Player = {
+//     _name: "Player",
+//     _char: "@",
+//     _foreground: "red"
+// }
 
-Lootr.EntitiesRepository.define('Goblin', {
-    char: "g",
-    foreground: "green"
-});
+Lootr.Entities.Goblin = {
+    _name: "Goblin",
+    _char: "g",
+    _foreground: "green"
+}

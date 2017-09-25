@@ -32,8 +32,28 @@ Lootr.Map.prototype.getTile = function( x, y ) {
     return this._tiles[x][y];
 }
 
+// Work In Progress
+// Lootr.Map.prototype.getRandomDirectionFromPoint = function( x, y ) {
+//     var direction = {
+//         "nw": 1,
+//         "n" : 1,
+//         "ne": 1,
+//         "w" : 1,
+//         "e" : 1,
+//         "sw": 1,
+//         "s" : 1,
+//         "se": 1
+//     }
+//
+//     return ROT.RNG.getWeightedValue(direction);
+// }
+
 Lootr.Map.prototype.getMap = function() {
     return this._tiles;
+}
+
+Lootr.Map.prototype.isTileSolid = function(x, y) {
+    return this.getTile(x, y).isSolid();
 }
 
 Lootr.Map.prototype.getEngine = function() {

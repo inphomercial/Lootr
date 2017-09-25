@@ -2,13 +2,17 @@
 
 Lootr.DynamicGlyph = function ( args ) {
 
-    // DynamicGlyph extends Glyph getting all its attributes
+    // DynamicGlyph extends Glyph setting all its attributes
     Lootr.Glyph.call(this, args);
 
-    this._name = args.name || 'blah';
+    // Set our Defaults
     this._x = args.x;
     this._y = args.y;
-    this._components = args.components || null;
+    this._components = null;
+    this._uid = Lootr.Utilities.generateUUID();
+
+    // Replace our defaults with template values
+    Object.assign(this, args);
 }
 
 // Make dynamic inherit all methods from glyphs

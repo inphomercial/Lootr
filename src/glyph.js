@@ -1,9 +1,14 @@
 
 Lootr.Glyph = function ( args ) {
-    this._char = args.char || " ";
-    this._foreground = args.foreground || 'white';
+
+	// Set our Defaults
+    this._char = " ";
+    this._foreground = 'white';
     this._originalForeground = this._foreground;
-    this._background = args.background || 'black';
+    this._background = 'black';
+
+    // Replace our defaults with template values
+    Object.assign(this, args);
 };
 
 Lootr.Glyph.prototype.getChar = function() {

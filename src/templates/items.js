@@ -1,11 +1,9 @@
 'use strict';
 
-Lootr.ItemsRepository = {};
+Lootr.Items = {};
 
-// Create our central Items repository
-Lootr.ItemsRepository = new Lootr.Repository('items', Lootr.Item);
-
-Lootr.ItemsRepository.define('WoodenSword', {
+Lootr.Items.WoodenSword = {
     char: "!",
+	_rarity: "Rare",
     foreground: "brown"
-});
+}
