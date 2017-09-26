@@ -1,0 +1,26 @@
+{
+  "name": "lootr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inphomercial/Lootr.git"
+  },
+  "author": "Sean Brown",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inphomercial/Lootr/issues"
+  },
+  "homepage": "https://github.com/inphomercial/Lootr#readme",
+  "devDependencies": {
+    "eslint": "^4.7.2",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.4.0"
+  }
+}
