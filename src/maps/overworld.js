@@ -11,16 +11,18 @@ Lootr.Maps.Overworld = function ( args ) {
     // Passing in the generated tiles
     Lootr.Map.call(this, map);
 
-    // Add entities to map
-    var goblin = new Lootr.Entity(Lootr.Entities.Goblin);
+	// Add entities to map
+	var goblin = new Lootr.Entity(Lootr.Entities.Goblin());
     this.addEntityAt(14, 7, goblin);
+	var goblin2 = new Lootr.Entity(Lootr.Entities.Goblin());
+    this.addEntityAt(17, 2, goblin2);
 
     // Add items to map
     var woodenSword = new Lootr.Item(Lootr.Items.WoodenSword);
     this.addItemAt(7, 7, woodenSword);
 
     // Add player to map
-    var player = new Lootr.Player({_x: 10, _y: 10});
+    var player = new Lootr.Player(Lootr.Entities.Player());
     Lootr.setPlayer(player);
     this.addEntityAt(10, 10, player);
 }

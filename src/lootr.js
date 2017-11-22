@@ -2,15 +2,9 @@
 
 var Lootr = ( function( window ) {
     var _gameDisplay = null;
-    var _hudDisplay = null;
-    var _logDisplay = null;
     var _currentScreen = null;
-    var _GAME_DISPLAY_WIDTH = 100;
-    var _GAME_DISPLAY_HEIGHT = 30;
-    var _HUD_DISPLAY_WIDTH = 20;
-    var _HUD_DISPLAY_HEIGHT = 40;
-    var _LOG_DISPLAY_HEIGHT = 10;
-    var _LOG_DISPLAY_WIDTH = 100;
+    var _GAME_DISPLAY_WIDTH = 60;
+    var _GAME_DISPLAY_HEIGHT = 20;
 
     var Screens = {};
     var Maps = {};
@@ -18,11 +12,15 @@ var Lootr = ( function( window ) {
 	var _player = {};
 
     function init() {
-         console.log("Lootr Init Ran");
+		console.log("Lootr Init Ran");
 
-        _gameDisplay = new ROT.Display({width: _GAME_DISPLAY_WIDTH, height: _GAME_DISPLAY_HEIGHT, fontSize: 18});
-        _hudDisplay = new ROT.Display({width: _HUD_DISPLAY_WIDTH, height: _HUD_DISPLAY_HEIGHT, fontSize: 18});
-        _logDisplay = new ROT.Display({width: _LOG_DISPLAY_WIDTH, height: _LOG_DISPLAY_HEIGHT, fontSize: 14});
+		var displayOptions = {
+			width: _GAME_DISPLAY_WIDTH, 
+			height: _GAME_DISPLAY_HEIGHT,
+			fontSize: 32
+		}
+
+        _gameDisplay = new ROT.Display(displayOptions);
 
         var bindEventToScreen = function(event) {
 			window.addEventListener(event, function(e) {
@@ -47,32 +45,8 @@ var Lootr = ( function( window ) {
         return _GAME_DISPLAY_HEIGHT;
     }
 
-    function getHudDisplayWidth() {
-        return _HUD_DISPLAY_WIDTH;
-    }
-
-    function getHudDisplayHeight() {
-        return _HUD_DISPLAY_HEIGHT;
-    }
-
-    function getHudDisplay() {
-        return _hudDisplay;
-    }
-
-    function getHudDisplayContainer() {
-        return _hudDisplay.getContainer();
-    }
-
     function getGameDisplay() {
         return _gameDisplay;
-    }
-
-    function getLogDisplay() {
-        return _logDisplay;
-    }
-
-    function getLogDisplayContainer() {
-        return _LogDisplay.getContainer();
     }
 
     function getGameDisplayContainer() {
@@ -99,28 +73,21 @@ var Lootr = ( function( window ) {
 
         // Clear both displays
         getGameDisplay().clear();
-        getLogDisplay().clear();
-        getHudDisplay().clear();
 
         // Update our current screen, call Enter
         _currentScreen = screen;
-        _currentScreen.enter(getGameDisplay(), getHudDisplay(), getLogDisplay());
+        _currentScreen.enter(getGameDisplay());
 
-        // Render our game and hud
+        // Render our game
         _currentScreen.renderGame();
-        _currentScreen.renderLog();
-        _currentScreen.renderHud();
     }
 
     function refreshScreens() {
         // Clear both displays
         getGameDisplay().clear();
-        getHudDisplay().clear();
 
-        // Render our game and hud
+        // Render our game and
         _currentScreen.renderGame();
-        _currentScreen.renderLog();
-        _currentScreen.renderHud();
     }
 
 	function getTile(x, y) {
@@ -140,8 +107,6 @@ var Lootr = ( function( window ) {
         getGameDisplayHeight: getGameDisplayHeight,
         switchScreen: switchScreen,
         getCurrentScreen: getCurrentScreen,
-        getHudDisplay: getHudDisplay,
-        getHudDisplayContainer: getHudDisplayContainer,
         getGameDisplay: getGameDisplay,
         getGameDisplayContainer: getGameDisplayContainer,
 

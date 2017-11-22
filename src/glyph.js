@@ -2,10 +2,10 @@
 Lootr.Glyph = function ( args ) {
 
 	// Set our Defaults
-    this._char = " ";
-    this._foreground = 'white';
+    this._char = args.char || "?";
+    this._foreground = args.foreground || 'yellow';
     this._originalForeground = this._foreground;
-    this._background = 'black';
+    this._background = args.background || 'black';
 
     // Replace our defaults with template values
     Object.assign(this, args);

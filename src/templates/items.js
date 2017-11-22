@@ -4,6 +4,7 @@ Lootr.Items = {};
 
 Lootr.Items.WoodenSword = {
     char: "!",
-	_rarity: "Rare",
-    foreground: "brown"
+	rarity: "Rare",
+	foreground: "brown",
+	background: "white"
 }

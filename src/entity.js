@@ -46,8 +46,13 @@ Lootr.Entity.prototype.setMap = function( map ){
 }
 
 Lootr.Entity.prototype.act = function() {
-    console.log("acting");
+	console.log("%o is acting", this);
+	let components = this.getComponents();
+	
+	for(var i = 0; i < components.length; i++) {
+		console.log("components", components[i]);
+	}
 
     // Wait for input
-    this.getMap().getEngine().lock();
+    // this.getMap().getEngine().lock();
 }

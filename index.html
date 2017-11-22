@@ -15,6 +15,7 @@
     <script src="src/tile.js"></script>
     <script src="src/item.js"></script>
     <script src="src/repository.js"></script>
+    <script src="src/components/entity_components.js"></script>
 
     <script src="src/utilities.js"></script>
 
@@ -53,9 +54,6 @@
             // Add the container to our HTML page
             var gameDisplay = document.getElementById('gameDisplay');
             gameDisplay.appendChild(Lootr.getGameDisplayContainer());
-
-            var hudDisplay = document.getElementById('hudDisplay');
-            hudDisplay.appendChild(Lootr.getHudDisplayContainer());
 
             // Load the start screen
             Lootr.switchScreen(new Lootr.Screens.Display(Lootr.Screens.Start));
