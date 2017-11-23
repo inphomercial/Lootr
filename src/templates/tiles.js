@@ -4,7 +4,8 @@ Lootr.Tiles = {};
 
 Lootr.Tiles.FloorTile = {
     _char: ".",
-    _foreground: "salmon"
+    _foreground: "salmon",
+    _isSolid: false
 }
 
 Lootr.Tiles.WallTile = {
@@ -16,21 +17,23 @@ Lootr.Tiles.WallTile = {
 Lootr.Tiles.RubyTile = {
     _char: "*",
     _foreground: "red",
-    _isSolid: true
+    _isSolid: false
 }
 
 Lootr.Tiles.GoldTile = {
     _char: "*",
     _foreground: "gold",
-    _isSolid: true
+    _isSolid: false
 }
 
 Lootr.Tiles.WaterDeepTile = {
     _char: "#",
-    _foreground: "blue"
+    _foreground: "blue",
+    _isSolid: true
 }
 
 Lootr.Tiles.WaterShallowTile = {
     _char: "#",
-    _foreground: "lightblue"
+    _foreground: "lightblue",
+    _isSolid: false
 }

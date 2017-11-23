@@ -1,9 +1,6 @@
 'use strict';
 
 Lootr.Screens.Display = function( template ) {
-
-    console.log('template', template);
-
     this._caption = "no caption";
     this.enter = null;
     this.renderGame = null;

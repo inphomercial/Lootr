@@ -5,7 +5,8 @@ Lootr.EntityComponents.PassThroughSolids = ({
 	name: "PassThroughSolids",
 	init: function() {
 		console.log("Pass through walls inits");
-	}
+	},
+	act: function() {}
 });
 
 Lootr.EntityComponents.MessageReceiver = ({

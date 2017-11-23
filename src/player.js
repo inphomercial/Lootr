@@ -41,14 +41,22 @@ Lootr.Player.prototype.handleEvent = function(e) {
 
 	window.removeEventListener('keydown', this);
 	this.getMap().getEngine().unlock();
+
+	Lootr.refreshScreens();
+	
+	this.getComponent('MessageReceiver').emptyMessages();
 }
 
 Lootr.Player.prototype.tryMovingTo = function(dX, dY) {
 
 	let newX = this.getX() + dX;
 	let newY = this.getY() + dY;
-	
 	let map = this.getMap();
+
+	if (!this.hasComponent('Moveable')) {
+		Lootr.sendMessage(this, "You cannot move");
+		return
+	}
 
 	if (map.isTileSolid(newX, newY) && !this.hasComponent('PassThroughSolids')) {
 		return;
@@ -59,7 +67,4 @@ Lootr.Player.prototype.tryMovingTo = function(dX, dY) {
 	this.setX(newX);
 	this.setY(newY);
 
-	Lootr.refreshScreens();
-	
-	this.getComponent('MessageReceiver').emptyMessages();
 }

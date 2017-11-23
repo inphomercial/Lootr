@@ -43,7 +43,6 @@ Lootr.Maps.Overworld.prototype.generateWorld = function () {
     generator.randomize(1);
     generator.create( function ( x, y, v ) {
         if ( v === 1 ) {
-            // temp_map[x][y] = new Lootr.Tiles.FloorTile();
             temp_map[x][y] = new Lootr.Tile(Lootr.Tiles.FloorTile);
         }
     });
@@ -53,7 +52,6 @@ Lootr.Maps.Overworld.prototype.generateWorld = function () {
     generator.create( function ( x, y, v ) {
         if ( v === 1 ) {
             temp_map[x][y] = new Lootr.Tile(Lootr.Tiles.WallTile);
-            // temp_map[x][y] = new Lootr.Tiles.WallTile();
         }
     });
 
@@ -62,7 +60,6 @@ Lootr.Maps.Overworld.prototype.generateWorld = function () {
     generator.create( function ( x, y, v ) {
         if ( v === 1 ) {
             temp_map[x][y] = new Lootr.Tile(Lootr.Tiles.WaterDeepTile);
-            // temp_map[x][y] = new Lootr.Tiles.WaterDeepTile();
         }
     });
 
@@ -71,7 +68,6 @@ Lootr.Maps.Overworld.prototype.generateWorld = function () {
     generator.create( function ( x, y, v ) {
         if ( v === 1 ) {
             temp_map[x][y] = new Lootr.Tile(Lootr.Tiles.WaterShallowTile);
-            // temp_map[x][y] = new Lootr.Tiles.WaterShallowTile();
         }
     });
 
@@ -80,7 +76,6 @@ Lootr.Maps.Overworld.prototype.generateWorld = function () {
     generator.create( function ( x, y, v ) {
         if ( v === 1 ) {
             temp_map[x][y] = new Lootr.Tile(Lootr.Tiles.RubyTile);
-            // temp_map[x][y] = new Lootr.Tiles.RubyTile();
         }
     });
 
@@ -89,7 +84,6 @@ Lootr.Maps.Overworld.prototype.generateWorld = function () {
     generator.create( function ( x, y, v ) {
         if ( v === 1 ) {
             temp_map[x][y] = new Lootr.Tile(Lootr.Tiles.GoldTile);
-            // temp_map[x][y] = new Lootr.Tiles.GoldTile();
         }
     });
 

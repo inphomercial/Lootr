@@ -1,11 +1,40 @@
 body {
     overflow: hidden;
-    background-color: grey;
+    background-color: black;
 }
 
-#gameDisplay,
-#logDisplay,
-#hudDisplay {
+#gameDisplay {
     float: left;
     border: 1px solid white;
+}
+
+#logDisplay {
+    bottom: 1px;
+    height: 234px;
+	padding: 25px;
+	width: 63%;
+    overflow: hidden;
+	position: absolute;
+    background-color: black;
+}
+
+.log-item {
+	font-size: 18px;
+	color: white;
+}
+
+.log-item:nth-child(5) {
+	opacity: 0.8;
+}
+.log-item:nth-child(6) {
+	opacity: 0.6;
+}
+.log-item:nth-child(7) {
+	opacity: 0.4;
+}
+.log-item:nth-child(8) {
+	opacity: 0.2;
+}
+.log-item:nth-child(n+9) {
+	opacity: 0;
 }

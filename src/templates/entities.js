@@ -8,7 +8,8 @@ Lootr.Entities.Player = () => ({
     _foreground: "red",
 	_components: [
 		Lootr.EntityComponents.PassThroughSolids,
-		Lootr.EntityComponents.MessageReceiver
+		Lootr.EntityComponents.MessageReceiver,
+		Lootr.EntityComponents.Moveable
 	]
 });
 

@@ -50,7 +50,9 @@ Lootr.Entity.prototype.act = function() {
 	let components = this.getComponents();
 	
 	for(var i = 0; i < components.length; i++) {
-		console.log("components", components[i]);
+		if (components[i].act) {
+			components[i].act();
+		}
 	}
 
     // Wait for input

@@ -2,7 +2,7 @@
 
 Lootr.Screens.Play = {
 
-    caption: "Play Screen",
+    _caption: "Play Screen",
 
     enter: function( gameDisplay ) {
         console.log("Entered Play Screen");
@@ -20,7 +20,8 @@ Lootr.Screens.Play = {
     },
 
     renderGame: function () {
-        console.log("refreshing");
+		console.log("refreshing");
+		Lootr.getGameDisplay().clear();
 
         // Draw map first
         this._map.renderMap( this._gameDisplay );

@@ -5,18 +5,7 @@ var Lootr = ( function( window ) {
     var _currentScreen = null;
     var _GAME_DISPLAY_WIDTH = 40;
 	var _GAME_DISPLAY_HEIGHT = 15;
-
-	// Move this into it's own class
-	function renderMessages() {
-		let $logDisplay = document.getElementById('logDisplay');
-		let messages = Lootr.getPlayer().getComponent('MessageReceiver').getMessages();
-
-		for (var i = 0; i < messages.length; i++) {
-			let div = document.createElement('div');
-			div.innerText = messages[i];
-			$logDisplay.appendChild(div);
-		}
-	}
+	var _GAME_DISPLAY_FONT_SIZE = 32;
 
     var Screens = {};
     var Maps = {};
@@ -24,17 +13,16 @@ var Lootr = ( function( window ) {
 	var _player = {};
 
     function init() {
-		console.log("Lootr Init Ran");
 
 		var displayOptions = {
 			width: _GAME_DISPLAY_WIDTH, 
 			height: _GAME_DISPLAY_HEIGHT,
-			fontSize: 32
+			fontSize: _GAME_DISPLAY_FONT_SIZE
 		}
 
-        _gameDisplay = new ROT.Display(displayOptions);
+		_gameDisplay = new ROT.Display(displayOptions);
 
-        var bindEventToScreen = function(event) {
+		var bindEventToScreen = function(event) {
 			window.addEventListener(event, function(e) {
 				// When an event is received, send it to the
 				// screen if there is one
@@ -109,6 +97,19 @@ var Lootr = ( function( window ) {
 	function sendMessage(who, message) {
 		if (who.hasComponent('MessageReceiver')) {
 			who.getComponent('MessageReceiver').receiveMessage(message);
+		}
+	}
+	
+	// Move this into it's own class
+	function renderMessages() {
+		let $logDisplay = document.getElementById('logDisplay');
+		let messages = Lootr.getPlayer().getComponent('MessageReceiver').getMessages();
+
+		for (var i = 0; i < messages.length; i++) {
+			let div = document.createElement('div');
+			div.innerText = messages[i];
+			div.classList.add('log-item');
+			$logDisplay.appendChild(div);
 		}
 	}
 
