@@ -54,8 +54,12 @@ Lootr.Player.prototype.tryMovingTo = function(dX, dY) {
 		return;
 	}
 
+	Lootr.sendMessage(this, "You move");
+
 	this.setX(newX);
 	this.setY(newY);
 
-    Lootr.refreshScreens();
+	Lootr.refreshScreens();
+	
+	this.getComponent('MessageReceiver').emptyMessages();
 }

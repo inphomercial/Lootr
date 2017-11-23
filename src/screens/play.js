@@ -29,7 +29,10 @@ Lootr.Screens.Play = {
         this._map.renderItems( this._gameDisplay );
         //
         // Draw entities
-        this._map.renderEntities( this._gameDisplay );
+		this._map.renderEntities( this._gameDisplay );
+	
+		// Draw Logs
+		Lootr.renderMessages();
     },
 
     exit: function() {

@@ -3,8 +3,20 @@
 var Lootr = ( function( window ) {
     var _gameDisplay = null;
     var _currentScreen = null;
-    var _GAME_DISPLAY_WIDTH = 60;
-    var _GAME_DISPLAY_HEIGHT = 20;
+    var _GAME_DISPLAY_WIDTH = 40;
+	var _GAME_DISPLAY_HEIGHT = 15;
+
+	// Move this into it's own class
+	function renderMessages() {
+		let $logDisplay = document.getElementById('logDisplay');
+		let messages = Lootr.getPlayer().getComponent('MessageReceiver').getMessages();
+
+		for (var i = 0; i < messages.length; i++) {
+			let div = document.createElement('div');
+			div.innerText = messages[i];
+			$logDisplay.appendChild(div);
+		}
+	}
 
     var Screens = {};
     var Maps = {};
@@ -94,6 +106,12 @@ var Lootr = ( function( window ) {
 		return _currentScreen._map.getTile(x, y);
 	}
 
+	function sendMessage(who, message) {
+		if (who.hasComponent('MessageReceiver')) {
+			who.getComponent('MessageReceiver').receiveMessage(message);
+		}
+	}
+
     return {
         init: init,
         Screens: Screens,
@@ -101,7 +119,10 @@ var Lootr = ( function( window ) {
         World: World,
 
         setPlayer: setPlayer,
-        getPlayer: getPlayer,
+		getPlayer: getPlayer,
+	
+		renderMessages: renderMessages,
+		sendMessage: sendMessage,
 
         getGameDisplayWidth: getGameDisplayWidth,
         getGameDisplayHeight: getGameDisplayHeight,

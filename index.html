@@ -32,32 +32,31 @@
     <script src="src/screens/play.js"></script>
     </head>
     <body>
-    <h1>Lootr</h1>
 
-    <div id="gameDisplay"></div>
-    <div id="hudDisplay"></div>
-    
-	<div id="logDisplay"></div>
+		<div id="gameDisplay"></div>
 
-    <script>
-       'use strict';
-        window.onload = function() {
-            // Check if rot.js can work on this browser
-            if (!ROT.isSupported()) {
-                document.body.appendChild("<h1>Your browser does not support the Rot.js library</h1>");
-                return;
-            }
+		<div id="hudDisplay"></div>
+		<div id="logDisplay"></div>
 
-            // Initialize lootr
-            Lootr.init();
+		<script>
+		'use strict';
+			window.onload = function() {
+				// Check if rot.js can work on this browser
+				if (!ROT.isSupported()) {
+					document.body.appendChild("<h1>Your browser does not support the Rot.js library</h1>");
+					return;
+				}
 
-            // Add the container to our HTML page
-            var gameDisplay = document.getElementById('gameDisplay');
-            gameDisplay.appendChild(Lootr.getGameDisplayContainer());
+				// Initialize lootr
+				Lootr.init();
 
-            // Load the start screen
-            Lootr.switchScreen(new Lootr.Screens.Display(Lootr.Screens.Start));
-        }
-    </script>
+				// Add the container to our HTML page
+				var gameDisplay = document.getElementById('gameDisplay');
+				gameDisplay.appendChild(Lootr.getGameDisplayContainer());
+
+				// Load the start screen
+				Lootr.switchScreen(new Lootr.Screens.Display(Lootr.Screens.Start));
+			}
+		</script>
     </body>
 </html>

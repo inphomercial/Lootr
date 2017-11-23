@@ -45,6 +45,14 @@ Lootr.DynamicGlyph.prototype.getComponents = function() {
     return this._components;
 }
 
+Lootr.DynamicGlyph.prototype.getComponent = function(componentName) {
+	let components = this.getComponents();
+
+	return components.filter(function(component) {
+		return component.name === componentName;
+	})[0];
+}
+
 Lootr.DynamicGlyph.prototype.addComponent = function(component) {
 	if (this.hasComponent(component.name)) {
 		console.warn("Cannot add this component, already exists on object");
