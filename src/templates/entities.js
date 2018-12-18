@@ -7,11 +7,6 @@ Lootr.Entities.Player = () => ({
     _char: "@",
 	_foreground: "red",
 	_componentList: ["Moveable"],
-	// _components: [
-		// Lootr.EntityComponents.PassThroughSolids,
-		// Lootr.EntityComponents.MessageReceiver,
-		// Lootr.EntityComponents.Moveable
-	// ]
 });
 
 Lootr.Entities.Goblin = () => ({
@@ -19,6 +14,5 @@ Lootr.Entities.Goblin = () => ({
     _char: "g",
 	_foreground: "green",
 	_componentList: ["Moveable"],
-	// _components: [Lootr.EntityComponents.Moveable]
 	// _components: [Lootr.EntityComponents.PassThroughSolids]
 });

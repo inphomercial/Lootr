@@ -10,7 +10,7 @@ Lootr.Screens.Play = {
 		this._gameDisplay = gameDisplay;
 
         // Start by creating OverWorld
-        this._map = new Lootr.Maps.Overworld();
+        this._map = new Overworld();
         Lootr.Screens.Play.map = this._map;
         Lootr.World.addMap(this._map);
 		
