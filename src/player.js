@@ -47,23 +47,24 @@ class Player extends Entity {
 
 	tryMovingTo(dX, dY) {
 
-		let newX = this.getX() + dX;
-		let newY = this.getY() + dY;
-		let map = this.getMap();
+		MoveableSystem(this, dX, dY);
+		// let newX = this.getX() + dX;
+		// let newY = this.getY() + dY;
+		// let map = this.getMap();
 
-		// if (!this.hasComponent('MoveableComponent')) {
-		// 	Lootr.sendMessage(this, "You cannot move");
-		// 	return
+		// // if (!this.hasComponent('MoveableComponent')) {
+		// // 	Lootr.sendMessage(this, "You cannot move");
+		// // 	return
+		// // }
+
+		// if (map.isTileSolid(newX, newY) && !this.hasComponent('PassThroughSolids')) {
+		// 	return;
 		// }
 
-		if (map.isTileSolid(newX, newY) && !this.hasComponent('PassThroughSolids')) {
-			return;
-		}
+		// // Lootr.sendMessage(this, "You move");
 
-		// Lootr.sendMessage(this, "You move");
-
-		this.setX(newX);
-		this.setY(newY);
+		// this.setX(newX);
+		// this.setY(newY);
 
 	}
 

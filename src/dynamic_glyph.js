@@ -54,30 +54,18 @@ class DynamicGlyph extends Glyph {
 		let components = this.getComponents();
 	
 		components[component.name] = component;
-		// this.getComponents().push(component);
-		// component.init.call(this);
 	}
 	
 	hasComponent(componentName) {
 		let components = this.getComponents();
 	
 		return components[componentName] !== undefined;
-	
-		// return components.filter(function(component) {
-		// 	return component.name === componentName;
-		// }).length > 0;
 	}
 	
 	removeComponent(componentName) {
 		let components = this.getComponents();
 	
-		delete components[componantName];
-	
-		// for(var i = 0; i < components.length; i++) {
-		// 	if (components[i].name === componentName) {
-		// 		delete components[i];
-		// 	}
-		// }
+		delete components[componentName];
 	}
 
     // DynamicGlyph extends Glyph setting all its attributes

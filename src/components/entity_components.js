@@ -5,6 +5,10 @@ Lootr.EntityComponents.Moveable = {
 	name: "MoveableComponent"
 };
 
+Lootr.EntityComponents.PassThroughSolids = {
+	name: "PassThroughSolids"
+};
+
 // Lootr.EntityComponents.PassThroughSolids = ({
 // 	name: "PassThroughSolids",
 // 	init: function() {

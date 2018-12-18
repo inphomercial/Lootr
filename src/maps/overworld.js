@@ -18,6 +18,7 @@ class Overworld extends Map {
 		// Add entities to map
 		var goblin = new Entity(Lootr.Entities.Goblin());
 		this.addEntityAt(14, 7, goblin);
+
 		var goblin2 = new Entity(Lootr.Entities.Goblin());
 		this.addEntityAt(17, 2, goblin2);
 

@@ -6,7 +6,7 @@ Lootr.Entities.Player = () => ({
     _name: "Player",
     _char: "@",
 	_foreground: "red",
-	_componentList: ["Moveable"],
+	_componentList: ["Moveable", "PassThroughSolids"],
 });
 
 Lootr.Entities.Goblin = () => ({
