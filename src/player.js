@@ -1,70 +1,134 @@
 'use strict';
 
-Lootr.Player = function ( args ) {
+class Player extends Entity {
+
+	constructor(args) {
+		super(args);
+
+    	Object.assign(this, args);
+	}
+
+
+	act() {
+		console.log("%o is acting", this);
+
+		this.getMap().getEngine().lock();
+		window.addEventListener("keydown", this);
+	}
+
+	handleEvent(e) {
+		let code = e.keyCode;
+
+		switch(code) {
+			case ROT.VK_LEFT:
+				this.tryMovingTo(-1, 0);
+				break;
+
+			case ROT.VK_RIGHT:
+				this.tryMovingTo(1, 0);
+				break;
+
+			case ROT.VK_UP:
+				this.tryMovingTo(0, -1);
+				break;
+
+			case ROT.VK_DOWN:
+				this.tryMovingTo(0, 1);
+				break;
+		}
+
+		window.removeEventListener('keydown', this);
+		this.getMap().getEngine().unlock();
+
+		Lootr.refreshScreens();
+		
+		// this.getComponent('MessageReceiver').emptyMessages();
+	}
+
+	tryMovingTo(dX, dY) {
+
+		let newX = this.getX() + dX;
+		let newY = this.getY() + dY;
+		let map = this.getMap();
+
+		// if (!this.hasComponent('MoveableComponent')) {
+		// 	Lootr.sendMessage(this, "You cannot move");
+		// 	return
+		// }
+
+		if (map.isTileSolid(newX, newY) && !this.hasComponent('PassThroughSolids')) {
+			return;
+		}
+
+		// Lootr.sendMessage(this, "You move");
+
+		this.setX(newX);
+		this.setY(newY);
+
+	}
 
     // Player extends Entity setting all its attributes
-    Lootr.Entity.call(this, args);
+    // Lootr.Entity.call(this, args);
 
     // Replace our defaults with template values
-    Object.assign(this, args);
 }
 // Make Player inherit all methods from Entity
-Lootr.Player.extend(Lootr.Entity);
+// Lootr.Player.extend(Lootr.Entity);
 
-Lootr.Player.prototype.act = function() {
-	console.log("%o is acting", this);
+// Lootr.Player.prototype.act = function() {
+// 	console.log("%o is acting", this);
 
-	this.getMap().getEngine().lock();
-	window.addEventListener("keydown", this);
-}
+// 	this.getMap().getEngine().lock();
+// 	window.addEventListener("keydown", this);
+// }
 
-Lootr.Player.prototype.handleEvent = function(e) {
-	let code = e.keyCode;
+// Lootr.Player.prototype.handleEvent = function(e) {
+// 	let code = e.keyCode;
 
-	switch(code) {
-		case ROT.VK_LEFT:
-			this.tryMovingTo(-1, 0);
-			break;
+// 	switch(code) {
+// 		case ROT.VK_LEFT:
+// 			this.tryMovingTo(-1, 0);
+// 			break;
 
-		case ROT.VK_RIGHT:
-			this.tryMovingTo(1, 0);
-			break;
+// 		case ROT.VK_RIGHT:
+// 			this.tryMovingTo(1, 0);
+// 			break;
 
-		case ROT.VK_UP:
-			this.tryMovingTo(0, -1);
-			break;
+// 		case ROT.VK_UP:
+// 			this.tryMovingTo(0, -1);
+// 			break;
 
-		case ROT.VK_DOWN:
-			this.tryMovingTo(0, 1);
-			break;
-	}
+// 		case ROT.VK_DOWN:
+// 			this.tryMovingTo(0, 1);
+// 			break;
+// 	}
 
-	window.removeEventListener('keydown', this);
-	this.getMap().getEngine().unlock();
+// 	window.removeEventListener('keydown', this);
+// 	this.getMap().getEngine().unlock();
 
-	Lootr.refreshScreens();
+// 	Lootr.refreshScreens();
 	
-	this.getComponent('MessageReceiver').emptyMessages();
-}
+// 	this.getComponent('MessageReceiver').emptyMessages();
+// }
 
-Lootr.Player.prototype.tryMovingTo = function(dX, dY) {
+// Lootr.Player.prototype.tryMovingTo = function(dX, dY) {
 
-	let newX = this.getX() + dX;
-	let newY = this.getY() + dY;
-	let map = this.getMap();
+// 	let newX = this.getX() + dX;
+// 	let newY = this.getY() + dY;
+// 	let map = this.getMap();
 
-	if (!this.hasComponent('Moveable')) {
-		Lootr.sendMessage(this, "You cannot move");
-		return
-	}
+// 	if (!this.hasComponent('MoveableComponent')) {
+// 		Lootr.sendMessage(this, "You cannot move");
+// 		return
+// 	}
 
-	if (map.isTileSolid(newX, newY) && !this.hasComponent('PassThroughSolids')) {
-		return;
-	}
+// 	if (map.isTileSolid(newX, newY) && !this.hasComponent('PassThroughSolids')) {
+// 		return;
+// 	}
 
-	Lootr.sendMessage(this, "You move");
+// 	Lootr.sendMessage(this, "You move");
 
-	this.setX(newX);
-	this.setY(newY);
+// 	this.setX(newX);
+// 	this.setY(newY);
 
-}
+// }

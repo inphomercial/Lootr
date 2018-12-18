@@ -22,6 +22,6 @@ Lootr.Screens.Start = {
     },
 
     handleInput( inputType, inputData ) {
-        Lootr.switchScreen(new Lootr.Screens.Display(Lootr.Screens.Play));
+        Lootr.switchScreen(new Display(Lootr.Screens.Play));
     }
 }

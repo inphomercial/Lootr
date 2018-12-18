@@ -6,30 +6,30 @@
     <script src="libs/rot.js"></script>
     <script src="libs/underscore.js"></script>
 
-    <script src="src/lootr.js"></script>
+    <script src="lib/lootr.js"></script>
 
-    <script src="src/glyph.js"></script>
-    <script src="src/dynamic_glyph.js"></script>
-    <script src="src/entity.js"></script>
-    <script src="src/player.js"></script>
-    <script src="src/tile.js"></script>
-    <script src="src/item.js"></script>
-    <script src="src/repository.js"></script>
-    <script src="src/components/entity_components.js"></script>
+    <script src="lib/glyph.js"></script>
+    <script src="lib/dynamic_glyph.js"></script>
+    <script src="lib/entity.js"></script>
+    <script src="lib/player.js"></script>
+    <script src="lib/tile.js"></script>
+    <script src="lib/item.js"></script>
+    <script src="lib/repository.js"></script>
+    <script src="lib/components/entity_components.js"></script>
 
-    <script src="src/utilities.js"></script>
+    <script src="lib/utilities.js"></script>
 
-    <script src="src/templates/tiles.js"></script>
-    <script src="src/templates/items.js"></script>
-    <script src="src/templates/entities.js"></script>
+    <script src="lib/templates/tiles.js"></script>
+    <script src="lib/templates/items.js"></script>
+    <script src="lib/templates/entities.js"></script>
 
-    <script src="src/world_holder.js"></script>
-    <script src="src/map.js"></script>
-    <script src="src/maps/overworld.js"></script>
+    <script src="lib/world_holder.js"></script>
+    <script src="lib/map.js"></script>
+    <script src="lib/maps/overworld.js"></script>
 
-    <script src="src/screens/display/display.js"></script>
-    <script src="src/screens/start.js"></script>
-    <script src="src/screens/play.js"></script>
+    <script src="lib/screens/display/display.js"></script>
+    <script src="lib/screens/start.js"></script>
+    <script src="lib/screens/play.js"></script>
     </head>
     <body>
 
@@ -55,7 +55,7 @@
 				gameDisplay.appendChild(Lootr.getGameDisplayContainer());
 
 				// Load the start screen
-				Lootr.switchScreen(new Lootr.Screens.Display(Lootr.Screens.Start));
+				Lootr.switchScreen(new Display(Lootr.Screens.Start));
 			}
 		</script>
     </body>

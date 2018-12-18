@@ -94,24 +94,24 @@ var Lootr = ( function( window ) {
 		return _currentScreen._map.getTile(x, y);
 	}
 
-	function sendMessage(who, message) {
-		if (who.hasComponent('MessageReceiver')) {
-			who.getComponent('MessageReceiver').receiveMessage(message);
-		}
-	}
+	// function sendMessage(who, message) {
+	// 	if (who.hasComponent('MessageReceiver')) {
+	// 		who.getComponent('MessageReceiver').receiveMessage(message);
+	// 	}
+	// }
 	
 	// Move this into it's own class
-	function renderMessages() {
-		let $logDisplay = document.getElementById('logDisplay');
-		let messages = Lootr.getPlayer().getComponent('MessageReceiver').getMessages();
+	// function renderMessages() {
+	// 	let $logDisplay = document.getElementById('logDisplay');
+	// 	let messages = Lootr.getPlayer().getComponent('MessageReceiver').getMessages();
 
-		for (var i = 0; i < messages.length; i++) {
-			let div = document.createElement('div');
-			div.innerText = messages[i];
-			div.classList.add('log-item');
-			$logDisplay.appendChild(div);
-		}
-	}
+	// 	for (var i = 0; i < messages.length; i++) {
+	// 		let div = document.createElement('div');
+	// 		div.innerText = messages[i];
+	// 		div.classList.add('log-item');
+	// 		$logDisplay.appendChild(div);
+	// 	}
+	// }
 
     return {
         init: init,
@@ -122,8 +122,8 @@ var Lootr = ( function( window ) {
         setPlayer: setPlayer,
 		getPlayer: getPlayer,
 	
-		renderMessages: renderMessages,
-		sendMessage: sendMessage,
+		// renderMessages: renderMessages,
+		// sendMessage: sendMessage,
 
         getGameDisplayWidth: getGameDisplayWidth,
         getGameDisplayHeight: getGameDisplayHeight,

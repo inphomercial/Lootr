@@ -33,7 +33,7 @@ Lootr.Screens.Play = {
 		this._map.renderEntities( this._gameDisplay );
 	
 		// Draw Logs
-		Lootr.renderMessages();
+		// Lootr.renderMessages();
     },
 
     exit: function() {
@@ -41,5 +41,6 @@ Lootr.Screens.Play = {
     },
 
     handleInput: function ( inputType, inputData ) {
+		console.log('play screen input', inputType, inputData);
     }
 }
