@@ -1,0 +1,4 @@
+{
+    "eslint.enable": false,
+    "eslint.options": { "configFile": ".eslintrc.json" }
+}
