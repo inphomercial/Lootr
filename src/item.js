@@ -8,10 +8,11 @@ class Item extends DynamicGlyph {
 
 		// Set Defaults
 		this._rarity = template.rarity;
-		this._defense = template.defense;
 
-		for(var i = 0; i < template.componentList.length; i++) {
-			this.addComponent(Lootr.ItemComponents[template.componentList[i]]);
+		for (const key of Object.keys(template.componentList)) {
+			const component = Lootr.ItemComponents[key](template.componentList[key]);
+
+			this.addObjComponent(component);
 		}
 	}
 }

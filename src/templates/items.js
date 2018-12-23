@@ -2,10 +2,15 @@
 
 Lootr.Templates.Items.WoodenSword = {
     char: "!",
-	rarity: "common",
 	foreground: "brown",
 	background: "white",
-	componentList: ['Wieldable']
+
+	componentList: {
+		'Wieldable': {},
+		'Rarity': {
+			rarity: 'common'
+		}
+	}
 }
 
 Lootr.Templates.Items.WoodenShield = {
@@ -14,15 +19,14 @@ Lootr.Templates.Items.WoodenShield = {
 	foreground: "brown",
 	background: "white",
 
-	// Item Values
-	rarity: "rare",
-	defense: 4,
-	componentList: ['Wieldable']
-
 	// Proposed idea for passing unique values to the components
-	// componentList: {
-	// 	'Wieldable': {
-	// 		'defense': 4
-	// 	}
-	// }
+	componentList: {
+		'Wieldable': {},
+		'Defense': {
+			defense: 4
+		},
+		'Rarity': {
+			rarity: 'ultra rare'
+		}
+	}
 };
