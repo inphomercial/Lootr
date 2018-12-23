@@ -6,7 +6,7 @@ class Entity extends DynamicGlyph {
 		super(template);
 
 		// Set Defaults
-		this._name = 'unnamed';
+		this._name = template.name || 'unnamed' ;
 		this._isAlive = true;
 		this._speed = 10;
 		this._turns = 0;

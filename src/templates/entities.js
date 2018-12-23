@@ -1,10 +1,9 @@
 'use strict';
 
 Lootr.Templates.Entities.Player = {
-    _name: "Player",
-    _char: "@",
-	_foreground: "red",
-	// _componentList: ["Health", "Moveable", "PassThroughSolids"],
+    name: "Player",
+    char: "@",
+	foreground: "red",
 	componentList: {
 		"Health": {
 			hp: 100
@@ -15,10 +14,9 @@ Lootr.Templates.Entities.Player = {
 };
 
 Lootr.Templates.Entities.Goblin = {
-    _name: "Goblin",
-    _char: "g",
-	_foreground: "green",
-	// _componentList: ["Moveable"],
+    name: "Goblin",
+    char: "g",
+	foreground: "green",
 	componentList: {
 		"Moveable": {}
 	}
