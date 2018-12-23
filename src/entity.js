@@ -2,8 +2,8 @@
 
 class Entity extends DynamicGlyph {
 
-	constructor(args) {
-		super(args);
+	constructor(template) {
+		super(template);
 
 		// Set Defaults
 		this._name = 'unnamed';
@@ -12,12 +12,17 @@ class Entity extends DynamicGlyph {
 		this._turns = 0;
 		this._map = null;
 		
-		for(var i = 0; i < args._componentList.length; i++) {
-			this.addComponent(Lootr.EntityComponents[args._componentList[i]]);
+		for (const key of Object.keys(template.componentList)) {
+			const component = Lootr.EntityComponents[key](template.componentList[key]);
+
+			this.addObjComponent(component);
 		}
+		// for(var i = 0; i < args._componentList.length; i++) {
+		// 	this.addComponent(Lootr.EntityComponents[args._componentList[i]]);
+		// }
 
 		// Replace our defaults with template values
-		Object.assign(this, args);
+		// Object.assign(this, args);
 	}
 
 	getTurns() {
