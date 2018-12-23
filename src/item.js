@@ -10,9 +10,4 @@ class Item extends DynamicGlyph {
 		// Replace our defaults with template values
 		Object.assign(this, args);
 	}
-
-    // Tile extends DynamicGlyph getting all its attributes
-    // Lootr.DynamicGlyph.call(this, args);
-
 }
-// Lootr.Item.extend(Lootr.DynamicGlyph);

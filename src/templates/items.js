@@ -1,10 +1,15 @@
 'use strict';
 
-Lootr.Items = {};
-
-Lootr.Items.WoodenSword = {
+Lootr.Templates.Items.WoodenSword = {
     char: "!",
-	rarity: "Rare",
+	rarity: "common",
+	foreground: "brown",
+	background: "white"
+}
+
+Lootr.Templates.Items.WoodenShield = {
+    char: "]",
+	rarity: "common",
 	foreground: "brown",
 	background: "white"
 }

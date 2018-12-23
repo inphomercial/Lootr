@@ -1,18 +1,15 @@
 'use strict';
 
-Lootr.Entities = {};
-
-Lootr.Entities.Player = () => ({
+Lootr.Templates.Entities.Player = () => ({
     _name: "Player",
     _char: "@",
 	_foreground: "red",
-	_componentList: ["Moveable", "PassThroughSolids"],
+	_componentList: ["Health", "Moveable", "PassThroughSolids"],
 });
 
-Lootr.Entities.Goblin = () => ({
+Lootr.Templates.Entities.Goblin = () => ({
     _name: "Goblin",
     _char: "g",
 	_foreground: "green",
 	_componentList: ["Moveable"],
-	// _components: [Lootr.EntityComponents.PassThroughSolids]
 });

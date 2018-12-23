@@ -1,13 +1,25 @@
 
 Lootr.EntityComponents = {};
 
-Lootr.EntityComponents.Moveable = {
-	name: "MoveableComponent"
+Lootr.EntityComponents.Moveable = function Moveable() {
+	this.name = "Moveable";
+
+	return this;
 };
 
-Lootr.EntityComponents.PassThroughSolids = {
-	name: "PassThroughSolids"
+Lootr.EntityComponents.PassThroughSolids = function PassThroughSolids() {
+	this.name = "PassThroughSolids";
+
+	return this;
 };
+
+Lootr.EntityComponents.Health = function Health(value) {
+	this.name = "Health";
+	this.hp = value;
+	this.maxHp = value;
+
+	return this;
+}
 
 // Lootr.EntityComponents.PassThroughSolids = ({
 // 	name: "PassThroughSolids",

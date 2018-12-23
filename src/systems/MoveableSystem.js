@@ -4,16 +4,16 @@ function MoveableSystem(entity, dX, dY) {
 	let newY = entity.getY() + dY;
 	let map = entity.getMap();
 
-	// if (!this.hasComponent('MoveableComponent')) {
-	// 	Lootr.sendMessage(this, "You cannot move");
-	// 	return
-	// }
+	if (!entity.hasComponent('Moveable')) {
+		console.log('%o is unable to move', entity);
+		// Lootr.sendMessage(this, "You cannot move");
+		return
+	}
 
 	if (map.isTileSolid(newX, newY) && !entity.hasComponent('PassThroughSolids')) {
-		console.log('tile is solid and you cannot pass thru walls', );
+		console.log('tile is solid and %o cannot pass thru walls', entity);
+
 		return;
-	} else {
-		console.log('moving', );
 	}
 
 	// Lootr.sendMessage(this, "You move");

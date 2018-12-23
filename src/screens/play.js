@@ -15,12 +15,9 @@ Lootr.Screens.Play = {
         Lootr.World.addMap(this._map);
 		
 		this._map.getEngine().start();
-
-        console.log(Lootr.World);
     },
 
     renderGame: function () {
-		console.log("refreshing");
 		Lootr.getGameDisplay().clear();
 
         // Draw map first

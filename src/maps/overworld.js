@@ -6,35 +6,34 @@ class Overworld extends Map {
 
 		this._width = 500;
 		this._height = 500;
-
-		console.log('this', this);
-
 		this._tiles = this.generateWorld();
 
-		// Overworld extends Map getting all its attributes
-		// Passing in the generated tiles
-		// Lootr.Map.call(this, map);
-
 		// Add entities to map
-		var goblin = new Entity(Lootr.Entities.Goblin());
+		var goblin = new Entity(Lootr.Templates.Entities.Goblin());
 		this.addEntityAt(14, 7, goblin);
 
-		var goblin2 = new Entity(Lootr.Entities.Goblin());
+		var goblin2 = new Entity(Lootr.Templates.Entities.Goblin());
 		this.addEntityAt(17, 2, goblin2);
 
 		// Add items to map
-		var woodenSword = new Item(Lootr.Items.WoodenSword);
+		var woodenSword = new Item(Lootr.Templates.Items.WoodenSword);
 		this.addItemAt(7, 7, woodenSword);
+		
+		var woodenShield = new Item(Lootr.Templates.Items.WoodenShield);
+		this.addItemAt(4, 8, woodenShield);
 
 		// Add player to map
-		var player = new Player(Lootr.Entities.Player());
+		var player = new Player(Lootr.Templates.Entities.Player());
 		Lootr.setPlayer(player);
 		this.addEntityAt(10, 10, player);
+		
+		console.log('overworld', this);
 	}
 
 	generateWorld() {
 
 		var temp_map = this.createEmptyMap();
+		const Templates = Lootr.Templates;
 
 		// Setup generator
 		var generator = new ROT.Map.Cellular(this._width, this._height);
@@ -47,7 +46,7 @@ class Overworld extends Map {
 		generator.randomize(1);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Lootr.Tiles.FloorTile);
+				temp_map[x][y] = new Tile(Templates.Tiles.FloorTile);
 			}
 		});
 
@@ -55,7 +54,7 @@ class Overworld extends Map {
 		generator.randomize(.5);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Lootr.Tiles.WallTile);
+				temp_map[x][y] = new Tile(Templates.Tiles.WallTile);
 			}
 		});
 
@@ -63,7 +62,7 @@ class Overworld extends Map {
 		generator.randomize(.14);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Lootr.Tiles.WaterDeepTile);
+				temp_map[x][y] = new Tile(Templates.Tiles.WaterDeepTile);
 			}
 		});
 
@@ -71,7 +70,7 @@ class Overworld extends Map {
 		generator.randomize(.24);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Lootr.Tiles.WaterShallowTile);
+				temp_map[x][y] = new Tile(Templates.Tiles.WaterShallowTile);
 			}
 		});
 
@@ -79,7 +78,7 @@ class Overworld extends Map {
 		generator.randomize(.05);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Lootr.Tiles.RubyTile);
+				temp_map[x][y] = new Tile(Templates.Tiles.RubyTile);
 			}
 		});
 
@@ -87,7 +86,7 @@ class Overworld extends Map {
 		generator.randomize(.08);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Lootr.Tiles.GoldTile);
+				temp_map[x][y] = new Tile(Templates.Tiles.GoldTile);
 			}
 		});
 
@@ -104,5 +103,4 @@ class Overworld extends Map {
 		return temp_map;
 	}
 }
-// Lootr.Maps.Overworld.extend(Lootr.Map);
 

@@ -138,3 +138,8 @@ var Lootr = ( function( window ) {
     }
 
 })( window );
+
+Lootr.Templates = {};
+Lootr.Templates.Items = {};
+Lootr.Templates.Entities = {};
+Lootr.Templates.Tiles = {};
