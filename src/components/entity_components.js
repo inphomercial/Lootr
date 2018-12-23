@@ -2,34 +2,24 @@
 Lootr.EntityComponents = {};
 
 Lootr.EntityComponents.Moveable = function Moveable() {
-	this.name = "Moveable";
-
-	return this;
+	return {
+		name: "Moveable" 
+	}
 };
 
 Lootr.EntityComponents.PassThroughSolids = function PassThroughSolids() {
-	this.name = "PassThroughSolids";
-
-	return this;
+	return {
+		name: "PassThroughSolids"
+	}
 };
 
-Lootr.EntityComponents.Health = function Health(value) {
-	this.name = "Health";
-	this.hp = value;
-	this.maxHp = value;
-
-	return this;
+Lootr.EntityComponents.Health = function Health(template) {
+	return {
+		name: "Health",
+		hp: template.hp,
+		maxHp: template.hp
+	}
 }
-
-// Lootr.EntityComponents.PassThroughSolids = ({
-// 	name: "PassThroughSolids",
-// 	init: function() {
-// 		console.log("Pass through walls inits");
-// 	},
-// 	act: function() {
-// 		console.log('passing through solids acting', );
-// 	}
-// });
 
 // Lootr.EntityComponents.MessageReceiver = ({
 // 	name: "MessageReceiver",
@@ -46,12 +36,4 @@ Lootr.EntityComponents.Health = function Health(value) {
 // 	emptyMessages: function() {
 // 		this._messages = [];
 // 	}
-// });
-
-// Lootr.EntityComponents.Moveable = ({
-// 	name: "Moveable",
-// 	init: function() {
-// 		console.log("Moveable inits");
-// 	},
-// 	act: function () {}
 // });

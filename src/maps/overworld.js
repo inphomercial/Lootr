@@ -9,10 +9,10 @@ class Overworld extends Map {
 		this._tiles = this.generateWorld();
 
 		// Add entities to map
-		var goblin = new Entity(Lootr.Templates.Entities.Goblin());
+		var goblin = new Entity(Lootr.Templates.Entities.Goblin);
 		this.addEntityAt(14, 7, goblin);
 
-		var goblin2 = new Entity(Lootr.Templates.Entities.Goblin());
+		var goblin2 = new Entity(Lootr.Templates.Entities.Goblin);
 		this.addEntityAt(17, 2, goblin2);
 
 		// Add items to map
@@ -23,7 +23,7 @@ class Overworld extends Map {
 		this.addItemAt(4, 8, woodenShield);
 
 		// Add player to map
-		var player = new Player(Lootr.Templates.Entities.Player());
+		var player = new Player(Lootr.Templates.Entities.Player);
 		Lootr.setPlayer(player);
 		this.addEntityAt(10, 10, player);
 		
