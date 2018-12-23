@@ -17,12 +17,6 @@ class Entity extends DynamicGlyph {
 
 			this.addObjComponent(component);
 		}
-		// for(var i = 0; i < args._componentList.length; i++) {
-		// 	this.addComponent(Lootr.EntityComponents[args._componentList[i]]);
-		// }
-
-		// Replace our defaults with template values
-		// Object.assign(this, args);
 	}
 
 	getTurns() {
