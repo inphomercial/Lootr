@@ -2,15 +2,12 @@
 
 class Glyph {
 
-	constructor(args) {
+	constructor(template) {
 		// Set our Defaults
-		this._char = args.char || "?";
-		this._foreground = args.foreground || 'yellow';
+		this._char = template.char || "?";
+		this._foreground = template.foreground || 'yellow';
 		this._originalForeground = this._foreground;
-		this._background = args.background || 'black';
-
-		// Replace our defaults with template values
-		Object.assign(this, args);
+		this._background = template.background || 'black';
 	}
 
 
@@ -41,16 +38,16 @@ class Glyph {
 
 
 
-// Lootr.Glyph = function ( args ) {
+// Lootr.Glyph = function ( template ) {
 
 // 	// Set our Defaults
-//     this._char = args.char || "?";
-//     this._foreground = args.foreground || 'yellow';
+//     this._char = template.char || "?";
+//     this._foreground = template.foreground || 'yellow';
 //     this._originalForeground = this._foreground;
-//     this._background = args.background || 'black';
+//     this._background = template.background || 'black';
 
 //     // Replace our defaults with template values
-//     Object.assign(this, args);
+//     Object.assign(this, template);
 // };
 
 // Lootr.Glyph.prototype.getChar = function() {

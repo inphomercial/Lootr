@@ -1,16 +1,13 @@
 'use strict';
 
 class DynamicGlyph extends Glyph {
-	constructor(args) {
-		super(args);
+	constructor(template) {
+		super(template);
 
-		this._x = args.x;
-		this._y = args.y;
+		this._x = template.x;
+		this._y = template.y;
 		this._components = [];
 		this._uid = Lootr.Utilities.generateUUID();
-
-		// Replace our defaults with template values
-		Object.assign(this, args);
 	}
 
 	getName() {
@@ -69,33 +66,33 @@ class DynamicGlyph extends Glyph {
 	}
 
     // DynamicGlyph extends Glyph setting all its attributes
-    // Lootr.Glyph.call(this, args);
+    // Lootr.Glyph.call(this, template);
 
     // Set our Defaults
-    // this._x = args.x;
-    // this._y = args.y;
+    // this._x = template.x;
+    // this._y = template.y;
     // this._components = [];
     // this._uid = Lootr.Utilities.generateUUID();
 
     // // Replace our defaults with template values
-	// Object.assign(this, args);
+	// Object.assign(this, template);
 	
 	// Init our components
 	// this.initilizeComponents();
 }
-// Lootr.DynamicGlyph = function ( args ) {
+// Lootr.DynamicGlyph = function ( template ) {
 
 //     // DynamicGlyph extends Glyph setting all its attributes
-//     Lootr.Glyph.call(this, args);
+//     Lootr.Glyph.call(this, template);
 
 //     // Set our Defaults
-//     this._x = args.x;
-//     this._y = args.y;
+//     this._x = template.x;
+//     this._y = template.y;
 //     this._components = [];
 //     this._uid = Lootr.Utilities.generateUUID();
 
 //     // Replace our defaults with template values
-// 	Object.assign(this, args);
+// 	Object.assign(this, template);
 	
 // 	// Init our components
 // 	// this.initilizeComponents();

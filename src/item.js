@@ -1,13 +1,17 @@
 'use strict';
 
 class Item extends DynamicGlyph {
-	constructor(args) {
-		super(args);
+	constructor(template) {
+		super(template);
+
+		console.log('template', template);
 
 		// Set Defaults
-		this._rarity = "common";
+		this._rarity = template.rarity;
+		this._defense = template.defense;
 
-		// Replace our defaults with template values
-		Object.assign(this, args);
+		for(var i = 0; i < template.componentList.length; i++) {
+			this.addComponent(Lootr.ItemComponents[template.componentList[i]]);
+		}
 	}
 }
