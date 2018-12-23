@@ -20,20 +20,40 @@ class Player extends Entity {
 		let code = e.keyCode;
 
 		switch(code) {
+			case ROT.VK_4:
 			case ROT.VK_LEFT:
 				this.tryMovingTo(-1, 0);
 				break;
 
+			case ROT.VK_6:
 			case ROT.VK_RIGHT:
 				this.tryMovingTo(1, 0);
 				break;
 
+			case ROT.VK_8:
 			case ROT.VK_UP:
 				this.tryMovingTo(0, -1);
 				break;
 
+			case ROT.VK_2:
 			case ROT.VK_DOWN:
 				this.tryMovingTo(0, 1);
+				break;
+
+			case ROT.VK_1:
+				this.tryMovingTo(-1, 1);
+				break;
+			
+			case ROT.VK_3:
+				this.tryMovingTo(1, 1);
+				break;
+			
+			case ROT.VK_7:
+				this.tryMovingTo(-1, -1);
+				break;
+
+			case ROT.VK_9:
+				this.tryMovingTo(1, -1);
 				break;
 		}
 
