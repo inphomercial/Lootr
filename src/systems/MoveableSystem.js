@@ -1,6 +1,10 @@
 'use strict';
 
 function MoveableSystem(entity, dX, dY) {
+	if (dX === 0 && dY === 0) {
+		return;
+	}
+
 	let newX = entity.getX() + dX;
 	let newY = entity.getY() + dY;
 	let map = entity.getMap();
