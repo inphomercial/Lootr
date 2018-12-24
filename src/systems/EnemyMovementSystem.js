@@ -5,7 +5,7 @@ const EnemyMovementSystem = (entity) => {
         return;
     }
     
-    console.log(`moving towards ${Lootr.getPlayer().getCoordinates()}`);
+    // console.log(`moving towards ${Lootr.getPlayer().getCoordinates()}`);
 
     MoveableSystem(entity, Math.round((Math.random()*2))-1, Math.round((Math.random()*2))-1);
 }

@@ -1,7 +1,6 @@
 
 
 class Glyph {
-
 	constructor(template) {
 		// Set our Defaults
 		this._char = template.char || "?";
@@ -9,7 +8,6 @@ class Glyph {
 		this._originalForeground = this._foreground;
 		this._background = template.background || 'black';
 	}
-
 
 	getChar() {
 		return this._char;
