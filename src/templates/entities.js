@@ -41,6 +41,9 @@ Lootr.Templates.Entities.Ghost = {
 	componentList: {
 		"Moveable": {},
 		"Enemy": {},
+		"Health": {
+			hp: 30
+		}
 		"PassThroughSolids": {},
 		"Flying": {}
 	}

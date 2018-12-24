@@ -59,13 +59,15 @@ class Map {
 	isTileOccupied(x, y) {
 		let entity = this.getEntityAt(x, y);
 
-		return entity !== undefined;
+		return entity !== undefined && entity.isAlive();
 	}
 
 	getEntityAt(x, y) {
-		let entity = this.getEntities();
+		let entities = this.getEntities();
 
-		return entity[this.makeKey(x, y)];
+		return _.find(entities, (entity) => {
+			return entity.getX() == x && entity.getY() == y;
+		});
 	}
 	
 	getEngine() {
