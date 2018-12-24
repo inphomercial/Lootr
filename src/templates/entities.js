@@ -42,6 +42,7 @@ Lootr.Templates.Entities.Slime = {
 	foreground: "green",
 	speed: 1,
 	componentList: {
+		"Actor": {},
 		"Moveable": {},
 		"Enemy": {},
 		"Health": {
@@ -60,6 +61,7 @@ Lootr.Templates.Entities.Bat = {
 	background: "red",
 	speed: 4,
 	componentList: {
+		"Actor": {},
 		"Moveable": {},
 		"Enemy": {},
 		"Health": {
