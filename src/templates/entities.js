@@ -43,7 +43,7 @@ Lootr.Templates.Entities.Ghost = {
 		"Enemy": {},
 		"Health": {
 			hp: 30
-		}
+		},
 		"PassThroughSolids": {},
 		"Flying": {}
 	}
