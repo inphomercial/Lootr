@@ -21,6 +21,10 @@ class DynamicGlyph extends Glyph {
 	getY() {
 		return this._y;
 	}
+
+	getCoordinates() {
+		return [this._x, this._y];
+	}
 	
 	setX(x) {
 		return this._x = x;

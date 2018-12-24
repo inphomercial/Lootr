@@ -106,11 +106,32 @@ class Map {
 	isExplored( x, y ) {
 		return this._tiles[x][y].getIsExplored();
 	}
+
+	getStartingCoordinates(x, y) {
+		let startingX = x - Math.round(Lootr.getGameDisplayWidth()/2) + 1;
+		const maxStartingX = this.getWidth() - Lootr.getGameDisplayWidth();
+		if (startingX <= 0) {
+			startingX = 0;
+		} else if (startingX >= maxStartingX) {
+			startingX = maxStartingX;
+		}
+
+		let startingY = y - Math.round(Lootr.getGameDisplayHeight()/2) + 1;
+		const maxStartingY = this.getHeight() - Lootr.getGameDisplayHeight();
+		if (startingY <= 0) {
+			startingY = 0;
+		} else if (startingY >= maxStartingY) {
+			startingY = maxStartingY;
+		}
+
+		return [startingX,startingY];
+	}
 	
-	renderMap( display ) {
-		for ( var x = 1; x < Lootr.getGameDisplayWidth() - 1; x++ ) {
-			for ( var y = 1; y < Lootr.getGameDisplayHeight() - 1; y++ ) {
-				var tile = this.getTile(x, y);
+	renderMap( display, centerCoordinates ) {
+		const startingCoords = this.getStartingCoordinates(...centerCoordinates);
+		for ( var x = 0; x < Lootr.getGameDisplayWidth(); x++ ) {
+			for ( var y = 0; y < Lootr.getGameDisplayHeight(); y++ ) {
+				var tile = this.getTile(x + startingCoords[0], y + startingCoords[1]);
 				display.draw(x, y, tile.getChar(), tile.getForeground(), tile.getBackground());
 			}
 		}
@@ -153,21 +174,31 @@ class Map {
 			'black');
 	}
 	
-	renderEntities( display ) {
+	renderEntities( display, centerCoordinates ) {
 		var entities = this.getEntities();
+		const startingCoords = this.getStartingCoordinates(...centerCoordinates);
 	
 		_.each(entities, function ( entity ) {
 			console.log(entity);
-			display.draw(entity.getX(), entity.getY(), entity.getChar(), entity.getForeground(), entity.getBackground());
+			let x = entity.getX();
+			let y = entity.getY();
+			if( x < startingCoords[0] + Lootr.getGameDisplayWidth() && y <  startingCoords[1] + Lootr.getGameDisplayHeight()) {
+				display.draw(x-startingCoords[0], y-startingCoords[1], entity.getChar(), entity.getForeground(), entity.getBackground());
+			}
 		});
 	}
 	
-	renderItems( display ) {
+	renderItems( display, centerCoordinates ) {
 		var items = this.getItems();
+		const startingCoords = this.getStartingCoordinates(...centerCoordinates);
 	
 		_.each(items, function ( item ) {
 			console.log(item);
-			display.draw(item.getX(), item.getY(), item.getChar(), item.getForeground(), item.getBackground());
+			let x = item.getX();
+			let y = item.getY();
+			if( x < startingCoords[0] + Lootr.getGameDisplayWidth() && y <  startingCoords[1] + Lootr.getGameDisplayHeight()) {
+				display.draw(x-startingCoords[0], y-startingCoords[1], item.getChar(), item.getForeground(), item.getBackground());
+			}
 		});
 	}
 	

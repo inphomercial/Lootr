@@ -21,13 +21,13 @@ Lootr.Screens.Play = {
 		Lootr.getGameDisplay().clear();
 
         // Draw map first
-        this._map.renderMap( this._gameDisplay );
+        this._map.renderMap( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
         //
         // Draw Items
-        this._map.renderItems( this._gameDisplay );
+        this._map.renderItems( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
         //
         // Draw entities
-		this._map.renderEntities( this._gameDisplay );
+		this._map.renderEntities( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
 	
 		// Draw Logs
 		// Lootr.renderMessages();
