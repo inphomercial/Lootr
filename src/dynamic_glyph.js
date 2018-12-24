@@ -10,6 +10,10 @@ class DynamicGlyph extends Glyph {
 		this._uid = Lootr.Utilities.generateUUID();
 	}
 
+	getUid() {
+		return this._uid;
+	}
+
 	getName() {
 		return this._name;
 	}

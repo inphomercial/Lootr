@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 class Map {
 	constructor(tiles) {
@@ -18,6 +18,14 @@ class Map {
 	
 	getEntities() {
 		return this._entities;
+	}
+
+	removeEntity(entity) {
+		delete this._entities[entity.getUid()];
+	}
+
+	removeItem(item) {
+		delete this._items[item.getUid()];
 	}
 	
 	getWidth() {
@@ -92,12 +100,9 @@ class Map {
 		// Set entities position
 		entity.setX(x);
 		entity.setY(y);
-	
-		// var key = x + ", " + y;
-		var key = this.makeKey(x, y);
-	
+
 		// Add entity to the map
-		this._entities[key] = entity;
+		this._entities[entity.getUid()] = entity;
 	
 		// Add our entity to the map scheduler
 		this._scheduler.add(entity, true);
@@ -107,14 +112,8 @@ class Map {
 		item.setX(x);
 		item.setY(y);
 	
-		var key = this.makeKey(x, y);
-	
 		// Add Item to the map
-		this._items[key] = item;
-	}
-	
-	makeKey( x, y ) {
-		return x + ", " + y;
+		this._items[item.getUid()] = item;
 	}
 	
 	isExplored( x, y ) {

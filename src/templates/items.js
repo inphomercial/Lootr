@@ -13,6 +13,14 @@ Lootr.Templates.Items.WoodenSword = {
 	}
 }
 
+Lootr.Templates.Items.Corpse = {
+	char: '%',
+	foreground: 'red',
+	background: 'brown',
+
+	componentList: {}
+}
+
 Lootr.Templates.Items.WoodenShield = {
 	// Glphy Values
 	char: "]",

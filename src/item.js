@@ -6,6 +6,8 @@ class Item extends DynamicGlyph {
 
 		for (const key of Object.keys(template.componentList)) {
 			const component = Lootr.ItemComponents[key](template.componentList[key]);
+			
+			console.log('component', component);
 
 			this.addObjComponent(component);
 		}
