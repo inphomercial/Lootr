@@ -23,7 +23,7 @@ Lootr.Templates.Items.WoodenShield = {
 	componentList: {
 		'Wieldable': {},
 		'Defense': {
-			defense: 4
+			defense: 4 
 		},
 		'Rarity': {
 			rarity: 'ultra rare'
