@@ -22,7 +22,7 @@ class Map {
 
 	removeEntity(entity) {
 		// If the entity is an Actor, remove from scheduler
-		if(entity.hasComponent('Enemy')) {
+		if(entity.hasComponent('Actor')) {
 			this._scheduler.remove(entity);
 		}
 
@@ -110,7 +110,9 @@ class Map {
 		this._entities[entity.getUid()] = entity;
 	
 		// Add our entity to the map scheduler
-		this._scheduler.add(entity, true);
+		if (entity.hasComponent('Actor')) {
+			this._scheduler.add(entity, true);
+		}
 	}
 	
 	addItemAt( x, y, item ) {
