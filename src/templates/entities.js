@@ -10,7 +10,6 @@ Lootr.Templates.Entities.Player = {
 			hp: 100
 		},
 		"Moveable": {},
-		"PassThroughSolids": {}
 	}
 };
 

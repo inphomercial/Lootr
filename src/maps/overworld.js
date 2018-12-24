@@ -45,9 +45,7 @@ class Overworld extends Map {
 		// First Create Floor
 		generator.randomize(1);
 		generator.create( function ( x, y, v ) {
-			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Templates.Tiles.FloorTile);
-			}
+			temp_map[x][y] = new Tile(Templates.Tiles.FloorTile);
 		});
 
 		// Build Walls
@@ -99,7 +97,6 @@ class Overworld extends Map {
 		//         }
 		//     }
 		// }
-
 		return temp_map;
 	}
 }
