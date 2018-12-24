@@ -27,6 +27,12 @@ Lootr.EntityComponents.Flying = function Flying(template) {
 	}
 }
 
+Lootr.EntityComponents.Enemy = function Enemy(template) {
+	return {
+		name: "Enemy"
+	}
+}
+
 // Lootr.EntityComponents.MessageReceiver = ({
 // 	name: "MessageReceiver",
 // 	init: function() {
