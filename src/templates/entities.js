@@ -34,25 +34,6 @@ Lootr.Templates.Entities.Goblin = {
 	}
 };
 
-Lootr.Templates.Entities.Bat = {
-	name: "Bat",
-	char: "b",
-	foreground: "black",
-	background: "red",
-	speed: 4,
-	componentList: {
-		"Moveable": {},
-		"Enemy": {},
-		"Health": {
-			hp: 5
-		},
-		"Bleedable": {
-			bleedColor: "green"
-		},
-		"Flying": {}
-	}
-}
-
 Lootr.Templates.Entities.Slime = {
 	name: "Slime",
 	char: "s",
