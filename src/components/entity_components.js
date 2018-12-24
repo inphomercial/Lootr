@@ -42,7 +42,7 @@ Lootr.EntityComponents.Enemy = function Enemy(template) {
 Lootr.EntityComponents.Bleedable = function Bleedable(template) {
 	return {
 		name: "Bleedable",
-		color: template.bleedable || "red"
+		bleedColor: template.bleedColor || "red"
 	}
 }
 
