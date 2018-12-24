@@ -12,6 +12,7 @@ function MoveableSystem(entity, dX, dY) {
 	}
 
 	if (map.isTileOccupied(newX, newY)) {
+		console.log("tile is occupied")
 		let occupiedBy = map.getEntityAt(newX, newY);
 		console.log(`${entity.getName()} tries to move into ${newX}, ${newY} but there is a ${occupiedBy.getName()} there.`);
 
