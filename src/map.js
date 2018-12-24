@@ -21,12 +21,11 @@ class Map {
 	}
 
 	removeEntity(entity) {
-		let x = entity.getX();
-		let y = entity.getY();
+		delete this._entities[entity.getUid()];
+	}
 
-		let foundEntity = this.getEntityAt(x, y);
-
-		delete this._entities[foundEntity.getUid()];
+	removeItem(item) {
+		delete this._items[item.getUid()];
 	}
 	
 	getWidth() {
@@ -113,14 +112,8 @@ class Map {
 		item.setX(x);
 		item.setY(y);
 	
-		var key = this.makeKey(x, y);
-	
 		// Add Item to the map
-		this._items[key] = item;
-	}
-	
-	makeKey( x, y ) {
-		return x + ", " + y;
+		this._items[item.getUid()] = item;
 	}
 	
 	isExplored( x, y ) {
