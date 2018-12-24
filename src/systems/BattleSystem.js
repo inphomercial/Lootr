@@ -25,14 +25,9 @@ const BattleSystem = (attacker, defender) => {
 	}
 
 	if (defender._components.Health.hp <= 0) {
-		console.log('map before', map);	
 		map.removeEntity(defender);
-		console.log('map after', map);
 
 		var corpse = new Item(Lootr.Templates.Items.Corpse);
 		map.addItemAt(currentX, currentY, corpse);
-		// defender._isAlive = false;
-		// defender._char = "%";
-		// defender._foreground = "red";
 	}
 }
