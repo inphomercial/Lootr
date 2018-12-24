@@ -48,68 +48,10 @@ class Entity extends DynamicGlyph {
 	}
 
 	act() {
-		console.log("%o is acting", this.name);
+		if (!this.isAlive()) {
+			return;
+		}
+
 		EnemyMovementSystem(this);
-		// let components = this.getComponents();
-		
-		// for(var i = 0; i < components.length; i++) {
-		// 	if (components[i].act) {
-		// 		components[i].act();
-		// 	}
-		// }
-
-		// Wait for input
-		// this.getMap().getEngine().lock();
 	}
-
-    // Entity extends DynamicGlyph setting all its attributes
-	// Lootr.DynamicGlyph.call(this, args);
-	
-	// console.log('args', args);
-
-
-	// Clean up (Removing old template data)
 }
-// Lootr.Entity.extend(Lootr.DynamicGlyph);
-
-// Lootr.Entity.prototype.getTurns = function() {
-//     return this._turns;
-// }
-
-// Lootr.Entity.prototype.getName = function() {
-//     return this._name;
-// }
-
-// Lootr.Entity.prototype.generateUUID = function() {
-//     return this._uid;
-// }
-
-// Lootr.Entity.prototype.getSpeed = function() {
-//     return this._speed;
-// }
-
-// Lootr.Entity.prototype.getMap = function() {
-//     return this._map;
-// }
-
-// Lootr.Entity.prototype.isAlive = function() {
-//     return this._isAlive;
-// }
-
-// Lootr.Entity.prototype.setMap = function( map ){
-//     this._map = map;
-// }
-
-// Lootr.Entity.prototype.act = function() {
-// 	console.log("%o is acting", this);
-// 	// let components = this.getComponents();
-	
-// 	// for(var i = 0; i < components.length; i++) {
-// 	// 	if (components[i].act) {
-// 	// 		components[i].act();
-// 	// 	}
-// 	// }
-
-//     // Wait for input
-//     // this.getMap().getEngine().lock();
-// }

@@ -4,12 +4,16 @@ Lootr.Templates.Entities.Player = {
     name: "Player",
     char: "@",
 	foreground: "red",
-	speed: 1,
+	speed: 2,
 	componentList: {
 		"Health": {
 			hp: 100
 		},
 		"Moveable": {},
+		"PassThroughSolids": {},
+		"Bleedable": {
+			color: "red"
+		}
 	}
 };
 
@@ -24,6 +28,9 @@ Lootr.Templates.Entities.Goblin = {
 		"Health": {
 			hp: 10
 		},
+		"Bleedable": {
+			color: "red"
+		}
 	}
 };
 
@@ -33,6 +40,7 @@ Lootr.Templates.Entities.Ghost = {
 	foreground: "white",
 	componentList: {
 		"Moveable": {},
+		"Enemy": {},
 		"PassThroughSolids": {},
 		"Flying": {}
 	}

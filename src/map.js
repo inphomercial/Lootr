@@ -55,6 +55,18 @@ class Map {
 	isTileSolid(x, y) {
 		return this.getTile(x, y).isSolid();
 	}
+
+	isTileOccupied(x, y) {
+		let entity = this.getEntityAt(x, y);
+
+		return entity !== undefined;
+	}
+
+	getEntityAt(x, y) {
+		let entity = this.getEntities();
+
+		return entity[this.makeKey(x, y)];
+	}
 	
 	getEngine() {
 		return this._engine;
@@ -179,7 +191,7 @@ class Map {
 		const startingCoords = this.getStartingCoordinates(...centerCoordinates);
 	
 		_.each(entities, function ( entity ) {
-			console.log(entity);
+			// console.log(entity);
 			let x = entity.getX();
 			let y = entity.getY();
 			if( x < startingCoords[0] + Lootr.getGameDisplayWidth() && y <  startingCoords[1] + Lootr.getGameDisplayHeight()) {
@@ -193,7 +205,7 @@ class Map {
 		const startingCoords = this.getStartingCoordinates(...centerCoordinates);
 	
 		_.each(items, function ( item ) {
-			console.log(item);
+			// console.log(item);
 			let x = item.getX();
 			let y = item.getY();
 			if( x < startingCoords[0] + Lootr.getGameDisplayWidth() && y <  startingCoords[1] + Lootr.getGameDisplayHeight()) {
