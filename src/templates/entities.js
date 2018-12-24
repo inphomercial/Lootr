@@ -32,7 +32,8 @@ Lootr.Templates.Entities.Goblin = {
 		},
 		"Bleedable": {
 			bleedColor: "red"
-		}
+		},
+		"Corpseable": {}
 	}
 };
 
@@ -70,7 +71,8 @@ Lootr.Templates.Entities.Bat = {
 		"Bleedable": {
 			bleedColor: "red"
 		},
-		"Flying": {}
+		"Flying": {},
+		"Corpseable": {}
 	}
 }
 
