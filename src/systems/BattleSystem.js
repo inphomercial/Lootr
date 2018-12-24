@@ -4,13 +4,13 @@ const BattleSystem = (attacker, defender) => {
 
 	console.log('BATTTTTLE', attacker, defender);
 
-    if (!defender.hasComponent('Health')) {
-        return;
+	if (!defender.hasComponent('Health')) {
+		return;
 	}
 	
 	console.log(`${attacker.getName()} attacks ${defender.getName()}`);
 
-	// This will obviously be the Attack damage instead of just a 5
+	// This will obviously be the Attack damage instead of just a 2
 	defender._components.Health.hp -= 2;
 
 	if (defender.hasComponent("Bleedable")) {
@@ -22,8 +22,6 @@ const BattleSystem = (attacker, defender) => {
 		let tile = map.getTile(currentX+1, currentY);
 		tile._foreground = defender._components.Bleedable.color;
 	}
-
-	console.log(`${defender.getName()} took 5 hits`);
 
 	if (defender._components.Health.hp <= 0) {
 		defender._isAlive = false;
