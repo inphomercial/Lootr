@@ -7,6 +7,12 @@ Lootr.EntityComponents.Moveable = function Moveable() {
 	}
 };
 
+Lootr.EntityComponents.Actor = function Actor() {
+	return {
+		name: "Actor" 
+	}
+};
+
 Lootr.EntityComponents.PassThroughSolids = function PassThroughSolids() {
 	return {
 		name: "PassThroughSolids"
