@@ -4,7 +4,7 @@ Lootr.Templates.Entities.Player = {
     name: "Player",
     char: "@",
 	foreground: "red",
-	speed: 5,
+	speed: 1,
 	componentList: {
 		"Health": {
 			hp: 100
@@ -21,6 +21,7 @@ Lootr.Templates.Entities.Goblin = {
 	speed: 1,
 	componentList: {
 		"Moveable": {},
+		"Enemy": {},
 		"Health": {
 			hp: 10
 		},

@@ -67,7 +67,6 @@ class DynamicGlyph extends Glyph {
 	
 	hasComponent(componentName) {
 		let components = this.getComponents();
-		console.log('components', components);
 	
 		return components[componentName] !== undefined;
 	}

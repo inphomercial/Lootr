@@ -48,7 +48,8 @@ class Entity extends DynamicGlyph {
 	}
 
 	act() {
-		console.log("%o is acting", this);
+		console.log("%o is acting", this.name);
+		EnemyMovementSystem(this);
 		// let components = this.getComponents();
 		
 		// for(var i = 0; i < components.length; i++) {
