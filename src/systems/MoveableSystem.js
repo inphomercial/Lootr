@@ -8,9 +8,7 @@ function MoveableSystem(entity, dX, dY) {
 	let newX = entity.getX() + dX;
 	let newY = entity.getY() + dY;
 	let map = entity.getMap();
-
-	console.log('entity', entity);
-
+	
 	if (!entity.hasComponent('Moveable')) {
 		Looger(`${entity.getName()} is unable to move`);
 		return

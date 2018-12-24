@@ -26,8 +26,11 @@ const EnemyMovementSystem = (entity) => {
         path.push([x,y]);
     });
     
-    if (path.length) {
-        MoveableSystem(entity, ...path.shift());
+    if (path.length > 1) {
+        const x = -(entity.getX() - path[1][0]);
+        const y = -(entity.getY() - path[1][1]);
+        console.log(`${entity.getCoordinates()} moving to ${x},${y}`);
+        MoveableSystem(entity, x, y);
     } else {
         // no path to player
         MoveableSystem(entity, Math.round((Math.random()*2))-1, Math.round((Math.random()*2))-1);
