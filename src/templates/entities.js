@@ -12,7 +12,7 @@ Lootr.Templates.Entities.Player = {
 		"Moveable": {},
 		"PassThroughSolids": {},
 		"Bleedable": {
-			color: "red"
+			bleedColor: "red"
 		}
 	}
 };
@@ -29,10 +29,65 @@ Lootr.Templates.Entities.Goblin = {
 			hp: 10
 		},
 		"Bleedable": {
-			color: "red"
+			bleedColor: "red"
 		}
 	}
 };
+
+Lootr.Templates.Entities.Bat = {
+	name: "Bat",
+	char: "b",
+	foreground: "black",
+	background: "red",
+	speed: 4,
+	componentList: {
+		"Moveable": {},
+		"Enemy": {},
+		"Health": {
+			hp: 5
+		},
+		"Bleedable": {
+			bleedColor: "green"
+		},
+		"Flying": {}
+	}
+}
+
+Lootr.Templates.Entities.Slime = {
+	name: "Slime",
+	char: "s",
+	foreground: "green",
+	speed: 1,
+	componentList: {
+		"Moveable": {},
+		"Enemy": {},
+		"Health": {
+			hp: 15
+		},
+		"Bleedable": {
+			bleedColor: "green"
+		}
+	}
+}
+
+Lootr.Templates.Entities.Bat = {
+	name: "Bat",
+	char: "b",
+	foreground: "black",
+	background: "red",
+	speed: 4,
+	componentList: {
+		"Moveable": {},
+		"Enemy": {},
+		"Health": {
+			hp: 5
+		},
+		"Bleedable": {
+			bleedColor: "red"
+		},
+		"Flying": {}
+	}
+}
 
 Lootr.Templates.Entities.Ghost = {
     name: "Ghost",

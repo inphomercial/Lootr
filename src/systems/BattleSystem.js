@@ -18,7 +18,7 @@ const BattleSystem = (attacker, defender) => {
 	if (defender.hasComponent("Bleedable")) {
 		// We need a function to get a random adjacent tile from an x, y
 		let tile = map.getTile(currentX+1, currentY);
-		tile._foreground = defender._components.Bleedable.color;
+		tile._foreground = defender._components.Bleedable.bleedColor;
 	}
 
 	if (defender._components.Health.hp <= 0) {
