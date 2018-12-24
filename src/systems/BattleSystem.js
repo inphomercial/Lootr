@@ -4,6 +4,10 @@ const BattleSystem = (attacker, defender) => {
 
 	console.log('BATTTTTLE', attacker, defender);
 
+	let currentX = defender.getX();
+	let currentY = defender.getY();
+	let map = defender.getMap();
+
 	if (!defender.hasComponent('Health')) {
 		return;
 	}
@@ -14,9 +18,6 @@ const BattleSystem = (attacker, defender) => {
 	defender._components.Health.hp -= 2;
 
 	if (defender.hasComponent("Bleedable")) {
-		let map = defender.getMap();
-		let currentX = defender.getX();
-		let currentY = defender.getY();
 
 		// We need a function to get a random adjacent tile from an x, y
 		let tile = map.getTile(currentX+1, currentY);
@@ -24,8 +25,14 @@ const BattleSystem = (attacker, defender) => {
 	}
 
 	if (defender._components.Health.hp <= 0) {
-		defender._isAlive = false;
-		defender._char = "%";
-		defender._foreground = "red";
+		console.log('map before', map);	
+		map.removeEntity(defender);
+		console.log('map after', map);
+
+		var corpse = new Item(Lootr.Templates.Items.Corpse);
+		map.addItemAt(currentX, currentY, corpse);
+		// defender._isAlive = false;
+		// defender._char = "%";
+		// defender._foreground = "red";
 	}
 }

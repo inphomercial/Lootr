@@ -11,6 +11,8 @@ class Player extends Entity {
 
 	act() {
 		this.getMap().getEngine().lock();
+
+		console.log('this.getMap()', this.getMap());
 		window.addEventListener("keydown", this);
 	}
 

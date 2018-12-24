@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 class Map {
 	constructor(tiles) {
@@ -18,6 +18,15 @@ class Map {
 	
 	getEntities() {
 		return this._entities;
+	}
+
+	removeEntity(entity) {
+		let x = entity.getX();
+		let y = entity.getY();
+
+		let foundEntity = this.getEntityAt(x, y);
+
+		delete this._entities[foundEntity.id];
 	}
 	
 	getWidth() {
