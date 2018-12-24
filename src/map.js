@@ -21,6 +21,11 @@ class Map {
 	}
 
 	removeEntity(entity) {
+		// If the entity is an Actor, remove from scheduler
+		if(entity.hasComponent('Enemy')) {
+			this._scheduler.remove(entity);
+		}
+
 		delete this._entities[entity.getUid()];
 	}
 
