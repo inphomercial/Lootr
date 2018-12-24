@@ -46,6 +46,12 @@ Lootr.EntityComponents.Bleedable = function Bleedable(template) {
 	}
 }
 
+Lootr.EntityComponents.Corpseable = function Corpseable() {
+	return {
+		name: "Corpseable"
+	}
+}
+
 // Lootr.EntityComponents.MessageReceiver = ({
 // 	name: "MessageReceiver",
 // 	init: function() {

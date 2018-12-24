@@ -24,9 +24,11 @@ const BattleSystem = (attacker, defender) => {
 	if (defender._components.Health.hp <= 0) {
 		Logger(`${defender.getName()} has died.`);
 
-		map.removeEntity(defender);
+		if (defender.hasComponent("Corpseable")) {
+			var corpse = new Item(Lootr.Templates.Items.Corpse);
+			map.addItemAt(currentX, currentY, corpse);
+		}
 
-		var corpse = new Item(Lootr.Templates.Items.Corpse);
-		map.addItemAt(currentX, currentY, corpse);
+		map.removeEntity(defender);
 	}
 }
