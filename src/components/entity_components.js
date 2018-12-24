@@ -33,6 +33,13 @@ Lootr.EntityComponents.Enemy = function Enemy(template) {
 	}
 }
 
+Lootr.EntityComponents.Bleedable = function Bleedable(template) {
+	return {
+		name: "Bleedable",
+		color: template.bleedable || "red"
+	}
+}
+
 // Lootr.EntityComponents.MessageReceiver = ({
 // 	name: "MessageReceiver",
 // 	init: function() {

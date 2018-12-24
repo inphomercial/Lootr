@@ -15,6 +15,9 @@ class Overworld extends Map {
 		var goblin2 = new Entity(Lootr.Templates.Entities.Goblin);
 		this.addEntityAt(18, 12, goblin2);
 
+		var ghost = new Entity(Lootr.Templates.Entities.Ghost);
+		this.addEntityAt(18, 24, ghost);
+
 		// Add items to map
 		var woodenSword = new Item(Lootr.Templates.Items.WoodenSword);
 		this.addItemAt(7, 7, woodenSword);
