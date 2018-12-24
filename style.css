@@ -10,31 +10,33 @@ body {
 
 #logDisplay {
     bottom: 1px;
-    height: 234px;
+    height: 400px;
 	padding: 25px;
-	width: 63%;
+	width: 86%;
     overflow: hidden;
 	position: absolute;
-    background-color: black;
+	background-color: black;
+	top: 490px;
 }
 
 .log-item {
-	font-size: 18px;
+	font-size: 20px;
 	color: white;
 }
 
-.log-item:nth-child(5) {
+.log-item:nth-child(4) {
 	opacity: 0.8;
 }
-.log-item:nth-child(6) {
+.log-item:nth-child(5) {
 	opacity: 0.6;
 }
-.log-item:nth-child(7) {
+.log-item:nth-child(6) {
 	opacity: 0.4;
 }
-.log-item:nth-child(8) {
+.log-item:nth-child(7) {
 	opacity: 0.2;
 }
-.log-item:nth-child(n+9) {
+.log-item:nth-child(n+8) {
 	opacity: 0;
+	display: none;
 }

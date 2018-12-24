@@ -192,7 +192,6 @@ class Map {
 		const startingCoords = this.getStartingCoordinates(...centerCoordinates);
 	
 		_.each(entities, function ( entity ) {
-			// console.log(entity);
 			let x = entity.getX();
 			let y = entity.getY();
 			if( x < startingCoords[0] + Lootr.getGameDisplayWidth() && y <  startingCoords[1] + Lootr.getGameDisplayHeight()) {
@@ -206,7 +205,6 @@ class Map {
 		const startingCoords = this.getStartingCoordinates(...centerCoordinates);
 	
 		_.each(items, function ( item ) {
-			// console.log(item);
 			let x = item.getX();
 			let y = item.getY();
 			if( x < startingCoords[0] + Lootr.getGameDisplayWidth() && y <  startingCoords[1] + Lootr.getGameDisplayHeight()) {

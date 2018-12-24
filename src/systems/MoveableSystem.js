@@ -1,3 +1,4 @@
+'use strict';
 
 function MoveableSystem(entity, dX, dY) {
 	let newX = entity.getX() + dX;
@@ -7,14 +8,13 @@ function MoveableSystem(entity, dX, dY) {
 	console.log('entity', entity);
 
 	if (!entity.hasComponent('Moveable')) {
-		console.log(`${entity.getName()} is unable to move`);
+		Looger(`${entity.getName()} is unable to move`);
 		return
 	}
 
 	if (map.isTileOccupied(newX, newY)) {
-		console.log("tile is occupied")
 		let occupiedBy = map.getEntityAt(newX, newY);
-		console.log(`${entity.getName()} tries to move into ${newX}, ${newY} but there is a ${occupiedBy.getName()} there.`);
+		Logger(`${entity.getName()} tries to move into ${newX}, ${newY} but there is a ${occupiedBy.getName()} there.`);
 
 		BattleSystem(entity, occupiedBy);
 
@@ -22,7 +22,7 @@ function MoveableSystem(entity, dX, dY) {
 	}
 
 	if (map.isTileSolid(newX, newY) && !entity.hasComponent('PassThroughSolids')) {
-		console.log(`tile is solid and ${entity.getName()} cannot pass thru walls`);
+		Logger(`tile is solid and ${entity.getName()} cannot pass thru walls`);
 
 		return;
 	}

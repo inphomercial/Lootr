@@ -2,8 +2,6 @@
 
 const BattleSystem = (attacker, defender) => {
 
-	console.log('BATTTTTLE', attacker, defender);
-
 	let currentX = defender.getX();
 	let currentY = defender.getY();
 	let map = defender.getMap();
@@ -12,19 +10,20 @@ const BattleSystem = (attacker, defender) => {
 		return;
 	}
 	
-	console.log(`${attacker.getName()} attacks ${defender.getName()}`);
+	Logger(`${attacker.getName()} attacks ${defender.getName()}`);
 
 	// This will obviously be the Attack damage instead of just a 2
 	defender._components.Health.hp -= 2;
 
 	if (defender.hasComponent("Bleedable")) {
-
 		// We need a function to get a random adjacent tile from an x, y
 		let tile = map.getTile(currentX+1, currentY);
 		tile._foreground = defender._components.Bleedable.color;
 	}
 
 	if (defender._components.Health.hp <= 0) {
+		Logger(`${defender.getName()} has died.`);
+
 		map.removeEntity(defender);
 
 		var corpse = new Item(Lootr.Templates.Items.Corpse);
