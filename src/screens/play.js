@@ -28,6 +28,9 @@ Lootr.Screens.Play = {
         //
         // Draw entities
 		this._map.renderEntities( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
+
+		// Draw Player Stats
+		Lootr.UI.renderPlayerStats(Lootr.getPlayer());
 	
 		// Draw Logs
 		// Lootr.renderMessages();

@@ -43,11 +43,14 @@ class DynamicGlyph extends Glyph {
 	}
 	
 	getComponent(componentName) {
+		if (!this.hasComponent(component.name)) {
+			console.warn("Cannot get this component, component doesnt exist on entity");
+			return;
+		}
+
 		let components = this.getComponents();
-	
-		return components.filter(function(component) {
-			return component.name === componentName;
-		})[0];
+
+		return components[componentName];
 	}
 
 	addObjComponent(component) {
