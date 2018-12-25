@@ -14,6 +14,7 @@ const BattleSystem = (attacker, defender) => {
 
 	// This will obviously be the Attack damage instead of just a 2
 	defender._components.Health.hp -= 2;
+	console.log(`${defender.getName()} health ${defender._components.Health.hp}`);
 
 	if (defender.hasComponent("Bleedable")) {
 		// We need a function to get a random adjacent tile from an x, y
