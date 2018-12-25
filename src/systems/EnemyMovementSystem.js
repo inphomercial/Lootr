@@ -1,5 +1,7 @@
 'use strict';
 
+const aStarCache = {};
+
 const EnemyMovementSystem = (entity) => {
     if (!entity.hasComponent('Moveable') || !entity.hasComponent('Enemy')) {
         return;
@@ -17,19 +19,27 @@ const EnemyMovementSystem = (entity) => {
         return !map.isTileSolid(x, y) || entity.hasComponent('PassThroughSolids')
     }
 
+    const playerCoords = Lootr.getPlayer().getCoordinates();
+
     /* prepare path to given coords */
-    const dijkstra = new ROT.Path.Dijkstra(...Lootr.getPlayer().getCoordinates(), isPassable);
+    let aStar;
+    if (aStarCache[playerCoords]) {
+        aStar = aStarCache[playerCoords];
+    } else {
+        aStar = new ROT.Path.AStar(...Lootr.getPlayer().getCoordinates(), isPassable);
+        aStarCache[playerCoords] = aStar;
+    }
 
     const path = [];
     /* compute from given coords #1 */
-    dijkstra.compute(...entity.getCoordinates(), function(x, y) {
+    aStar.compute(...entity.getCoordinates(), function(x, y) {
         path.push([x,y]);
     });
     
     if (path.length > 1) {
         const x = -(entity.getX() - path[1][0]);
         const y = -(entity.getY() - path[1][1]);
-        console.log(`${entity.getCoordinates()} moving to ${x},${y}`);
+        // console.log(`${entity.getCoordinates()} moving to ${x},${y}`);
         MoveableSystem(entity, x, y);
     } else {
         // no path to player
