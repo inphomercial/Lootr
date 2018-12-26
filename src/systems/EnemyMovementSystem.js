@@ -2,10 +2,22 @@
 
 const aStarCache = {};
 
+const moveRandomly = (entity) => {
+    MoveableSystem(entity, Math.round((Math.random()*2))-1, Math.round((Math.random()*2))-1);
+}
+
 const EnemyMovementSystem = (entity) => {
     if (!entity.hasComponent('Moveable') || !entity.hasComponent('Enemy')) {
         return;
     }
+
+    const playerCoords = Lootr.getPlayer().getCoordinates();
+    const entityCoords = entity.getCoordinates();
+
+    const distance = Math.abs(playerCoords[0] - entityCoords[0]) + Math.abs(playerCoords[1] - entityCoords[1]); 
+
+    //TODO figure out correct distance value
+    if (distance > 6) moveRandomly(entity);
 
     const map = entity.getMap();
 
@@ -19,8 +31,6 @@ const EnemyMovementSystem = (entity) => {
         return !map.isTileSolid(x, y) || entity.hasComponent('PassThroughSolids')
     }
 
-    const playerCoords = Lootr.getPlayer().getCoordinates();
-
     /* prepare path to given coords */
     let aStar;
     if (playerCoords in aStarCache) {
@@ -33,17 +43,19 @@ const EnemyMovementSystem = (entity) => {
 
     const path = [];
     /* compute from given coords #1 */
-    aStar.compute(...entity.getCoordinates(), function(x, y) {
+    aStar.compute(...entityCoords, function(x, y) {
         path.push([x,y]);
     });
     
     if (path.length > 1) {
-        const x = -(entity.getX() - path[1][0]);
-        const y = -(entity.getY() - path[1][1]);
+        const x = -(entityCoords[0] - path[1][0]);
+        const y = -(entityCoords[1] - path[1][1]);
         // console.log(`${entity.getCoordinates()} moving to ${x},${y}`);
         MoveableSystem(entity, x, y);
     } else {
         // no path to player
-        MoveableSystem(entity, Math.round((Math.random()*2))-1, Math.round((Math.random()*2))-1);
+        moveRandomly(entity);
     }
 }
+
+
