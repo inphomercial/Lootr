@@ -1,7 +1,7 @@
 'use strict';
 
 Lootr.Templates.Entities.Player = {
-    name: "Player",
+    name: "Hulk",
     char: "@",
 	foreground: "red",
 	speed: 2,

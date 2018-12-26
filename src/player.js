@@ -60,7 +60,7 @@ class Player extends Entity {
 
 		Lootr.refreshScreens();
 		
-		// this.getComponent('MessageReceiver').emptyMessages();
+		Lootr.UI.renderPlayerStats(this);
 	}
 
 	tryMovingTo(dX, dY) {
