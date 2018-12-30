@@ -13,7 +13,4 @@ class Item extends DynamicGlyph {
 		}
 	}
 
-	getName() {
-		return this._name;
-	}
 }

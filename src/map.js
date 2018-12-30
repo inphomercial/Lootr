@@ -76,17 +76,13 @@ class Map {
 	}
 
 	getEntityAt(x, y) {
-		let entities = this.getEntities();
-
-		return _.find(entities, (entity) => {
+		return _.find(this.getEntities(), (entity) => {
 			return entity.getX() == x && entity.getY() == y;
 		});
 	}
 
 	getItemAt(x, y) {
-		let items = this.getItems();
-
-		return _.find(items, (item) => {
+		return _.find(this.getItems(), (item) => {
 			return item.getX() == x && item.getY() == y;
 		});
 	}
