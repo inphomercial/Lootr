@@ -59,7 +59,7 @@ const EnemyMovementSystem = (entity) => {
         return;
     }
 
-    moveRandomly(entity);
+    moveTowardsPlayer(entity);
 }
 
 
