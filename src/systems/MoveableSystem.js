@@ -9,8 +9,6 @@ function MoveableSystem(entity, dX, dY) {
 	let newY = entity.getY() + dY;
 	let map = entity.getMap();
 
-	console.log('entity', entity);
-
 	if (!entity.hasComponent('Moveable')) {
 		Looger(`${entity.getName()} is unable to move`);
 		return
@@ -20,6 +18,7 @@ function MoveableSystem(entity, dX, dY) {
 		let occupiedBy = map.getEntityAt(newX, newY);
 		Logger(`${entity.getName()} tries to move into ${newX}, ${newY} but there is a ${occupiedBy.getName()} there.`);
 
+		//TODO Don't make enemies attack eachother when they are in the way.
 		BattleSystem(entity, occupiedBy);
 
 		return;
