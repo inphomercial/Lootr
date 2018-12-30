@@ -6,11 +6,7 @@ const moveRandomly = (entity) => {
     MoveableSystem(entity, Math.round((Math.random()*2))-1, Math.round((Math.random()*2))-1);
 }
 
-const EnemyMovementSystem = (entity) => {
-    if (!entity.hasComponent('Moveable') || !entity.hasComponent('Enemy')) {
-        return;
-    }
-
+const moveTowardsPlayer = (entity) => {
     const playerCoords = Lootr.getPlayer().getCoordinates();
     const entityCoords = entity.getCoordinates();
 
@@ -56,6 +52,14 @@ const EnemyMovementSystem = (entity) => {
         // no path to player
         moveRandomly(entity);
     }
+}
+
+const EnemyMovementSystem = (entity) => {
+    if (!entity.hasComponent('Moveable') || !entity.hasComponent('Enemy')) {
+        return;
+    }
+
+    moveRandomly(entity);
 }
 
 
