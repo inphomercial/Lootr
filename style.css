@@ -1,11 +1,20 @@
 body {
     overflow: hidden;
-    background-color: black;
+	background-color: black;
+	font-family: 'Roboto', sans-serif;
 }
 
 #gameDisplay {
     float: left;
     border: 1px solid white;
+}
+
+#hudDisplay {
+	color: white;
+	float: right;
+	width: 830px;
+	height: 400px;
+	font-size: 24px;
 }
 
 #logDisplay {
