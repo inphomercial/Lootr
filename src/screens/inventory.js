@@ -19,7 +19,7 @@ Lootr.Screens.Inventory = {
 		for (let index = 0; index < inventory.length; index++) {
 			const item = inventory[index];
 		
-			this._gameDisplay.drawText(1, index+startingPostition, item);
+			this._gameDisplay.drawText(1, index+startingPostition, item.getName());
 		}
     },
 

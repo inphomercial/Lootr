@@ -82,6 +82,14 @@ class Map {
 			return entity.getX() == x && entity.getY() == y;
 		});
 	}
+
+	getItemAt(x, y) {
+		let items = this.getItems();
+
+		return _.find(items, (item) => {
+			return item.getX() == x && item.getY() == y;
+		});
+	}
 	
 	getEngine() {
 		return this._engine;

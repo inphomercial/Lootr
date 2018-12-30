@@ -15,6 +15,8 @@ class Player extends Entity {
 	handleEvent(e) {
 		let code = e.keyCode;
 
+		console.log('handleEvent in player', e);
+
 		switch(code) {
 			case ROT.VK_H:
 				Lootr.switchScreen(new Display(Lootr.Screens.Help));
@@ -22,6 +24,23 @@ class Player extends Entity {
 
 			case ROT.VK_I:
 				Lootr.switchScreen(new Display(Lootr.Screens.Inventory));
+				break;
+			
+			case ROT.VK_PERIOD:
+				let map = this.getMap();
+				let currentX = this.getX();
+				let currentY = this.getY();
+				let item = map.getItemAt(currentX, currentY);
+
+				if (item) {
+					let inven = this.getComponent("Inventory").inventory;
+					inven.push(item);
+					map.removeItem(item);
+					Logger(`You pick up a ${item.getName()}`);
+				} else {
+					Logger("Nothing to pick up.");
+				}
+
 				break;
 
 			case ROT.VK_4:
