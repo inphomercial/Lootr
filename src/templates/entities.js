@@ -14,6 +14,9 @@ Lootr.Templates.Entities.Player = {
 		"PassThroughSolids": {},
 		"Bleedable": {
 			bleedColor: "red"
+		},
+		"Inventory": {
+			inventory: [] // let's pre populate this
 		}
 	}
 };
@@ -72,6 +75,25 @@ Lootr.Templates.Entities.Bat = {
 			bleedColor: "red"
 		},
 		"Flying": {},
+		"Corpseable": {}
+	}
+}
+
+Lootr.Templates.Entities.Rat = {
+	name: "Rat",
+	char: "r",
+	foreground: "brown",
+	speed: 3,
+	componentList: {
+		"Actor": {},
+		"Moveable": {},
+		"Enemy": {},
+		"Health": {
+			hp: 2
+		},
+		"Bleedable": {
+			bleedColor: "red"
+		},
 		"Corpseable": {}
 	}
 }

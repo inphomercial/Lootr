@@ -6,7 +6,7 @@ class DynamicGlyph extends Glyph {
 
 		this._x = template.x;
 		this._y = template.y;
-		this._components = [];
+		this._components = []; 
 		this._uid = Lootr.Utilities.generateUUID();
 	}
 
@@ -50,7 +50,15 @@ class DynamicGlyph extends Glyph {
 
 		let components = this.getComponents();
 
-		return components[componentName];
+		for (const key in components) {
+			if (components.hasOwnProperty(key)) {
+				const element = components[key];
+
+				if (element.name == componentName) {
+					return element;
+				}
+			}
+		}
 	}
 
 	addObjComponent(component) {

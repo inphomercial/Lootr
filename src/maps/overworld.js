@@ -21,20 +21,30 @@ class Overworld extends Map {
 		var bat = new Entity(Lootr.Templates.Entities.Bat);
 		this.addEntityAt(6, 10, bat);
 		
+		var rat1 = new Entity(Lootr.Templates.Entities.Rat);
+		this.addEntityAt(16, 10, rat1);
+		
+		var rat2 = new Entity(Lootr.Templates.Entities.Rat);
+		this.addEntityAt(17, 10, rat2);
+		
 		var slime = new Entity(Lootr.Templates.Entities.Slime);
 		this.addEntityAt(6, 8, slime);
 
 		// Add items to map
-		var woodenSword = new Item(Lootr.Templates.Items.WoodenSword);
-		this.addItemAt(7, 7, woodenSword);
-		
 		var woodenShield = new Item(Lootr.Templates.Items.WoodenShield);
 		this.addItemAt(4, 8, woodenShield);
+		
+		var dagger = new Item(Lootr.Templates.Items.Dagger);
+		this.addItemAt(15, 8, dagger);
 
 		// Add player to map
 		var player = new Player(Lootr.Templates.Entities.Player);
 		Lootr.setPlayer(player);
 		this.addEntityAt(10, 10, player);
+		
+		// Start player with a placeholder item for now
+		var woodenSword = new Item(Lootr.Templates.Items.WoodenSword);
+		player.getComponent("Inventory").inventory.push(woodenSword);
 		
 		console.log('overworld', this);
 	}

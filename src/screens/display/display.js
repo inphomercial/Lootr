@@ -2,15 +2,15 @@
 
 class Display {
 	constructor(template) {
-		this._caption = "no caption";
-		this.enter = null;
-		this.renderGame = null;
-		this.exit = null;
-		this.handleInput = null;
-		this.map = null;
+		this._caption = template._caption;
+		this.enter = template.enter;
+		this.renderGame = template.renderGame;
+		this.exit = template.exit;
+		this.handleInput = template.handleInput;
+		this.map = template.map;
 
 		// Replace our defaults with template values
-		Object.assign(this, template);
+		// Object.assign(this, template);
 	}
 
 	setup() {

@@ -7,6 +7,13 @@ Lootr.ItemComponents.Wieldable = function Wieldable(template) {
 	}
 };
 
+Lootr.ItemComponents.Attack = function Attack(template) {
+	return {
+		name: 'Attack',
+		defense: template.attack
+	}
+};
+
 Lootr.ItemComponents.Defense = function Defense(template) {
 	return {
 		name: 'Defense',

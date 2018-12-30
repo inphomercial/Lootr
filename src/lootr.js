@@ -63,7 +63,7 @@ var Lootr = ( function( window ) {
 
     function getPlayer() {
         return _player;
-    }
+	}
 
     function switchScreen( screen ) {
         // If we had a screen before, call the Exit method before switching

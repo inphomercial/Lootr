@@ -23,10 +23,6 @@ class Entity extends DynamicGlyph {
 		return this._turns;
 	}
 
-	getName() {
-		return this._name;
-	}
-
 	generateUUID() {
 		return this._uid;
 	}

@@ -14,7 +14,6 @@ Lootr.Screens.Start = {
     renderGame: function () {
         console.log("Start renderGame Screen");
         this._gameDisplay.drawText(1, 1, "Lootr 2014 - 2017");
-        this._gameDisplay.drawText(1, 3, "Generating world..");
     },
 
     exit: function() {
@@ -22,6 +21,6 @@ Lootr.Screens.Start = {
     },
 
     handleInput( inputType, inputData ) {
-        Lootr.switchScreen(new Display(Lootr.Screens.Play));
+        Lootr.switchScreen(new Display(Lootr.Screens.WorldGeneration));
     }
 }

@@ -8,26 +8,21 @@ Lootr.Screens.Play = {
         console.log("Entered Play Screen");
 
 		this._gameDisplay = gameDisplay;
-
-        // Start by creating OverWorld
-        this._map = new Overworld();
-        Lootr.Screens.Play.map = this._map;
-        Lootr.World.addMap(this._map);
 		
-		this._map.getEngine().start();
+		this.map.getEngine().start();
     },
 
     renderGame: function () {
 		Lootr.getGameDisplay().clear();
 
         // Draw map first
-        this._map.renderMap( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
+        this.map.renderMap( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
         //
         // Draw Items
-        this._map.renderItems( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
+        this.map.renderItems( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
         //
         // Draw entities
-		this._map.renderEntities( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
+		this.map.renderEntities( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
 
 		// Draw Player Stats
 		Lootr.UI.renderPlayerStats(Lootr.getPlayer());
