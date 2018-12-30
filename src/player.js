@@ -4,8 +4,6 @@ class Player extends Entity {
 
 	constructor(args) {
 		super(args);
-
-    	Object.assign(this, args);
 	}
 
 	act() {
@@ -18,6 +16,14 @@ class Player extends Entity {
 		let code = e.keyCode;
 
 		switch(code) {
+			case ROT.VK_H:
+				Lootr.switchScreen(new Display(Lootr.Screens.Help));
+				break;
+
+			case ROT.VK_I:
+				Lootr.switchScreen(new Display(Lootr.Screens.Inventory));
+				break;
+
 			case ROT.VK_4:
 			case ROT.VK_LEFT:
 				this.tryMovingTo(-1, 0);

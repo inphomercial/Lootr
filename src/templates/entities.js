@@ -14,6 +14,9 @@ Lootr.Templates.Entities.Player = {
 		"PassThroughSolids": {},
 		"Bleedable": {
 			bleedColor: "red"
+		},
+		"Inventory": {
+			inventory: ["sword", "shield"] // placeholders
 		}
 	}
 };

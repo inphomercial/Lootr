@@ -13,6 +13,13 @@ Lootr.EntityComponents.Actor = function Actor() {
 	}
 };
 
+Lootr.EntityComponents.Inventory = function Inventory(template) {
+	return {
+		name: "Inventory",
+		inventory: template.inventory
+	}
+};
+
 Lootr.EntityComponents.PassThroughSolids = function PassThroughSolids() {
 	return {
 		name: "PassThroughSolids"

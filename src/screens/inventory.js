@@ -10,9 +10,17 @@ Lootr.Screens.Inventory = {
     },
 
     renderGame: function () {
-        console.log("Start Inventory Screen");
-        this._gameDisplay.drawText(1, 1, "Lootr 2014 - 2017");
-        this._gameDisplay.drawText(1, 3, "Generating world..");
+		let player = Lootr.getPlayer();
+		let inventory = player.getComponent("Inventory").inventory;
+
+		this._gameDisplay.drawText(1, 1, "Inventory Screen");
+
+		let startingPostition = 3;
+		for (let index = 0; index < inventory.length; index++) {
+			const item = inventory[index];
+		
+			this._gameDisplay.drawText(1, index+startingPostition, item);
+		}
     },
 
     exit: function() {
@@ -20,6 +28,6 @@ Lootr.Screens.Inventory = {
     },
 
     handleInput( inputType, inputData ) {
-        Lootr.switchScreen(new Display(Lootr.Screens.Play));
+        Lootr.switchScreen(Lootr.Screens.Play);
     }
 }
