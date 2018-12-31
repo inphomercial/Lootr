@@ -19,19 +19,19 @@ Lootr.Templates.Tiles.RubyTile = {
 }
 
 Lootr.Templates.Tiles.GoldTile = {
-    _char: "*",
+    _char: "$",
     _foreground: "gold",
     _isSolid: false
 }
 
 Lootr.Templates.Tiles.WaterDeepTile = {
-    _char: "#",
+    _char: "~",
     _foreground: "blue",
     _isSolid: true
 }
 
 Lootr.Templates.Tiles.WaterShallowTile = {
-    _char: "#",
+    _char: "~",
     _foreground: "lightblue",
     _isSolid: false
 }
