@@ -10,7 +10,12 @@ function MoveableSystem(entity, dX, dY) {
 	let map = entity.getMap();
 
 	if (!entity.hasComponent('Moveable')) {
-		Looger(`${entity.getName()} is unable to move`);
+		Logger(`${entity.getName()} is unable to move`);
+		return
+	}
+
+	if (newX < 0 || newY < 0 || newX >= map.getWidth() || newY >= map.getHeight()) {
+		Logger(`${entity.getName()} cannot move off the map`);
 		return
 	}
 

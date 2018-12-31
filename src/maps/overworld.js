@@ -4,8 +4,8 @@ class Overworld extends Map {
 	constructor(args) {
 		super(args);
 
-		this._width = 500;
-		this._height = 500;
+		this._width = 80;
+		this._height = 80;
 		this._tiles = this.generateWorld();
 
 		// Add entities to map
@@ -55,23 +55,19 @@ class Overworld extends Map {
 		const Templates = Lootr.Templates;
 
 		// Setup generator
-		var generator = new ROT.Map.Cellular(this._width, this._height);
+		var generator = new ROT.Map.Cellular(this._width, this._height, { connected: true });
 
 		// Update our map
 		// x on screen
 		// y on screen
 		// v seems to be 1 or 0
 		// First Create Floor
-		generator.randomize(1);
-		generator.create( function ( x, y, v ) {
-			temp_map[x][y] = new Tile(Templates.Tiles.FloorTile);
-		});
-
-		// Build Walls
-		generator.randomize(.5);
+		generator.randomize(0.5);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
 				temp_map[x][y] = new Tile(Templates.Tiles.WallTile);
+			} else {
+				temp_map[x][y] = new Tile(Templates.Tiles.FloorTile);
 			}
 		});
 
