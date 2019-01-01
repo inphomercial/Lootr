@@ -66,7 +66,11 @@ class Map {
 	}
 	
 	isTileSolid(x, y) {
-		return this.getTile(x, y).isSolid();
+		try {
+			return this.getTile(x, y).isSolid();
+		} catch (e) {
+			return true;
+		}
 	}
 
 	isTileOpaque(x, y) {
