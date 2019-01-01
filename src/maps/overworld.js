@@ -45,6 +45,9 @@ class Overworld extends Map {
 		// Start player with a placeholder item for now
 		var woodenSword = new Item(Lootr.Templates.Items.WoodenSword);
 		player.getComponent("Inventory").inventory.push(woodenSword);
+
+		//compute the player's initial line of sight
+		player.computeFOV();
 		
 		console.log('overworld', this);
 	}
