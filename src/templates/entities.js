@@ -5,10 +5,12 @@ Lootr.Templates.Entities.Player = {
     char: "@",
 	foreground: "red",
 	speed: 2,
+	isPlayer: true,
 	componentList: {
+		"Player": {},
 		"Actor": {},
 		"Health": {
-			hp: 100
+			hp: 50
 		},
 		"Moveable": {},
 		"PassThroughSolids": {},
