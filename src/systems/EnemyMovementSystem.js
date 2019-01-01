@@ -1,7 +1,5 @@
 'use strict';
 
-const aStarCache = {};
-
 const moveRandomly = (entity) => {
     MoveableSystem(entity, Math.round((Math.random()*2))-1, Math.round((Math.random()*2))-1);
 }
@@ -24,18 +22,12 @@ const moveTowardsPlayer = (entity) => {
         } else if (x >= map.getWidth() || y >= map.getHeight()) {
             return false;
         }
-        return !map.isTileSolid(x, y) || entity.hasComponent('PassThroughSolids')
+        return entity.hasComponent('PassThroughSolids') || !map.isTileSolid(x, y)
     }
 
     /* prepare path to given coords */
-    let aStar;
-    if (playerCoords in aStarCache) {
-        aStar = aStarCache[playerCoords];
-        console.log('got cached aStar');
-    } else {
-        aStar = new ROT.Path.AStar(...playerCoords, isPassable);
-        aStarCache[playerCoords] = aStar;
-    }
+    //TODO cache computed aStars per entity type?
+    const aStar = new ROT.Path.AStar(...playerCoords, isPassable);
 
     const path = [];
     /* compute from given coords #1 */
