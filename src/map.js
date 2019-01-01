@@ -45,22 +45,6 @@ class Map {
 		return this._tiles[x][y];
 	}
 	
-	// Work In Progress
-	// Lootr.Map.prototype.getRandomDirectionFromPoint = function( x, y ) {
-	//     var direction = {
-	//         "nw": 1,
-	//         "n" : 1,
-	//         "ne": 1,
-	//         "w" : 1,
-	//         "e" : 1,
-	//         "sw": 1,
-	//         "s" : 1,
-	//         "se": 1
-	//     }
-	//
-	//     return ROT.RNG.getWeightedValue(direction);
-	// }
-	
 	getMap() {
 		return this._tiles;
 	}
