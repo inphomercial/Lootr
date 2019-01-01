@@ -6,6 +6,9 @@ class Player extends Entity {
 		super(args);
 
 		this._visibleTiles = {};
+
+		//compute the player's initial line of sight
+		this.computeFOV();
 	}
 
 	act() {
