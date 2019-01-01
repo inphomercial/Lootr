@@ -203,9 +203,13 @@ class Map {
 		_.each(entities, function ( entity ) {
 			let x = entity.getX();
 			let y = entity.getY();
+			const lastCoords = entity.getLastKnownCoords();
 			if( x < startingCoords[0] + Lootr.getGameDisplayWidth() && y <  startingCoords[1] + Lootr.getGameDisplayHeight()) {
 				if(Lootr.getPlayer().canSeeTile(x, y)) {
-					display.draw(x-startingCoords[0], y-startingCoords[1], entity.getChar(), entity.getForeground(), entity.getBackground());
+					entity.setLastKnownCoords(x, y);
+					display.draw(x - startingCoords[0], y - startingCoords[1], entity.getChar(), entity.getForeground(), entity.getBackground());
+				} else if (lastCoords.length === 2) {
+					display.draw(lastCoords[0] - startingCoords[0], lastCoords[1] - startingCoords[1], entity.getChar(), entity.getForeground(), entity.getBackground());
 				}
 			}
 		});
