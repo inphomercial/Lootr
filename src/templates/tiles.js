@@ -20,7 +20,7 @@ Lootr.Templates.Tiles.RubyTile = {
 }
 
 Lootr.Templates.Tiles.GoldTile = {
-    _char: "$",
+    _char: "*",
     _foreground: "gold",
     _isSolid: false
 }
