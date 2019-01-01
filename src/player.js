@@ -25,7 +25,13 @@ class Player extends Entity {
 			if (this._visibleTiles[x] === undefined) {
 				this._visibleTiles[x] = {}
 			}
-			this._visibleTiles[x][y] = true;
+			try {
+				map.getTile(x, y).setExplored();
+			} catch(e){
+				console.log("can't get tile");
+			} finally {
+				this._visibleTiles[x][y] = true;
+			}
 		});
 	}
 

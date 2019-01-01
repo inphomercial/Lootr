@@ -19,6 +19,10 @@ class Tile extends DynamicGlyph {
 		return this._isExplored;
 	}
 
+	setExplored() {
+		this._isExplored = true;
+	}
+
 	isSolid() {
 		return this._isSolid;
 	}
