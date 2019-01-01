@@ -18,7 +18,7 @@ class Player extends Entity {
 		const map = this.getMap();
 		this._visibleTiles = {};
 
-		const fov = new ROT.FOV.PreciseShadowcasting((x,y) => map.isTileOpaque(x,y));
+		const fov = new ROT.FOV.PreciseShadowcasting((x,y) => !map.isTileOpaque(x,y));
 
 		//TODO determine correct visibility distance value. make configureable?
 		fov.compute(...this.getCoordinates(), 10, (x, y, r, visibility) => {
@@ -29,8 +29,8 @@ class Player extends Entity {
 		});
 	}
 
-	canSeeTile() {
-		return _.get(this._visibleTiles, '[x][y]');
+	canSeeTile(x, y) {
+		return this._visibleTiles[x] !== undefined && this._visibleTiles[x][y];
 	}
 
 	handleEvent(e) {
