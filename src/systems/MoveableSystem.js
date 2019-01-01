@@ -9,7 +9,7 @@ function MoveableSystem(entity, dX, dY) {
 	let newY = entity.getY() + dY;
 	let map = entity.getMap();
 
-	if (!entity.hasComponent('Moveable')) {
+	if (!entity.hasComponent('Moveable') && entity.hasComponent('Player')) {
 		Logger(`${entity.getName()} is unable to move`);
 		return
 	}
@@ -21,7 +21,10 @@ function MoveableSystem(entity, dX, dY) {
 
 	if (map.isTileOccupied(newX, newY)) {
 		let occupiedBy = map.getEntityAt(newX, newY);
-		Logger(`${entity.getName()} tries to move into ${newX}, ${newY} but there is a ${occupiedBy.getName()} there.`);
+
+		if (entity.hasComponent('Player')) {
+			Logger(`${entity.getName()} tries to move into ${newX}, ${newY} but there is a ${occupiedBy.getName()} there.`);
+		}
 
 		//TODO Don't make enemies attack eachother when they are in the way.
 		BattleSystem(entity, occupiedBy);
@@ -29,7 +32,7 @@ function MoveableSystem(entity, dX, dY) {
 		return;
 	}
 
-	if (map.isTileSolid(newX, newY) && !entity.hasComponent('PassThroughSolids')) {
+	if (map.isTileSolid(newX, newY) && !entity.hasComponent('PassThroughSolids') && entity.hasComponent('Player')) {
 		Logger(`tile is solid and ${entity.getName()} cannot pass thru walls`);
 
 		return;

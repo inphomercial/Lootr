@@ -23,6 +23,11 @@ const BattleSystem = (attacker, defender) => {
 	}
 
 	if (defender._components.Health.hp <= 0) {
+		if (defender.hasComponent("Player")) {
+			Lootr.switchScreen(new Display(Lootr.Screens.GameOver));
+			return;
+		}
+
 		Logger(`${defender.getName()} has died.`);
 
 		if (defender.hasComponent("Corpseable")) {
