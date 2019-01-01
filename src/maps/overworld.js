@@ -45,6 +45,9 @@ class Overworld extends Map {
 		// Start player with a placeholder item for now
 		var woodenSword = new Item(Lootr.Templates.Items.WoodenSword);
 		player.getComponent("Inventory").inventory.push(woodenSword);
+
+		//compute the player's initial line of sight
+		player.computeFOV();
 		
 		console.log('overworld', this);
 	}
@@ -65,9 +68,17 @@ class Overworld extends Map {
 		generator.randomize(0.5);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Templates.Tiles.WallTile);
+				temp_map[x][y] = new Tile(Templates.Tiles.WallTile, x, y);
 			} else {
-				temp_map[x][y] = new Tile(Templates.Tiles.FloorTile);
+				temp_map[x][y] = new Tile(Templates.Tiles.FloorTile, x, y);
+			}
+		});
+
+		generator.connect( function ( x, y, v ) {
+			if ( v === 1 ) {
+				temp_map[x][y] = new Tile(Templates.Tiles.WallTile, x, y);
+			} else {
+				temp_map[x][y] = new Tile(Templates.Tiles.FloorTile, x, y);
 			}
 		});
 
@@ -75,7 +86,7 @@ class Overworld extends Map {
 		generator.randomize(.14);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Templates.Tiles.WaterDeepTile);
+				temp_map[x][y] = new Tile(Templates.Tiles.WaterDeepTile, x, y);
 			}
 		});
 
@@ -83,7 +94,7 @@ class Overworld extends Map {
 		generator.randomize(.24);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Templates.Tiles.WaterShallowTile);
+				temp_map[x][y] = new Tile(Templates.Tiles.WaterShallowTile, x, y);
 			}
 		});
 
@@ -91,7 +102,7 @@ class Overworld extends Map {
 		generator.randomize(.05);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Templates.Tiles.RubyTile);
+				temp_map[x][y] = new Tile(Templates.Tiles.RubyTile, x, y);
 			}
 		});
 
@@ -99,7 +110,7 @@ class Overworld extends Map {
 		generator.randomize(.08);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Templates.Tiles.GoldTile);
+				temp_map[x][y] = new Tile(Templates.Tiles.GoldTile, x, y);
 			}
 		});
 

@@ -45,28 +45,24 @@ class Map {
 		return this._tiles[x][y];
 	}
 	
-	// Work In Progress
-	// Lootr.Map.prototype.getRandomDirectionFromPoint = function( x, y ) {
-	//     var direction = {
-	//         "nw": 1,
-	//         "n" : 1,
-	//         "ne": 1,
-	//         "w" : 1,
-	//         "e" : 1,
-	//         "sw": 1,
-	//         "s" : 1,
-	//         "se": 1
-	//     }
-	//
-	//     return ROT.RNG.getWeightedValue(direction);
-	// }
-	
 	getMap() {
 		return this._tiles;
 	}
 	
 	isTileSolid(x, y) {
-		return this.getTile(x, y).isSolid();
+		try {
+			return this.getTile(x, y).isSolid();
+		} catch (e) {
+			return true;
+		}
+	}
+
+	isTileOpaque(x, y) {
+		try {
+			return this.getTile(x, y).isOpaque();
+		} catch (e) {
+			return true;
+		}
 	}
 
 	isTileOccupied(x, y) {
@@ -156,7 +152,9 @@ class Map {
 		for ( var x = 0; x < Lootr.getGameDisplayWidth(); x++ ) {
 			for ( var y = 0; y < Lootr.getGameDisplayHeight(); y++ ) {
 				var tile = this.getTile(x + startingCoords[0], y + startingCoords[1]);
-				display.draw(x, y, tile.getChar(), tile.getForeground(), tile.getBackground());
+				if (tile.getIsExplored()) {
+					display.draw(x, y, tile.getChar(), tile.getForeground(), tile.getBackground());
+				}
 			}
 		}
 		return;
@@ -205,8 +203,14 @@ class Map {
 		_.each(entities, function ( entity ) {
 			let x = entity.getX();
 			let y = entity.getY();
+			const lastCoords = entity.getLastKnownCoords();
 			if( x < startingCoords[0] + Lootr.getGameDisplayWidth() && y <  startingCoords[1] + Lootr.getGameDisplayHeight()) {
-				display.draw(x-startingCoords[0], y-startingCoords[1], entity.getChar(), entity.getForeground(), entity.getBackground());
+				if(Lootr.getPlayer().canSeeTile(x, y)) {
+					entity.setLastKnownCoords(x, y);
+					display.draw(x - startingCoords[0], y - startingCoords[1], entity.getChar(), entity.getForeground(), entity.getBackground());
+				} else if (lastCoords.length === 2) {
+					display.draw(lastCoords[0] - startingCoords[0], lastCoords[1] - startingCoords[1], entity.getChar(), entity.getForeground(), entity.getBackground());
+				}
 			}
 		});
 	}
@@ -219,9 +223,11 @@ class Map {
 			let x = item.getX();
 			let y = item.getY();
 			if( x < startingCoords[0] + Lootr.getGameDisplayWidth() && y <  startingCoords[1] + Lootr.getGameDisplayHeight()) {
-				display.draw(x-startingCoords[0], y-startingCoords[1], item.getChar(), item.getForeground(), item.getBackground());
+				if(this.getTile(x, y).getIsExplored()) {
+					display.draw(x-startingCoords[0], y-startingCoords[1], item.getChar(), item.getForeground(), item.getBackground());
+				}
 			}
-		});
+		}.bind(this));
 	}
 	
 	// Create the empty map

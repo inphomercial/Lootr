@@ -14,7 +14,11 @@ class Glyph {
 	}
 
 	getForeground() {
-		return this._foreground;
+		if(Lootr.getPlayer().canSeeTile(this.getX(), this.getY())) {
+			return this._foreground;
+		} else {
+			return 'grey';
+		}
 	}
 
 	getOriginalForeground() {
