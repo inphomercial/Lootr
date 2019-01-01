@@ -11,12 +11,22 @@ class Entity extends DynamicGlyph {
 		this._speed = template.speed;
 		this._turns = 0;
 		this._map = null;
+		this._lastKnownPlayerCoords = [];
+		this._lastKnownCoords = [];
 		
 		for (const key of Object.keys(template.componentList)) {
 			const component = Lootr.EntityComponents[key](template.componentList[key]);
 
 			this.addObjComponent(component);
 		}
+	}
+
+	getLastKnownPlayerCoords() {
+		return this._lastKnownPlayerCoords;
+	}
+
+	getLastKnownCoords() {
+		return this._lastKnownCoords;
 	}
 
 	getTurns() {
@@ -41,6 +51,18 @@ class Entity extends DynamicGlyph {
 
 	setMap( map ){
 		this._map = map;
+	}
+
+	setLastKnownPlayerCoords(x, y) {
+		this._lastKnownPlayerCoords = [x, y];
+	}
+
+	setLastKnownCoords(x, y) {
+		this._lastKnownCoords = [x, y];
+	}
+
+	forgetLastKnownPlayerCoords() {
+		this._lastKnownPlayerCoords = [];
 	}
 
 	act() {
