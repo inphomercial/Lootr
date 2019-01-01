@@ -152,11 +152,7 @@ class Map {
 		for ( var x = 0; x < Lootr.getGameDisplayWidth(); x++ ) {
 			for ( var y = 0; y < Lootr.getGameDisplayHeight(); y++ ) {
 				var tile = this.getTile(x + startingCoords[0], y + startingCoords[1]);
-				let color = tile.getBackground();
-				if (Lootr.getPlayer().canSeeTile(x + startingCoords[0], y + startingCoords[1])) {
-					color = 'green';
-				}
-				display.draw(x, y, tile.getChar(), tile.getForeground(), color);
+				display.draw(x, y, tile.getChar(), tile.getForeground(), tile.getBackground());
 			}
 		}
 		return;
