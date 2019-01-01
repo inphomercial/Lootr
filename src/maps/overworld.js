@@ -71,6 +71,14 @@ class Overworld extends Map {
 			}
 		});
 
+		generator.connect( function ( x, y, v ) {
+			if ( v === 1 ) {
+				temp_map[x][y] = new Tile(Templates.Tiles.WallTile);
+			} else {
+				temp_map[x][y] = new Tile(Templates.Tiles.FloorTile);
+			}
+		});
+
 		// Generate DeepWater
 		generator.randomize(.14);
 		generator.create( function ( x, y, v ) {

@@ -69,6 +69,10 @@ class Map {
 		return this.getTile(x, y).isSolid();
 	}
 
+	isTileOpaque(x, y) {
+		return this.getTile(x, y).isOpaque();
+	}
+
 	isTileOccupied(x, y) {
 		let entity = this.getEntityAt(x, y);
 

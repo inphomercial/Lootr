@@ -9,7 +9,8 @@ Lootr.Templates.Tiles.FloorTile = {
 Lootr.Templates.Tiles.WallTile = {
     _char: "#",
     _foreground: "orange",
-    _isSolid: true
+    _isSolid: true,
+    _isOpaque: true
 }
 
 Lootr.Templates.Tiles.RubyTile = {
