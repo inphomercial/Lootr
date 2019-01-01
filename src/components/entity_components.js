@@ -7,7 +7,7 @@ Lootr.EntityComponents.Moveable = function Moveable() {
 	}
 };
 
-Lootr.EntityComponents.Player = function Actor() {
+Lootr.EntityComponents.Player = function Player() {
 	return {
 		name: "Player" 
 	}

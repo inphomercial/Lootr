@@ -2,13 +2,19 @@
 
 const BattleSystem = (attacker, defender) => {
 
-	let currentX = defender.getX();
-	let currentY = defender.getY();
-	let map = defender.getMap();
+	// Prevent monsters from attacking from each other
+	if (attacker.hasComponent('Enemy') && defender.hasComponent('Enemy')) {
+		return;
+	}
 
+	// Prevent attacking defenders that dont actually have health
 	if (!defender.hasComponent('Health')) {
 		return;
 	}
+	
+	let currentX = defender.getX();
+	let currentY = defender.getY();
+	let map = defender.getMap();
 	
 	Logger(`${attacker.getName()} attacks ${defender.getName()}`);
 

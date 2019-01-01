@@ -26,13 +26,13 @@ Lootr.Templates.Tiles.GoldTile = {
 }
 
 Lootr.Templates.Tiles.WaterDeepTile = {
-    _char: "#",
+    _char: "~",
     _foreground: "blue",
     _isSolid: true
 }
 
 Lootr.Templates.Tiles.WaterShallowTile = {
-    _char: "#",
+    _char: "~",
     _foreground: "lightblue",
     _isSolid: false
 }

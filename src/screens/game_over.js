@@ -11,7 +11,6 @@ Lootr.Screens.GameOver = {
 
     renderGame: function () {
 		let player = Lootr.getPlayer();
-		console.log('has health', player.hasComponent('Health'));
 
 		this._gameDisplay.drawText(1, 1, "Game Over Screen");
     },
@@ -24,8 +23,7 @@ Lootr.Screens.GameOver = {
 		Logger("Resurrecting!!")
 		
 		let player = Lootr.getPlayer();
-
-		let hp = player.getComponent("Health").hp = 10;
+		player.getComponent('Health').hp = player.getComponent('Health').maxHp;
 
         Lootr.switchScreen(Lootr.Screens.Play);
     }
