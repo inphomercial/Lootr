@@ -25,11 +25,12 @@ class Player extends Entity {
 			if (this._visibleTiles[x] === undefined) {
 				this._visibleTiles[x] = {}
 			}
-			try {
+			if (x < 0 || y < 0) {
+				return;
+			} else if (x >= map.getWidth() || y >= map.getHeight()) {
+				return;
+			} else {
 				map.getTile(x, y).setExplored();
-			} catch(e){
-				console.log("can't get tile");
-			} finally {
 				this._visibleTiles[x][y] = true;
 			}
 		});
@@ -108,6 +109,10 @@ class Player extends Entity {
 
 			case ROT.KEYS.VK_9:
 				this.tryMovingTo(1, -1);
+				break;
+			
+			case ROT.KEYS.VK_O:
+				AutoExploreSystem(this);
 				break;
 		}
 

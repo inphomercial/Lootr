@@ -44,6 +44,33 @@ class Map {
 	getTile( x, y ) {
 		return this._tiles[x][y];
 	}
+
+	getUnexploredPassableTiles() {
+		return _.reduce(this._tiles, (accum, tileGroup) => {
+			accum.push(..._.filter(tileGroup, (tile) => {
+				return !tile.getIsExplored() && !tile.isSolid() && tile.isReachable();
+			}));
+			return accum;
+		}, []);
+	}
+
+	getRandomUnexploredPassableTile() {
+		const unexploredTiles = this.getUnexploredPassableTiles();
+
+		return unexploredTiles[_.random(unexploredTiles.length-1)];
+	}
+
+	getNearestUnexploredTile(x, y) {
+		const unexploredTiles = this.getUnexploredPassableTiles();
+
+		if (unexploredTiles.length < 1) {
+			return false;
+		}
+
+		return _.min(unexploredTiles, (tile) => {
+			return Math.abs(x - tile.getX()) + Math.abs(y - tile.getY());
+		});
+	}
 	
 	getMap() {
 		return this._tiles;

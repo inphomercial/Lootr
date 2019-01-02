@@ -10,6 +10,7 @@ class Tile extends DynamicGlyph {
 		this._isOpaque = false;
 		this._x = x;
 		this._y = y;
+		this._reachable = true;
 
 		// Replace our defaults with template values
 		Object.assign(this, template);
@@ -21,6 +22,14 @@ class Tile extends DynamicGlyph {
 
 	setExplored() {
 		this._isExplored = true;
+	}
+
+	isReachable() {
+		return this._reachable;
+	}
+
+	setUnreachable() {
+		this._reachable = false;
 	}
 
 	isSolid() {

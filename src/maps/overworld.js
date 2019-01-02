@@ -40,7 +40,8 @@ class Overworld extends Map {
 		// Add player to map
 		var player = new Player(Lootr.Templates.Entities.Player);
 		Lootr.setPlayer(player);
-		this.addEntityAt(10, 10, player);
+		const startingCoords = this.getRandomUnexploredPassableTile().getCoordinates();
+		this.addEntityAt(...startingCoords, player);
 		
 		// Start player with a placeholder item for now
 		var dagger = new Item(Lootr.Templates.Items.Dagger);
