@@ -25,7 +25,6 @@ const EnemyMovementSystem = (entity) => {
     }
 
     if (!moveTowardsPlayer(entity)) {
-        console.log(`${entity.getName()} moving randomly`);
         moveRandomly(entity);
     };
 }
