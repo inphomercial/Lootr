@@ -26,9 +26,6 @@ Lootr.Screens.Play = {
 
 		// Draw Player Stats
 		Lootr.UI.renderPlayerStats(Lootr.getPlayer());
-	
-		// Draw Logs
-		// Lootr.renderMessages();
     },
 
     exit: function() {
@@ -36,6 +33,6 @@ Lootr.Screens.Play = {
     },
 
     handleInput: function ( inputType, inputData ) {
-		console.log('play screen input', inputType, inputData);
+		console.log('Equipment screen input', inputType, inputData);
     }
 }
