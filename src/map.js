@@ -54,6 +54,20 @@ class Map {
 		}, []);
 	}
 
+	getUnexploredTiles(limit = false, x, y) {
+		return _.reduce(this._tiles, (accum, tileGroup) => {
+			accum.push(..._.filter(tileGroup, (tile) => {
+				if (!tile.getIsExplored() && tile.isReachable()) {
+					if (limit) {
+						return Math.abs(x - tile.getX()) + Math.abs(y - tile.getY()) < limit;
+					}
+					return true;
+				}
+			}));
+			return accum;
+		}, []);
+	}
+
 	getRandomUnexploredPassableTile() {
 		const unexploredTiles = this.getUnexploredPassableTiles();
 
@@ -61,7 +75,7 @@ class Map {
 	}
 
 	getNearestUnexploredTile(x, y) {
-		const unexploredTiles = this.getUnexploredPassableTiles();
+		const unexploredTiles = this.getUnexploredTiles();
 
 		if (unexploredTiles.length < 1) {
 			return false;
@@ -71,9 +85,49 @@ class Map {
 			return Math.abs(x - tile.getX()) + Math.abs(y - tile.getY());
 		});
 	}
+
+	getShortestUnexploredPath(x, y) {
+		const unexploredTiles = this.getUnexploredTiles(10, x, y);
+
+		if (unexploredTiles.length < 1) {
+			console.log('using nearest unexplored tile');
+			return this.getNearestUnexploredTile(x, y);
+		}
+
+		const targetTile = _.min(unexploredTiles, (tile) => {
+			const path = getPathToCoords(tile, [x, y], this);
+			if (path.length > 0) {
+				return path.length;
+			}
+		});
+
+		if (!targetTile || targetTile === Infinity) {
+			console.log('using nearest unexplored tile');
+			return this.getNearestUnexploredTile(x, y);
+		}
+
+		console.log('using shortest path unexplored tile');
+		return targetTile;
+	}
 	
 	getMap() {
 		return this._tiles;
+	}
+
+	computeUnreachableTiles(x, y) {
+		let path;
+		let xTile;
+		let yTile;
+		for (xTile in this._tiles) {
+			for (yTile in this._tiles[xTile]) {
+				if (this._tiles[xTile][yTile].isSolid()) {
+					path = getPathToCoords(this._tiles[xTile][yTile], [x, y], this);
+					if (path.length < 1) {
+						this._tiles[xTile][yTile].setUnreachable();
+					}
+				}
+			}
+		}
 	}
 	
 	isTileSolid(x, y) {

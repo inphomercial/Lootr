@@ -46,9 +46,9 @@ const moveRandomly = (entity) => {
     return MoveableSystem(entity, Math.round((Math.random()*2))-1, Math.round((Math.random()*2))-1);
 }
 
-const moveTowardsCoords = (entity, coords) => {
+const getPathToCoords = (entity, coords, map = false) => {
     const entityCoords = entity.getCoordinates();
-    const map = entity.getMap();
+    map = (map) ? map : entity.getMap();
 
     /* input callback informs about map structure */
     const isPassable = function(x, y) {
@@ -57,7 +57,7 @@ const moveTowardsCoords = (entity, coords) => {
         } else if (x >= map.getWidth() || y >= map.getHeight()) {
             return false;
         }
-        return entity.hasComponent('PassThroughSolids') || !map.isTileSolid(x, y)
+        return entity.hasComponent('PassThroughSolids') || !map.isTileSolid(x, y) || coords == [x, y] || entityCoords == [x, y];
     }
 
     /* prepare path to given coords */
@@ -69,7 +69,13 @@ const moveTowardsCoords = (entity, coords) => {
     aStar.compute(...entityCoords, function(x, y) {
         path.push([x,y]);
     });
-    
+
+    return path;
+}
+
+const moveTowardsCoords = (entity, coords) => {
+    const entityCoords = entity.getCoordinates();
+    const path = getPathToCoords(entity, coords);
     if (path.length > 1) {
         const x = -(entityCoords[0] - path[1][0]);
         const y = -(entityCoords[1] - path[1][1]);
