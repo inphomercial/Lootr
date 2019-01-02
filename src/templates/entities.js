@@ -13,7 +13,6 @@ Lootr.Templates.Entities.Player = {
 			hp: 50
 		},
 		"Moveable": {},
-		"PassThroughSolids": {},
 		"Bleedable": {
 			bleedColor: "red"
 		},
