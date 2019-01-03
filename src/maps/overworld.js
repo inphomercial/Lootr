@@ -34,6 +34,8 @@ class Overworld extends Map {
 
 		//compute the player's initial line of sight
 		player.computeFOV();
+
+		this.getEngine().start();
 		
 		console.log('overworld', this);
 	}

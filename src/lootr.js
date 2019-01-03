@@ -22,7 +22,7 @@ var Lootr = ( function( window ) {
 
 		_gameDisplay = new ROT.Display(displayOptions);
 
-		var bindEventToScreen = function(event) {
+		const bindEventToScreen = (event) => {
 			window.addEventListener(event, function(e) {
 				// When an event is received, send it to the
 				// screen if there is one
