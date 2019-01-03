@@ -57,7 +57,7 @@ const getPathToCoords = (entity, coords, map = false) => {
         } else if (x >= map.getWidth() || y >= map.getHeight()) {
             return false;
         }
-        return entity.hasComponent('PassThroughSolids') || !map.isTileSolid(x, y) || coords == [x, y] || entityCoords == [x, y];
+        return entity.hasComponent('PassThroughSolids') || !map.isTileSolid(x, y);
     }
 
     /* prepare path to given coords */

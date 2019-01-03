@@ -33,6 +33,6 @@ Lootr.Screens.Play = {
     },
 
     handleInput: function ( inputType, inputData ) {
-		console.log('Equipment screen input', inputType, inputData);
+		//console.log('Equipment screen input', inputType, inputData);
     }
 }
