@@ -80,7 +80,19 @@ var Lootr = ( function( window ) {
 
         // Render our game
         _currentScreen.renderGame();
-    }
+	}
+	
+	function switchSubScreen(screen, args) {
+        // Clear both displays
+        getGameDisplay().clear();
+
+        // Update our current screen, call Enter with args that can be passed in
+        _currentScreen = screen;
+        _currentScreen.enter(getGameDisplay(), args);
+
+        // Render our game
+        _currentScreen.renderGame();
+	}
 
     function refreshScreens() {
         // Clear both displays
@@ -106,6 +118,7 @@ var Lootr = ( function( window ) {
         getGameDisplayWidth: getGameDisplayWidth,
         getGameDisplayHeight: getGameDisplayHeight,
         switchScreen: switchScreen,
+        switchSubScreen: switchSubScreen,
         getCurrentScreen: getCurrentScreen,
         getGameDisplay: getGameDisplay,
         getGameDisplayContainer: getGameDisplayContainer,

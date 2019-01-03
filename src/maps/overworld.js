@@ -47,11 +47,16 @@ class Overworld extends Map {
 		// Start player with a placeholder item for now
 		var dagger = new Item(Lootr.Templates.Items.Dagger);
 		var sword1 = new Item(Lootr.Templates.Items.WoodenSword);
-		var sword2 = new Item(Lootr.Templates.Items.WoodenSword);
-		var dagger = new Item(Lootr.Templates.Items.Dagger);
+		var shield = new Item(Lootr.Templates.Items.WoodenShield);
 		player.getComponent("Inventory").inventory.push(sword1);
-		player.getComponent("Inventory").inventory.push(sword2);
-		player.getComponent("Slots").slots.hand = dagger;
+		player.getComponent("Inventory").inventory.push(dagger);
+		player.getComponent("Inventory").inventory.push(dagger);
+		player.getComponent("Inventory").inventory.push(dagger);
+		player.getComponent("Inventory").inventory.push(dagger);
+		player.getComponent("Inventory").inventory.push(dagger);
+		player.getComponent("Inventory").inventory.push(dagger);
+		player.getComponent("Inventory").inventory.push(dagger);
+		player.getComponent("Slots").slots.hand = shield;
 
 		//compute the player's initial line of sight
 		player.computeFOV();
