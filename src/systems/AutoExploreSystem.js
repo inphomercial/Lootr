@@ -14,9 +14,10 @@ const autoExplore = (entity) => {
     }
 
     if (targetTile) {
-        if (!moveTowardsCoords(entity, targetTile.getCoordinates())){
+        if (!moveTowardsCoords(entity, targetTile.getCoordinates())) {
             targetTile.setUnreachable();
             targetTileCache[entity.getUid()] = false;
+            autoExplore(entity);
         };
     }
 }

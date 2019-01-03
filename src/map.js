@@ -54,6 +54,20 @@ class Map {
 		}, []);
 	}
 
+	getUnexploredTiles(limit = false, x, y) {
+		return _.reduce(this._tiles, (accum, tileGroup) => {
+			accum.push(..._.filter(tileGroup, (tile) => {
+				if (!tile.getIsExplored() && tile.isReachable()) {
+					if (limit) {
+						return Math.abs(x - tile.getX()) + Math.abs(y - tile.getY()) < limit;
+					}
+					return true;
+				}
+			}));
+			return accum;
+		}, []);
+	}
+
 	getRandomUnexploredPassableTile() {
 		const unexploredTiles = this.getUnexploredPassableTiles();
 
@@ -61,7 +75,7 @@ class Map {
 	}
 
 	getNearestUnexploredTile(x, y) {
-		const unexploredTiles = this.getUnexploredPassableTiles();
+		const unexploredTiles = this.getUnexploredTiles();
 
 		if (unexploredTiles.length < 1) {
 			return false;
@@ -74,6 +88,39 @@ class Map {
 	
 	getMap() {
 		return this._tiles;
+	}
+
+	computeUnreachableTiles(x, y) {
+		let xTile;
+		let yTile;
+		for (xTile in this._tiles) {
+			for (yTile in this._tiles[xTile]) {
+				if (this._tiles[xTile][yTile].isSolid()) {
+					if (!this.adjacentToUnsolidTile(xTile, yTile))
+						this._tiles[xTile][yTile].setUnreachable();
+				}
+			}
+		}
+	}
+
+	adjacentToUnsolidTile (x, y) {
+		for (let xDiff of _.range(-1, 2)) {
+			for (let yDiff of _.range(-1, 2)) {
+				if (xDiff !== 0 || yDiff !== 0) {
+					let newX = parseInt(x) + xDiff;
+					let newY = parseInt(y) + yDiff;
+					if (newX < 0 || newY < 0) {
+						continue;
+					} else if (newX >= this.getWidth() || newY >= this.getHeight()) {
+						continue;
+					}
+					if (!this._tiles[String(newX)][String(newY)].isSolid()) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 	
 	isTileSolid(x, y) {
