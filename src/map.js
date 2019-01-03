@@ -85,30 +85,6 @@ class Map {
 			return Math.abs(x - tile.getX()) + Math.abs(y - tile.getY());
 		});
 	}
-
-	// getShortestUnexploredPath(x, y) {
-	// 	const unexploredTiles = this.getUnexploredTiles(10, x, y);
-
-	// 	if (unexploredTiles.length < 1) {
-	// 		console.log('using nearest unexplored tile');
-	// 		return this.getNearestUnexploredTile(x, y);
-	// 	}
-
-	// 	const targetTile = _.min(unexploredTiles, (tile) => {
-	// 		const path = getPathToCoords(tile, [x, y], this);
-	// 		if (path.length > 0) {
-	// 			return path.length;
-	// 		}
-	// 	});
-
-	// 	if (!targetTile || targetTile === Infinity) {
-	// 		console.log('using nearest unexplored tile');
-	// 		return this.getNearestUnexploredTile(x, y);
-	// 	}
-
-	// 	console.log('using shortest path unexplored tile');
-	// 	return targetTile;
-	// }
 	
 	getMap() {
 		return this._tiles;
