@@ -58,6 +58,10 @@ class Player extends Entity {
 				Lootr.switchScreen(new Display(Lootr.Screens.Equipment));
 				break;
 			
+			case ROT.KEYS.VK_X:
+				Lootr.switchScreen(new Display(Lootr.Screens.MapOverview))
+				break;
+			
 			case ROT.KEYS.VK_PERIOD:
 				let map = this.getMap();
 				let currentX = this.getX();
