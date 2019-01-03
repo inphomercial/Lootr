@@ -34,7 +34,9 @@ function MoveableSystem(entity, dX, dY) {
 		LoggerPlayer(entity, `tile is solid and ${entity.getName()} cannot pass thru walls`);
 
 		return false;
-	}
+    }
+    
+    entity.setPreviousCoords(...entity.getCoordinates());
 
 	entity.setX(newX);
     entity.setY(newY);

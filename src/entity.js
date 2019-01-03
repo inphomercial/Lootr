@@ -11,6 +11,7 @@ class Entity extends DynamicGlyph {
 		this._speed = template.speed;
 		this._turns = 0;
 		this._map = null;
+		this._previousCoords = [];
 		this._lastKnownPlayerCoords = [];
 		this._lastKnownCoords = [];
 		
@@ -19,6 +20,10 @@ class Entity extends DynamicGlyph {
 
 			this.addObjComponent(component);
 		}
+	}
+
+	getPreviousCoords() {
+		return this._previousCoords;
 	}
 
 	getLastKnownPlayerCoords() {
@@ -51,6 +56,10 @@ class Entity extends DynamicGlyph {
 
 	setMap( map ){
 		this._map = map;
+	}
+
+	setPreviousCoords(x, y) {
+		this._previousCoords = [x, y];
 	}
 
 	setLastKnownPlayerCoords(x, y) {
