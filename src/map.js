@@ -282,7 +282,7 @@ class Map {
 				if(Lootr.getPlayer().canSeeTile(x, y)) {
 					entity.setLastKnownCoords(x, y);
 					display.draw(x - startingCoords[0], y - startingCoords[1], entity.getChar(), entity.getForeground(), entity.getBackground());
-				} else if (lastCoords.length === 2) {
+				} else if (lastCoords.length === 2 && !Lootr.getPlayer().canSeeTile(...lastCoords)) {
 					display.draw(lastCoords[0] - startingCoords[0], lastCoords[1] - startingCoords[1], entity.getChar(), entity.getForeground(), entity.getBackground());
 				}
 			}

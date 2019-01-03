@@ -6,10 +6,11 @@ const moveTowardsPlayer = (entity) => {
     const entityCoords = entity.getCoordinates();
 
     if (!Lootr.getPlayer().canSeeTile(...entityCoords)) {
-        if (lastKnownPlayerCoords.length === 2 && entityCoords !== lastKnownPlayerCoords) {
+        if (lastKnownPlayerCoords.length === 2 && entityCoords.toString() !== lastKnownPlayerCoords.toString()) {
             return moveTowardsCoords(entity, lastKnownPlayerCoords);
+        } else if (lastKnownPlayerCoords.length === 2){
+            entity.forgetLastKnownPlayerCoords();
         }
-        entity.forgetLastKnownPlayerCoords();
         return moveRandomly(entity);
     }
 
