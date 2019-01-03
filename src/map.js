@@ -95,27 +95,32 @@ class Map {
 		let yTile;
 		for (xTile in this._tiles) {
 			for (yTile in this._tiles[xTile]) {
-				findFloor: if (this._tiles[xTile][yTile].isSolid()) {
-					for (let xDiff of _.range(-1, 2)) {
-						for (let yDiff of _.range(-1, 2)) {
-							if (xDiff !== 0 || yDiff !== 0) {
-								let newX = parseInt(xTile) + xDiff;
-								let newY = parseInt(yTile) + yDiff;
-								if (newX < 0 || newY < 0) {
-									continue;
-								} else if (newX >= this.getWidth() || newY >= this.getHeight()) {
-									continue;
-								}
-								if (!this._tiles[String(newX)][String(newY)].isSolid()) {
-									break findFloor;
-								}
-							}
-						}
-					}
-					this._tiles[xTile][yTile].setUnreachable();
+				if (this._tiles[xTile][yTile].isSolid()) {
+					if (!this.adjacentToUnsolidTile(xTile, yTile))
+						this._tiles[xTile][yTile].setUnreachable();
 				}
 			}
 		}
+	}
+
+	adjacentToUnsolidTile (x, y) {
+		for (let xDiff of _.range(-1, 2)) {
+			for (let yDiff of _.range(-1, 2)) {
+				if (xDiff !== 0 || yDiff !== 0) {
+					let newX = parseInt(x) + xDiff;
+					let newY = parseInt(y) + yDiff;
+					if (newX < 0 || newY < 0) {
+						continue;
+					} else if (newX >= this.getWidth() || newY >= this.getHeight()) {
+						continue;
+					}
+					if (!this._tiles[String(newX)][String(newY)].isSolid()) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 	
 	isTileSolid(x, y) {
