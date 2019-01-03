@@ -86,45 +86,57 @@ class Map {
 		});
 	}
 
-	getShortestUnexploredPath(x, y) {
-		const unexploredTiles = this.getUnexploredTiles(10, x, y);
+	// getShortestUnexploredPath(x, y) {
+	// 	const unexploredTiles = this.getUnexploredTiles(10, x, y);
 
-		if (unexploredTiles.length < 1) {
-			console.log('using nearest unexplored tile');
-			return this.getNearestUnexploredTile(x, y);
-		}
+	// 	if (unexploredTiles.length < 1) {
+	// 		console.log('using nearest unexplored tile');
+	// 		return this.getNearestUnexploredTile(x, y);
+	// 	}
 
-		const targetTile = _.min(unexploredTiles, (tile) => {
-			const path = getPathToCoords(tile, [x, y], this);
-			if (path.length > 0) {
-				return path.length;
-			}
-		});
+	// 	const targetTile = _.min(unexploredTiles, (tile) => {
+	// 		const path = getPathToCoords(tile, [x, y], this);
+	// 		if (path.length > 0) {
+	// 			return path.length;
+	// 		}
+	// 	});
 
-		if (!targetTile || targetTile === Infinity) {
-			console.log('using nearest unexplored tile');
-			return this.getNearestUnexploredTile(x, y);
-		}
+	// 	if (!targetTile || targetTile === Infinity) {
+	// 		console.log('using nearest unexplored tile');
+	// 		return this.getNearestUnexploredTile(x, y);
+	// 	}
 
-		console.log('using shortest path unexplored tile');
-		return targetTile;
-	}
+	// 	console.log('using shortest path unexplored tile');
+	// 	return targetTile;
+	// }
 	
 	getMap() {
 		return this._tiles;
 	}
 
 	computeUnreachableTiles(x, y) {
-		let path;
 		let xTile;
 		let yTile;
 		for (xTile in this._tiles) {
 			for (yTile in this._tiles[xTile]) {
-				if (this._tiles[xTile][yTile].isSolid()) {
-					path = getPathToCoords(this._tiles[xTile][yTile], [x, y], this);
-					if (path.length < 1) {
-						this._tiles[xTile][yTile].setUnreachable();
+				findFloor: if (this._tiles[xTile][yTile].isSolid()) {
+					for (let xDiff of _.range(-1, 2)) {
+						for (let yDiff of _.range(-1, 2)) {
+							if (xDiff !== 0 || yDiff !== 0) {
+								let newX = parseInt(xTile) + xDiff;
+								let newY = parseInt(yTile) + yDiff;
+								if (newX < 0 || newY < 0) {
+									continue;
+								} else if (newX >= this.getWidth() || newY >= this.getHeight()) {
+									continue;
+								}
+								if (!this._tiles[String(newX)][String(newY)].isSolid()) {
+									break findFloor;
+								}
+							}
+						}
 					}
+					this._tiles[xTile][yTile].setUnreachable();
 				}
 			}
 		}

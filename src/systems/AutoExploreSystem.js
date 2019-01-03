@@ -5,8 +5,7 @@ const targetTileCache = {};
 const autoExplore = (entity) => {
     let targetTile = targetTileCache[entity.getUid()];
     if (!targetTile || targetTile.getIsExplored()) {
-        targetTile = entity.getMap().getShortestUnexploredPath(...entity.getCoordinates());
-        console.log(targetTile);
+        targetTile = entity.getMap().getNearestUnexploredTile(...entity.getCoordinates());
         if( targetTile ) {
             targetTileCache[entity.getUid()] = targetTile;
         } else {
