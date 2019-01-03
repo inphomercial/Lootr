@@ -60,6 +60,7 @@ Lootr.Screens.Inventory = {
 				break;
 			
 			case ROT.KEYS.VK_RETURN:
+			case ROT.KEYS.VK_ENTER:
 				Lootr.switchSubScreen(Lootr.Screens.InventoryDetail, this._selectedItem);
 				break;
 
