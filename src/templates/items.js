@@ -5,6 +5,7 @@ Lootr.Templates.Items.WoodenSword = {
     char: "!",
 	foreground: "brown",
 	background: "white",
+	description: "A crappy wooden sword",
 
 	componentList: {
 		'Wieldable': {},
@@ -21,6 +22,7 @@ Lootr.Templates.Items.Dagger = {
 	name: "Dagger",
     char: ")",
 	foreground: "gold",
+	description: "A golden dagger",
 
 	componentList: {
 		'Wieldable': {},
@@ -38,6 +40,7 @@ Lootr.Templates.Items.Corpse = {
 	char: '%',
 	foreground: 'red',
 	background: 'brown',
+	description: "A bloodied corpse",
 
 	componentList: {}
 }
@@ -48,6 +51,7 @@ Lootr.Templates.Items.WoodenShield = {
 	char: "]",
 	foreground: "brown",
 	background: "white",
+	description: "A crappy wooden shield",
 
 	// Proposed idea for passing unique values to the components
 	componentList: {

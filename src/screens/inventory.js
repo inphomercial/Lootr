@@ -8,23 +8,24 @@ Lootr.Screens.Inventory = {
 
 		this._gameDisplay = gameDisplay;
 		
+		this._player = Lootr.getPlayer();
+		this._inventory = this._player.getComponent("Inventory").inventory;
+
 		this._selectedIndex = 3;
+		this._startingPostition = 3;
+		this._endingPosition = this._inventory.length + this._startingPostition - 1;
+		this._selectedItem = '';
     },
 
     renderGame: function () {
-		let player = Lootr.getPlayer();
-		let inventory = player.getComponent("Inventory").inventory;
-
 		this._gameDisplay.drawText(1, 1, "Inventory Screen");
 
-		let startingPostition = 3;
-		for (let index = 0; index < inventory.length; index++) {
-			const item = inventory[index];
-
-			let selected = this._selectedIndex == index+startingPostition ? '>' : '%c{black}>%c{grey}';
-			let fullText = `${selected} ${item.getName()}`;
+		for (let index = 0; index < this._inventory.length; index++) {
+			const item = this._inventory[index];
+			const selected = this._selectedIndex == index+this._startingPostition ? '>' : '%c{black}>%c{grey}';
+			const fullText = `${selected} ${item.getName()}`;
 		
-			this._gameDisplay.drawText(1, index+startingPostition, fullText);
+			this._gameDisplay.drawText(1, index+this._startingPostition, fullText);
 		}
     },
 
@@ -35,19 +36,37 @@ Lootr.Screens.Inventory = {
     handleInput( inputType, inputData ) {
 		switch(inputData.keyCode) {
 			case ROT.KEYS.VK_DOWN:
+				if(this._selectedIndex == this._endingPosition) {
+					return;
+				}
+
 				this._selectedIndex++;
+				this._selectedItem = this._inventory[this._selectedIndex - this._startingPostition] ;
+
 				break;
 			
 			case ROT.KEYS.VK_UP:
+				if(this._selectedIndex == this._startingPostition) {
+					return;
+				}
+
 				this._selectedIndex--;
+				this._selectedItem = this._inventory[this._selectedIndex - this._startingPostition];
+
 				break;
 
 			case ROT.KEYS.VK_ESCAPE:
 				Lootr.switchScreen(Lootr.Screens.Play);
+				break;
+			
+			case ROT.KEYS.VK_RETURN:
+				Lootr.switchSubScreen(Lootr.Screens.InventoryDetail, this._selectedItem);
 				break;
 
 			default:
 				break;
 		}
 	}
+
+
 }
