@@ -281,6 +281,7 @@ class Map {
 			if( x < startingCoords[0] + Lootr.getGameDisplayWidth() && y <  startingCoords[1] + Lootr.getGameDisplayHeight()) {
 				if(Lootr.getPlayer().canSeeTile(x, y)) {
 					entity.setLastKnownCoords(x, y);
+					entity.setLastKnownPlayerCoords(...Lootr.getPlayer().getCoordinates());
 					display.draw(x - startingCoords[0], y - startingCoords[1], entity.getChar(), entity.getForeground(), entity.getBackground());
 				} else if (lastCoords.length === 2 && !Lootr.getPlayer().canSeeTile(...lastCoords)) {
 					display.draw(lastCoords[0] - startingCoords[0], lastCoords[1] - startingCoords[1], entity.getChar(), entity.getForeground(), entity.getBackground());
