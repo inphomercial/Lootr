@@ -221,53 +221,17 @@ class Map {
 		return [startingX,startingY];
 	}
 	
-	renderMap( display, centerCoordinates ) {
+	renderMap( display, centerCoordinates, overrideColor = false ) {
 		const startingCoords = this.getStartingCoordinates(...centerCoordinates);
 		for ( var x = 0; x < Lootr.getGameDisplayWidth(); x++ ) {
 			for ( var y = 0; y < Lootr.getGameDisplayHeight(); y++ ) {
 				var tile = this.getTile(x + startingCoords[0], y + startingCoords[1]);
 				if (tile.getIsExplored()) {
-					display.draw(x, y, tile.getChar(), tile.getForeground(), tile.getBackground());
+					display.draw(x, y, tile.getChar(), overrideColor || tile.getForeground(), tile.getBackground());
 				}
 			}
 		}
 		return;
-		
-		var screenWidth = Lootr.getGameDisplayWidth();
-		var screenHeight = Lootr.getGameDisplayHeight();
-		var player = Lootr.getPlayer();
-	
-		// Make sure the x-axis doesn't go to the left of the left bound
-		var topLeftX = Math.max(0, player.getX() - (screenWidth / 2));
-		// Make sure we still have enough space to fit an entire game screen
-		topLeftX = Math.min(topLeftX, this.getWidth() - screenWidth);
-		// Make sure the y-axis doesn't above the top bound
-		var topLeftY = Math.max(0, player.getY() - (screenHeight / 2));
-		// Make sure we still have enough space to fit an entire game screen
-		topLeftY = Math.min(topLeftY, this.getHeight() - screenHeight);
-		// Iterate through all visible map cells
-		for (var x = topLeftX; x < topLeftX + screenWidth; x++) {
-			for (var y = topLeftY; y < topLeftY + screenHeight; y++) {
-				// Fetch the glyph for the tile and render it to the screen
-				// at the offset position.
-				// var glyph = this._map.getTile(x, y).getGlyph();
-				var tile = this.getTile(x, y);
-				display.draw(x - topLeftX, y - topLeftY, tile.getChar(), tile.getForeground(), tile.getBackground());
-				// display.draw(
-				// 	x - topLeftX,
-				// 	y - topLeftY,
-				// 	glyph.getChar(), 
-				// 	glyph.getForeground(), 
-				// 	glyph.getBackground());
-			}
-		}
-		// Render the cursor
-		display.draw(
-			this._centerX - topLeftX, 
-			this._centerY - topLeftY,
-			'@',
-			'white',
-			'black');
 	}
 	
 	renderEntities( display, centerCoordinates ) {
