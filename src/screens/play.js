@@ -72,7 +72,11 @@ Lootr.Screens.Play = {
 			case ROT.KEYS.VK_4:
 			case ROT.KEYS.VK_LEFT:
 				player.tryMovingTo(-1, 0);
-				break;
+                break;
+                
+            case ROT.KEYS.VK_5:
+            case ROT.KEYS.VK_S:
+                break;
 
 			case ROT.KEYS.VK_6:
 			case ROT.KEYS.VK_RIGHT:
@@ -110,6 +114,7 @@ Lootr.Screens.Play = {
                 break;
             
             default:
+                Logger(`Unkown Command ${code}`);
                 return;
         }
         this.map.getEngine().unlock();

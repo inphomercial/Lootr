@@ -221,26 +221,13 @@ class Map {
 		return [startingX,startingY];
 	}
 	
-	renderMap( display, centerCoordinates ) {
+	renderMap( display, centerCoordinates, overrideColor = false ) {
 		const startingCoords = this.getStartingCoordinates(...centerCoordinates);
 		for ( var x = 0; x < Lootr.getGameDisplayWidth(); x++ ) {
 			for ( var y = 0; y < Lootr.getGameDisplayHeight(); y++ ) {
 				var tile = this.getTile(x + startingCoords[0], y + startingCoords[1]);
 				if (tile.getIsExplored()) {
-					display.draw(x, y, tile.getChar(), tile.getForeground(), tile.getBackground());
-				}
-			}
-		}
-		return;
-	}
-
-	renderMapOverview( display, centerCoordinates ) {
-		const startingCoords = this.getStartingCoordinates(...centerCoordinates);
-		for ( var x = 0; x < Lootr.getGameDisplayWidth(); x++ ) {
-			for ( var y = 0; y < Lootr.getGameDisplayHeight(); y++ ) {
-				var tile = this.getTile(x + startingCoords[0], y + startingCoords[1]);
-				if (tile.getIsExplored()) {
-					display.draw(x, y, tile.getChar(), 'blue', tile.getBackground());
+					display.draw(x, y, tile.getChar(), overrideColor || tile.getForeground(), tile.getBackground());
 				}
 			}
 		}
