@@ -21,6 +21,17 @@ const drawCursor = (display, x, y) => {
     }
 }
 
+const restrainCursor = (cursor, map) => {
+    cursor[0] = (cursor[0] < 0) ? 0 : cursor[0];
+    cursor[1] = (cursor[1] < 0) ? 0 : cursor[1];
+    cursor[0] = (cursor[0] >= map.getWidth()) 
+        ? map.getWidth()-1 : cursor[0];
+    cursor[1] = (cursor[1] >= map.getHeight()) 
+        ? map.getHeight()-1 : cursor[1];
+
+    return cursor;
+}
+
 Lootr.Screens.MapOverview = {
     _caption: "Map Overview Screen",
 
@@ -106,13 +117,7 @@ Lootr.Screens.MapOverview = {
 				break;
         }
 
-        if (this._cursor[0] < 0 || this._cursor[1] < 0) {
-            return;
-        } else if (this._cursor[0] >= Lootr.getPlayer().getMap().getWidth() || 
-        this._cursor[1] >= Lootr.getPlayer().getMap().getHeight()) {
-            return;
-        }
-        
+        this._cursor = restrainCursor(this._cursor, this._player.getMap());
         Lootr.refreshScreens();
 	}
 }
