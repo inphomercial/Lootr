@@ -1,45 +1,52 @@
 
 Lootr.EntityComponents = {};
 
-Lootr.EntityComponents.Moveable = function Moveable() {
+Lootr.EntityComponents.Moveable = () => {
 	return {
 		name: "Moveable" 
 	}
 };
 
-Lootr.EntityComponents.Player = function Player() {
+Lootr.EntityComponents.Player = () => {
 	return {
 		name: "Player" 
 	}
 };
 
-Lootr.EntityComponents.Actor = function Actor() {
+Lootr.EntityComponents.Actor = () => {
 	return {
 		name: "Actor" 
 	}
 };
 
-Lootr.EntityComponents.Inventory = function Inventory(template) {
+Lootr.EntityComponents.GoldHolder = (template) => {
+	return {
+		name: "GoldHolder",
+		gold: template.gold
+	}
+}
+
+Lootr.EntityComponents.Inventory = (template) => {
 	return {
 		name: "Inventory",
 		inventory: template.inventory
 	}
 };
 
-Lootr.EntityComponents.Slots = function Slots(template) {
+Lootr.EntityComponents.Slots = (template) => {
 	return {
 		name: "Slots",
 		slots: template.slots
 	}
 };
 
-Lootr.EntityComponents.PassThroughSolids = function PassThroughSolids() {
+Lootr.EntityComponents.PassThroughSolids = () => {
 	return {
 		name: "PassThroughSolids"
 	}
 };
 
-Lootr.EntityComponents.Health = function Health(template) {
+Lootr.EntityComponents.Health = (template) => {
 	return {
 		name: "Health",
 		hp: template.hp,
@@ -47,26 +54,26 @@ Lootr.EntityComponents.Health = function Health(template) {
 	}
 }
 
-Lootr.EntityComponents.Flying = function Flying(template) {
+Lootr.EntityComponents.Flying = (template) => {
 	return {
 		name: "Flying"
 	}
 }
 
-Lootr.EntityComponents.Enemy = function Enemy(template) {
+Lootr.EntityComponents.Enemy = (template) => {
 	return {
 		name: "Enemy"
 	}
 }
 
-Lootr.EntityComponents.Bleedable = function Bleedable(template) {
+Lootr.EntityComponents.Bleedable = (template) => {
 	return {
 		name: "Bleedable",
 		bleedColor: template.bleedColor || "red"
 	}
 }
 
-Lootr.EntityComponents.Corpseable = function Corpseable() {
+Lootr.EntityComponents.Corpseable = () => {
 	return {
 		name: "Corpseable"
 	}
