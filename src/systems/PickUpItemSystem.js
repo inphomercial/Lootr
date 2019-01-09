@@ -23,7 +23,7 @@ const PickUpItemSystem = (map, entity) => {
 	}
 
 	if (!entity.hasComponent('Inventory')) {
-        return;
+		return;
 	}
 
 	let currentInventory = entity.getComponent("Inventory").inventory;
