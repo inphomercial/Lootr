@@ -47,6 +47,11 @@ class Overworld extends Map {
 		
 		var dagger = new Item(Lootr.Templates.Items.Dagger);
 		this.addItemAt(...this.getRandomUnexploredPassableTile().getCoordinates(), dagger);
+	
+		for(let i = 0; i < 50; i++) {
+			var gold = new Item(Lootr.Templates.Items.Gold);
+			this.addItemAt(...this.getRandomUnexploredPassableTile().getCoordinates(), gold);
+		}
 	}
 
 	addEnemies() {

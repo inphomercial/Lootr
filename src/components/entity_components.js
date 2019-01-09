@@ -19,6 +19,13 @@ Lootr.EntityComponents.Actor = function Actor() {
 	}
 };
 
+Lootr.EntityComponents.GoldHolder = function GoldHolder(template) {
+	return {
+		name: "GoldHolder",
+		gold: template.gold
+	}
+}
+
 Lootr.EntityComponents.Inventory = function Inventory(template) {
 	return {
 		name: "Inventory",

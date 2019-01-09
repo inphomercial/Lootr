@@ -18,6 +18,15 @@ Lootr.Templates.Items.WoodenSword = {
 	}
 }
 
+Lootr.Templates.Items.Gold = {
+	name: "Gold",
+	char: "$",
+	foreground: "gold",
+	description: "Gold coin",
+
+	componentList: {}
+}
+
 Lootr.Templates.Items.Dagger = {
 	name: "Dagger",
     char: ")",

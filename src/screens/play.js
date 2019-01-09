@@ -54,18 +54,7 @@ Lootr.Screens.Play = {
 			
 			case ROT.KEYS.VK_PERIOD:
 				let map = this.map;
-				let currentX = player.getX();
-				let currentY = player.getY();
-				let item = map.getItemAt(currentX, currentY);
-
-				if (item) {
-					let inven = player.getComponent("Inventory").inventory;
-					inven.push(item);
-					map.removeItem(item);
-					Logger(`You pick up a ${item.getName()}`);
-				} else {
-					Logger("Nothing to pick up.");
-				}
+				PickUpItemSystem(map, player);
 
 				break;
 
