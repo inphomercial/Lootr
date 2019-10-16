@@ -22,14 +22,24 @@ Lootr.EntityComponents.Actor = () => {
 Lootr.EntityComponents.GoldHolder = (template) => {
 	return {
 		name: "GoldHolder",
-		gold: template.gold
+		gold: template.gold,
+		addGold: (entity, amount) => {
+			entity.getComponent('GoldHolder').gold += amount;
+		}
 	}
-}
+};
 
 Lootr.EntityComponents.Inventory = (template) => {
 	return {
 		name: "Inventory",
 		inventory: template.inventory,
+		addItem: (entity, item) => {
+			let currentInventory = entity.getComponent("Inventory").inventory;
+
+			currentInventory.push(item);
+		
+			entity.getComponent('Inventory').inventory = currentInventory;
+		},
 		removeItem: (entity, item) => {
 			let currentInventory = entity.getComponent('Inventory').inventory;
 
