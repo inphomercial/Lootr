@@ -4,12 +4,35 @@ class Glyph {
 	constructor(template) {
 		// Set our Defaults
 		this._char = template.char || "?";
-		this._foreground = template.foreground || 'yellow';
-		this._originalForeground = this._foreground;
-		this._background = template.background || 'black';
 
-		this._internalTimingMax = Array.isArray(template.foreground) ? template.foreground.length : 1;
-		this._internalTimeingCurrent = 1;
+		// Sets our foreground regardless of it its a string or array
+		this._initForeground(template);
+
+		// Can be used to change a tile back to what it original was if it changes
+		this._originalForeground = this._foreground;
+
+		// Contains the original template values for foreground (might be an array)
+		this._foregroundTemplate = template.foreground;
+
+		this._background = template.background || 'black';
+	}
+
+	_initForeground(template) {
+		if (Array.isArray(template.foreground)) {
+			this._foreground = template.foreground[0];
+
+			return;
+		}
+
+		this._foreground = template.foreground || 'yellow';
+	}
+
+	_getNextForeground() {
+		if (Array.isArray(this._foregroundTemplate)) {
+			return Lootr.Utilities.getRandomFromArray(this._foregroundTemplate);
+		}
+
+		return this._foreground;
 	}
 
 	getChar() {
@@ -18,7 +41,7 @@ class Glyph {
 
 	getForeground() {
 		if(Lootr.getPlayer().canSeeTile(this.getX(), this.getY())) {
-			return this._foreground;
+			return this._getNextForeground();
 		} else {
 			return 'grey';
 		}
@@ -34,6 +57,16 @@ class Glyph {
 
 	setForeground(color) {
 		this._foreground = color;
+	}
+
+	addForegroundColor(color) {
+		if (Array.isArray(this._foregroundTemplate)) {
+			this._foregroundTemplate.push(color);
+			
+			return;
+		}
+
+		this._foregroundTemplate = [this._foreground, color];
 	}
 
 	setBackground(color) {

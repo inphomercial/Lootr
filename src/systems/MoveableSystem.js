@@ -19,6 +19,7 @@ function MoveableSystem(entity, dX, dY) {
 		return false;
 	}
 
+	// Attempting to pass into an occupided tile, if enemy on tile, fight
 	if (map.isTileOccupied(newX, newY)) {
 		let occupiedBy = map.getEntityAt(newX, newY);
 
@@ -30,9 +31,8 @@ function MoveableSystem(entity, dX, dY) {
 		return true;
 	}
 
+	// Attempting to pass through a solid tile
 	if (map.isTileSolid(newX, newY) && !entity.hasComponent('PassThroughSolids')) {
-		LoggerPlayer(entity, `tile is solid and ${entity.getName()} cannot pass thru walls`);
-
 		return false;
 	}
 

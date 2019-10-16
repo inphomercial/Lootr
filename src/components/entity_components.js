@@ -98,6 +98,15 @@ Lootr.EntityComponents.Corpseable = () => {
 	}
 }
 
+Lootr.EntityComponents.Burnable = () => {
+	return {
+		name: "Burnable",
+		setOnFire(entity, color) {
+			entity.addForegroundColor(color);
+		}
+	}
+}
+
 // Lootr.EntityComponents.MessageReceiver = ({
 // 	name: "MessageReceiver",
 // 	init: function() {

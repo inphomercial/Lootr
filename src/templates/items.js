@@ -23,7 +23,7 @@ Lootr.Templates.Items.Gold = {
 	template: "Gold",
 	name: "Gold",
 	char: "$",
-	foreground: "gold",
+	foreground: ["gold", 'yellow'],
 	description: "Gold coin",
 
 	componentList: {}
@@ -33,7 +33,7 @@ Lootr.Templates.Items.Dagger = {
 	template: "Dagger",
 	name: "Dagger",
     char: ")",
-	foreground: "gold",
+	foreground: 'white',
 	description: "A golden dagger",
 
 	componentList: {
@@ -48,7 +48,7 @@ Lootr.Templates.Items.Dagger = {
 }
 
 Lootr.Templates.Items.Corpse = {
-	template: "Corpose",
+	template: "Corpse",
 	name: "Corpse",
 	char: '%',
 	foreground: 'red',

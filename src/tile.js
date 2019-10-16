@@ -5,15 +5,12 @@ class Tile extends DynamicGlyph {
 		super(template);
 
 		// Set the default properties
-		this._isExplored = false;
-		this._isSolid = false;
-		this._isOpaque = false;
 		this._x = x;
 		this._y = y;
 		this._reachable = true;
-
-		// Replace our defaults with template values
-		Object.assign(this, template);
+		this._isExplored = false;
+		this._isSolid = template.isSolid || false;
+		this._isOpaque = template.isOpaque || false;
 	}
 
 	getIsExplored() {

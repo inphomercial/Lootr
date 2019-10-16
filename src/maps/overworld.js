@@ -60,6 +60,12 @@ class Overworld extends Map {
 
 		var goblin2 = createEntity(Lootr.Templates.Entities.Goblin);
 		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), goblin2);
+		
+		var goblin3 = createEntity(Lootr.Templates.Entities.Goblin);
+		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), goblin3);
+		
+		var goblin4 = createEntity(Lootr.Templates.Entities.Goblin);
+		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), goblin4);
 
 		var ghost = createEntity(Lootr.Templates.Entities.Ghost);
 		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), ghost);
@@ -116,7 +122,7 @@ class Overworld extends Map {
 		});
 
 		// Generate Lava
-		generator.randomize(.14);
+		generator.randomize(.24);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
 				temp_map[x][y] = createTile(Templates.Tiles.LavaTile, x, y);

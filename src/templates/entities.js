@@ -49,6 +49,7 @@ Lootr.Templates.Entities.Goblin = {
 		"Bleedable": {
 			bleedColor: "red"
 		},
+		"Burnable": {},
 		"Corpseable": {}
 	}
 };
