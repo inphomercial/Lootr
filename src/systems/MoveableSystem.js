@@ -34,7 +34,12 @@ function MoveableSystem(entity, dX, dY) {
 		LoggerPlayer(entity, `tile is solid and ${entity.getName()} cannot pass thru walls`);
 
 		return false;
-    }
+	}
+
+	let itemInLocation = map.getTopMostItemAt(newX, newY);
+	if (itemInLocation) {
+		LoggerPlayer(entity, `You see a ${ itemInLocation.getName() } on the ground.`);
+	}
     
     entity.setPreviousCoords(...entity.getCoordinates());
 

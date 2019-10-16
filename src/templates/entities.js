@@ -1,6 +1,7 @@
 'use strict';
 
 Lootr.Templates.Entities.Player = {
+	template: 'Player',
     name: "Hulk",
     char: "@",
 	foreground: "red",
@@ -33,6 +34,7 @@ Lootr.Templates.Entities.Player = {
 };
 
 Lootr.Templates.Entities.Goblin = {
+	template: 'Goblin',
     name: "Goblin",
     char: "g",
 	foreground: "green",
@@ -52,6 +54,7 @@ Lootr.Templates.Entities.Goblin = {
 };
 
 Lootr.Templates.Entities.Slime = {
+	template: 'Slime',
 	name: "Slime",
 	char: "s",
 	foreground: "green",
@@ -70,6 +73,7 @@ Lootr.Templates.Entities.Slime = {
 }
 
 Lootr.Templates.Entities.Bat = {
+	template: 'Bat',
 	name: "Bat",
 	char: "b",
 	foreground: "black",
@@ -91,6 +95,7 @@ Lootr.Templates.Entities.Bat = {
 }
 
 Lootr.Templates.Entities.Rat = {
+	template: 'Rat',
 	name: "Rat",
 	char: "r",
 	foreground: "brown",
@@ -110,6 +115,7 @@ Lootr.Templates.Entities.Rat = {
 }
 
 Lootr.Templates.Entities.Ghost = {
+	template: 'Ghost',
     name: "Ghost",
     char: "h",
 	foreground: "white",

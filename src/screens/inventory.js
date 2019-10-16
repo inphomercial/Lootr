@@ -20,9 +20,15 @@ Lootr.Screens.Inventory = {
     renderGame: function () {
 		this._gameDisplay.drawText(1, 1, "Inventory Screen");
 
+		if (!this._inventory.length) {
+			this._gameDisplay.drawText(1, 4, "You are carrying nothing.");
+
+			return;
+		}
+
 		for (let index = 0; index < this._inventory.length; index++) {
 			const item = this._inventory[index];
-			const selected = this._selectedIndex == index+this._startingPostition ? '>' : '%c{black}>%c{grey}';
+			const selected = this._selectedIndex == (index + this._startingPostition) ? '>' : '%c{black}>%c{grey}';
 			const fullText = `${selected} ${item.getName()}`;
 		
 			this._gameDisplay.drawText(1, index+this._startingPostition, fullText);
@@ -34,48 +40,49 @@ Lootr.Screens.Inventory = {
     },
 
     handleInput( inputType, inputData ) {
-			console.log('Inventory screen input', inputType, inputData);
-			switch(inputData.keyCode) {
-				case ROT.KEYS.VK_DOWN:
-					if(this._selectedIndex == this._endingPosition) {
-						return;
-					}
+		console.log('Inventory screen input', inputType, inputData);
 
-					this._selectedIndex++;
-					this._selectedItem = this._inventory[this._selectedIndex - this._startingPostition] ;
+		switch(inputData.keyCode) {
+			case ROT.KEYS.VK_DOWN:
+				if(this._selectedIndex == this._endingPosition) {
+					return;
+				}
 
-					break;
-				
-				case ROT.KEYS.VK_UP:
-					if(this._selectedIndex == this._startingPostition) {
-						return;
-					}
+				this._selectedIndex++;
+				this._selectedItem = this._inventory[this._selectedIndex - this._startingPostition] ;
 
-					this._selectedIndex--;
-					this._selectedItem = this._inventory[this._selectedIndex - this._startingPostition];
+				break;
+			
+			case ROT.KEYS.VK_UP:
+				if(this._selectedIndex == this._startingPostition) {
+					return;
+				}
 
-					break;
+				this._selectedIndex--;
+				this._selectedItem = this._inventory[this._selectedIndex - this._startingPostition];
 
-				case ROT.KEYS.VK_ESCAPE:
-					Lootr.switchScreen(Lootr.Screens.Play);
-					break;
-				
-				case ROT.KEYS.VK_RETURN:
-				case ROT.KEYS.VK_ENTER:
-					const args = {
-						entity: this._player,
-						selectedItem: this._selectedItem
-					}
+				break;
 
-					Lootr.switchSubScreen(Lootr.Screens.InventoryDetail, args);
-					break;
+			case ROT.KEYS.VK_ESCAPE:
+				Lootr.switchScreen(Lootr.Screens.Play);
+				break;
+			
+			case ROT.KEYS.VK_RETURN:
+			case ROT.KEYS.VK_ENTER:
+				this._selectedItem = this._inventory[this._selectedIndex - this._startingPostition];
 
-				default:
-					break;
-			}
+				const args = {
+					entity: this._player,
+					selectedItem: this._selectedItem
+				}
 
-			Lootr.refreshScreens();
+				Lootr.switchSubScreen(Lootr.Screens.InventoryDetail, args);
+				break;
+
+			default:
+				break;
 		}
 
-
+		Lootr.refreshScreens();
+	}
 }

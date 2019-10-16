@@ -1,6 +1,7 @@
 'use strict';
 
 Lootr.Templates.Items.WoodenSword = {
+	template: "WoodenSword",
 	name: "Wooden Sword",
     char: "!",
 	foreground: "brown",
@@ -19,6 +20,7 @@ Lootr.Templates.Items.WoodenSword = {
 }
 
 Lootr.Templates.Items.Gold = {
+	template: "Gold",
 	name: "Gold",
 	char: "$",
 	foreground: "gold",
@@ -28,6 +30,7 @@ Lootr.Templates.Items.Gold = {
 }
 
 Lootr.Templates.Items.Dagger = {
+	template: "Dagger",
 	name: "Dagger",
     char: ")",
 	foreground: "gold",
@@ -45,6 +48,7 @@ Lootr.Templates.Items.Dagger = {
 }
 
 Lootr.Templates.Items.Corpse = {
+	template: "Corpose",
 	name: "Corpse",
 	char: '%',
 	foreground: 'red',
@@ -55,6 +59,7 @@ Lootr.Templates.Items.Corpse = {
 }
 
 Lootr.Templates.Items.WoodenShield = {
+	template: "WoodenShield",
 	name: "Wooden Shield",
 	// Glphy Values
 	char: "]",

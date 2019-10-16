@@ -30,3 +30,27 @@
 //     // Create the object, passing the template as an argument
 //     return new this._ctor(template);
 // };
+
+function createItem(template) {
+	if (!Lootr.Templates.Items[template.template]) {
+		throw new Error(`No Item template exists for ${ template.template }`);
+	}
+
+	return new Item(Lootr.Templates.Items[template.template]);
+}
+
+function createEntity(template) {
+	if (!Lootr.Templates.Entities[template.template]) {
+		throw new Error(`No Entity template exists for ${ template.template }`);
+	}
+
+	return new Entity(Lootr.Templates.Entities[template.template]);
+}
+
+function createTile(template, x, y) {
+	if (!Lootr.Templates.Tiles[template.template]) {
+		throw new Error(`No Tile template exists for ${ template.template }`);
+	}
+
+	return new Tile(Lootr.Templates.Tiles[template.template], x, y);
+}

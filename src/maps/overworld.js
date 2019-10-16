@@ -11,6 +11,7 @@ class Overworld extends Map {
 		// Add player to map
 		var player = new Player(Lootr.Templates.Entities.Player);
 		Lootr.setPlayer(player);
+
 		const startingCoords = this.getRandomUnexploredPassableTile().getCoordinates();
 		this.addEntityAt(...startingCoords, player);
 		this.computeUnreachableTiles(...startingCoords);
@@ -19,11 +20,15 @@ class Overworld extends Map {
 		this.addItems();
 		
 		// Start player with a placeholder item for now
-		var dagger = new Item(Lootr.Templates.Items.Dagger);
-		var sword1 = new Item(Lootr.Templates.Items.WoodenSword);
-		var shield = new Item(Lootr.Templates.Items.WoodenShield);
-		player.getComponent("Inventory").inventory.push(sword1);
-		player.getComponent("Inventory").inventory.push(dagger);
+		var dagger = createItem(Lootr.Templates.Items.Dagger);
+		var sword1 = createItem(Lootr.Templates.Items.WoodenSword);
+		var shield = createItem(Lootr.Templates.Items.WoodenShield);
+
+		let InventoryComponent = player.getComponent('Inventory');
+		InventoryComponent.addItem(player, sword1);
+		InventoryComponent.addItem(player, dagger);
+		InventoryComponent.addItem(player, shield);
+
 		player.getComponent("Slots").slots.hand = shield;
 
 		//compute the player's initial line of sight
@@ -36,39 +41,39 @@ class Overworld extends Map {
 
 	addItems() {
 		// Add items to map
-		var woodenShield = new Item(Lootr.Templates.Items.WoodenShield);
+		let woodenShield = createItem(Lootr.Templates.Items.WoodenShield);
 		this.addItemAt(...this.getRandomUnexploredPassableTile().getCoordinates(), woodenShield);
 		
-		var dagger = new Item(Lootr.Templates.Items.Dagger);
+		let dagger = createItem(Lootr.Templates.Items.Dagger);
 		this.addItemAt(...this.getRandomUnexploredPassableTile().getCoordinates(), dagger);
 	
 		for(let i = 0; i < 50; i++) {
-			var gold = new Item(Lootr.Templates.Items.Gold);
+			let gold = createItem(Lootr.Templates.Items.Gold);
 			this.addItemAt(...this.getRandomUnexploredPassableTile().getCoordinates(), gold);
 		}
 	}
 
 	addEnemies() {
 		// Add entities to map
-		var goblin = new Entity(Lootr.Templates.Entities.Goblin);
+		var goblin = createEntity(Lootr.Templates.Entities.Goblin);
 		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), goblin);
 
-		var goblin2 = new Entity(Lootr.Templates.Entities.Goblin);
+		var goblin2 = createEntity(Lootr.Templates.Entities.Goblin);
 		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), goblin2);
 
-		var ghost = new Entity(Lootr.Templates.Entities.Ghost);
+		var ghost = createEntity(Lootr.Templates.Entities.Ghost);
 		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), ghost);
 
-		var bat = new Entity(Lootr.Templates.Entities.Bat);
+		var bat = createEntity(Lootr.Templates.Entities.Bat);
 		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), bat);
 		
-		var rat1 = new Entity(Lootr.Templates.Entities.Rat);
+		var rat1 = createEntity(Lootr.Templates.Entities.Rat);
 		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), rat1);
 		
-		var rat2 = new Entity(Lootr.Templates.Entities.Rat);
+		var rat2 = createEntity(Lootr.Templates.Entities.Rat);
 		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), rat2);
 		
-		var slime = new Entity(Lootr.Templates.Entities.Slime);
+		var slime = createEntity(Lootr.Templates.Entities.Slime);
 		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), slime);
 	}
 
@@ -88,17 +93,17 @@ class Overworld extends Map {
 		generator.randomize(0.5);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Templates.Tiles.WallTile, x, y);
+				temp_map[x][y] = createTile(Templates.Tiles.WallTile, x, y);
 			} else {
-				temp_map[x][y] = new Tile(Templates.Tiles.FloorTile, x, y);
+				temp_map[x][y] = createTile(Templates.Tiles.FloorTile, x, y);
 			}
 		});
 
 		generator.connect( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Templates.Tiles.WallTile, x, y);
+				temp_map[x][y] = createTile(Templates.Tiles.WallTile, x, y);
 			} else {
-				temp_map[x][y] = new Tile(Templates.Tiles.FloorTile, x, y);
+				temp_map[x][y] = createTile(Templates.Tiles.FloorTile, x, y);
 			}
 		});
 
@@ -106,7 +111,15 @@ class Overworld extends Map {
 		generator.randomize(.14);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Templates.Tiles.WaterDeepTile, x, y);
+				temp_map[x][y] = createTile(Templates.Tiles.WaterDeepTile, x, y);
+			}
+		});
+
+		// Generate Lava
+		generator.randomize(.14);
+		generator.create( function ( x, y, v ) {
+			if ( v === 1 ) {
+				temp_map[x][y] = createTile(Templates.Tiles.LavaTile, x, y);
 			}
 		});
 
@@ -114,7 +127,7 @@ class Overworld extends Map {
 		generator.randomize(.24);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Templates.Tiles.WaterShallowTile, x, y);
+				temp_map[x][y] = createTile(Templates.Tiles.WaterShallowTile, x, y);
 			}
 		});
 
@@ -122,7 +135,7 @@ class Overworld extends Map {
 		generator.randomize(.05);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Templates.Tiles.RubyTile, x, y);
+				temp_map[x][y] = createTile(Templates.Tiles.RubyTile, x, y);
 			}
 		});
 
@@ -130,7 +143,7 @@ class Overworld extends Map {
 		generator.randomize(.08);
 		generator.create( function ( x, y, v ) {
 			if ( v === 1 ) {
-				temp_map[x][y] = new Tile(Templates.Tiles.GoldTile, x, y);
+				temp_map[x][y] = createTile(Templates.Tiles.GoldTile, x, y);
 			}
 		});
 

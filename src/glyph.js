@@ -7,6 +7,9 @@ class Glyph {
 		this._foreground = template.foreground || 'yellow';
 		this._originalForeground = this._foreground;
 		this._background = template.background || 'black';
+
+		this._internalTimingMax = Array.isArray(template.foreground) ? template.foreground.length : 1;
+		this._internalTimeingCurrent = 1;
 	}
 
 	getChar() {
