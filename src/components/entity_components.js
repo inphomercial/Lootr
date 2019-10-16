@@ -107,6 +107,17 @@ Lootr.EntityComponents.Burnable = () => {
 	}
 }
 
+// Can be used to give an entity the ability to spawn additional entities
+// based on `spawnChance` and with a number of spawns before it stops
+Lootr.EntityComponents.EntitySpawner = (template) => {
+	return {
+		name: "EntitySpawner",
+		spawns: template.spawns || null,
+		spawnChance: template.spawnChance, //a number between 0-1000
+		spawnNumber: template.spawnNumber
+	}
+}
+
 // Lootr.EntityComponents.MessageReceiver = ({
 // 	name: "MessageReceiver",
 // 	init: function() {

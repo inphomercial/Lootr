@@ -79,6 +79,9 @@ class Entity extends DynamicGlyph {
 			return;
 		}
 
-		EnemyMovementSystem(this);
+		if (this.hasComponent('Actor') && this.hasComponent('Enemy')) {
+			EnemyMovementSystem(this);
+			SpawnSystem(this);
+		}
 	}
 }

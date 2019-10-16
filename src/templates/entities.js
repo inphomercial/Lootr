@@ -95,6 +95,44 @@ Lootr.Templates.Entities.Bat = {
 	}
 }
 
+Lootr.Templates.Entities.Spider = {
+	template: 'Spider',
+	name: "Spider",
+	char: "x",
+	foreground: "red",
+	background: "black",
+	speed: 6,
+	componentList: {
+		"Actor": {},
+		"Moveable": {},
+		"Enemy": {},
+		"Health": {
+			hp: 3
+		}
+	}
+}
+
+Lootr.Templates.Entities.SpiderNest = {
+	template: 'SpiderNest',
+	name: "Spider Nest",
+	char: "&",
+	foreground: "white",
+	background: "black",
+	speed: 1,
+	componentList: {
+		"Actor": {},
+		"Enemy": {},
+		"Health": {
+			hp: 10
+		},
+		"EntitySpawner": {
+			spawns: Lootr.Templates.Entities.Spider,
+			spawnChance: 10,  // 0-1000
+			spawnNumber: 5
+		}
+	}
+}
+
 Lootr.Templates.Entities.Rat = {
 	template: 'Rat',
 	name: "Rat",

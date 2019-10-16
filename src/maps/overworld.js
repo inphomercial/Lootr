@@ -16,17 +16,15 @@ class Overworld extends Map {
 		this.addEntityAt(...startingCoords, player);
 		this.computeUnreachableTiles(...startingCoords);
 
-		this.addEnemies();
-		this.addItems();
+		this.addEnemiesToMap();
+		this.addItemsToMap();
 		
 		// Start player with a placeholder item for now
-		var dagger = createItem(Lootr.Templates.Items.Dagger);
-		var sword1 = createItem(Lootr.Templates.Items.WoodenSword);
 		var shield = createItem(Lootr.Templates.Items.WoodenShield);
 
 		let InventoryComponent = player.getComponent('Inventory');
-		InventoryComponent.addItem(player, sword1);
-		InventoryComponent.addItem(player, dagger);
+		InventoryComponent.addItem(player, createItem(Lootr.Templates.Items.Dagger));
+		InventoryComponent.addItem(player, createItem(Lootr.Templates.Items.WoodenSword));
 		InventoryComponent.addItem(player, shield);
 
 		player.getComponent("Slots").slots.hand = shield;
@@ -39,52 +37,25 @@ class Overworld extends Map {
 		console.log('overworld', this);
 	}
 
-	addItems() {
+	addItemsToMap() {
 		// Add items to map
-		let woodenShield = createItem(Lootr.Templates.Items.WoodenShield);
-		this.addItemAt(...this.getRandomUnexploredPassableTile().getCoordinates(), woodenShield);
-		
-		let dagger = createItem(Lootr.Templates.Items.Dagger);
-		this.addItemAt(...this.getRandomUnexploredPassableTile().getCoordinates(), dagger);
-	
-		for(let i = 0; i < 50; i++) {
-			let gold = createItem(Lootr.Templates.Items.Gold);
-			this.addItemAt(...this.getRandomUnexploredPassableTile().getCoordinates(), gold);
-		}
+		this.addItems(Lootr.Templates.Items.Gold, Lootr.Utilities.getRandomInt(25, 100));
+		this.addItems(Lootr.Templates.Items.Dagger, Lootr.Utilities.getRandomInt(0, 2));
+		this.addItems(Lootr.Templates.Items.WoodenShield, Lootr.Utilities.getRandomInt(0, 3));
 	}
 
-	addEnemies() {
+	addEnemiesToMap() {
 		// Add entities to map
-		var goblin = createEntity(Lootr.Templates.Entities.Goblin);
-		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), goblin);
-
-		var goblin2 = createEntity(Lootr.Templates.Entities.Goblin);
-		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), goblin2);
-		
-		var goblin3 = createEntity(Lootr.Templates.Entities.Goblin);
-		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), goblin3);
-		
-		var goblin4 = createEntity(Lootr.Templates.Entities.Goblin);
-		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), goblin4);
-
-		var ghost = createEntity(Lootr.Templates.Entities.Ghost);
-		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), ghost);
-
-		var bat = createEntity(Lootr.Templates.Entities.Bat);
-		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), bat);
-		
-		var rat1 = createEntity(Lootr.Templates.Entities.Rat);
-		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), rat1);
-		
-		var rat2 = createEntity(Lootr.Templates.Entities.Rat);
-		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), rat2);
-		
-		var slime = createEntity(Lootr.Templates.Entities.Slime);
-		this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), slime);
+		// this.addEntities(Lootr.Templates.Entities.Spider, Lootr.Utilities.getRandomInt(5, 10));
+		this.addEntities(Lootr.Templates.Entities.SpiderNest, Lootr.Utilities.getRandomInt(5, 10));
+		// this.addEntities(Lootr.Templates.Entities.Goblin, Lootr.Utilities.getRandomInt(5, 10));
+		// this.addEntities(Lootr.Templates.Entities.Ghost, Lootr.Utilities.getRandomInt(0, 10));
+		// this.addEntities(Lootr.Templates.Entities.Bat, Lootr.Utilities.getRandomInt(1, 2));
+		// this.addEntities(Lootr.Templates.Entities.Rat, Lootr.Utilities.getRandomInt(10, 20));
+		// this.addEntities(Lootr.Templates.Entities.Slime, Lootr.Utilities.getRandomInt(0, 5));
 	}
 
 	generateWorld() {
-
 		var temp_map = this.createEmptyMap();
 		const Templates = Lootr.Templates;
 

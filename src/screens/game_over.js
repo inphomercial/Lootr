@@ -13,6 +13,7 @@ Lootr.Screens.GameOver = {
 		let player = Lootr.getPlayer();
 
 		this._gameDisplay.drawText(1, 1, "Game Over Screen");
+		this._gameDisplay.drawText(1, 3, "You have DIED!");
     },
 
     exit: function() {
@@ -20,11 +21,19 @@ Lootr.Screens.GameOver = {
     },
 
     handleInput( inputType, inputData ) {
-		Logger("Resurrecting!!")
-		
-		let player = Lootr.getPlayer();
-		player.getComponent('Health').hp = player.getComponent('Health').maxHp;
+		switch(inputData.keyCode) {
+			case ROT.KEYS.VK_RETURN:
+			case ROT.KEYS.VK_ENTER:
+				Logger("Resurrecting!!")
+				
+				let player = Lootr.getPlayer();
+				player.getComponent('Health').hp = player.getComponent('Health').maxHp;
 
-        Lootr.switchScreen(Lootr.Screens.Play);
+				Lootr.switchScreen(Lootr.Screens.Play);
+				break;
+
+			default:
+				break;
+		}
     }
 }
