@@ -15,7 +15,6 @@ function Logger(log) {
 }
 
 function LoggerPlayer(entity, log) {
-
 	if (!entity.hasComponent('Player')) {
 		return;
 	}
@@ -30,5 +29,4 @@ function LoggerPlayer(entity, log) {
 	}
 
 	logDisplay.innerHTML = logs.toString();
-
 }

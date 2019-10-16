@@ -46,13 +46,13 @@ class Overworld extends Map {
 
 	addEnemiesToMap() {
 		// Add entities to map
-		// this.addEntities(Lootr.Templates.Entities.Spider, Lootr.Utilities.getRandomInt(5, 10));
+		this.addEntities(Lootr.Templates.Entities.Spider, Lootr.Utilities.getRandomInt(5, 10));
 		this.addEntities(Lootr.Templates.Entities.SpiderNest, Lootr.Utilities.getRandomInt(5, 10));
-		// this.addEntities(Lootr.Templates.Entities.Goblin, Lootr.Utilities.getRandomInt(5, 10));
-		// this.addEntities(Lootr.Templates.Entities.Ghost, Lootr.Utilities.getRandomInt(0, 10));
-		// this.addEntities(Lootr.Templates.Entities.Bat, Lootr.Utilities.getRandomInt(1, 2));
-		// this.addEntities(Lootr.Templates.Entities.Rat, Lootr.Utilities.getRandomInt(10, 20));
-		// this.addEntities(Lootr.Templates.Entities.Slime, Lootr.Utilities.getRandomInt(0, 5));
+		this.addEntities(Lootr.Templates.Entities.Goblin, Lootr.Utilities.getRandomInt(5, 10));
+		this.addEntities(Lootr.Templates.Entities.Ghost, Lootr.Utilities.getRandomInt(0, 10));
+		this.addEntities(Lootr.Templates.Entities.Bat, Lootr.Utilities.getRandomInt(1, 2));
+		this.addEntities(Lootr.Templates.Entities.Rat, Lootr.Utilities.getRandomInt(10, 20));
+		this.addEntities(Lootr.Templates.Entities.Slime, Lootr.Utilities.getRandomInt(0, 5));
 	}
 
 	generateWorld() {
