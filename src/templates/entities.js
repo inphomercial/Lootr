@@ -20,7 +20,7 @@ Lootr.Templates.Entities.Player = {
 			inventory: [] // let's pre populate this
 		},
 		"GoldHolder": {
-			gold: 45
+			gold: 65
 		},
 		"Slots": {
 			slots: {

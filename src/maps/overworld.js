@@ -24,12 +24,6 @@ class Overworld extends Map {
 		var shield = new Item(Lootr.Templates.Items.WoodenShield);
 		player.getComponent("Inventory").inventory.push(sword1);
 		player.getComponent("Inventory").inventory.push(dagger);
-		player.getComponent("Inventory").inventory.push(dagger);
-		player.getComponent("Inventory").inventory.push(dagger);
-		player.getComponent("Inventory").inventory.push(dagger);
-		player.getComponent("Inventory").inventory.push(dagger);
-		player.getComponent("Inventory").inventory.push(dagger);
-		player.getComponent("Inventory").inventory.push(dagger);
 		player.getComponent("Slots").slots.hand = shield;
 
 		//compute the player's initial line of sight

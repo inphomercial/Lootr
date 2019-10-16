@@ -33,7 +33,7 @@ class Glyph {
 		this._foreground = color;
 	}
 
-	setBackground( color ) {
+	setBackground(color) {
 		this._background = color;
 	}
 };

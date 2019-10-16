@@ -2,7 +2,7 @@
 
 const targetTileCache = {};
 
-const autoExplore = (entity) => {
+const _autoExplore = (entity) => {
     let targetTile = targetTileCache[entity.getUid()];
     if (!targetTile || targetTile.getIsExplored()) {
         targetTile = entity.getMap().getNearestUnexploredTile(...entity.getCoordinates());
@@ -17,7 +17,7 @@ const autoExplore = (entity) => {
         if (!moveTowardsCoords(entity, targetTile.getCoordinates())) {
             targetTile.setUnreachable();
             targetTileCache[entity.getUid()] = false;
-            autoExplore(entity);
+            _autoExplore(entity);
         };
     }
 }
@@ -27,5 +27,5 @@ const AutoExploreSystem = (entity) => {
         return;
     }
 
-    autoExplore(entity);
+    _autoExplore(entity);
 }

@@ -151,10 +151,18 @@ class Map {
 		});
 	}
 
-	getItemAt(x, y) {
-		return _.find(this.getItems(), (item) => {
-			return item.getX() == x && item.getY() == y;
-		});
+	// Will find all the items for a given x, y and then return back the top-most one
+	getTopMostItemAt(x, y) {
+		let items = this.getItems();
+		let foundItems = [];
+
+		for (let prop in items) {
+			if (items[prop].getX() == x && items[prop].getY() == y) {
+				foundItems.push(items[prop]);
+			}
+		}
+
+		return foundItems.slice(-1).pop()
 	}
 	
 	getEngine() {

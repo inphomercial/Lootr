@@ -3,13 +3,13 @@
 Lootr.Screens.InventoryDetail = {
     _caption: "Inventory Detail Screen",
 
-    enter: function( gameDisplay, item ) {
+    enter: function(gameDisplay, args) {
 		console.log("Entered Inventory Detail Screen");
-		console.log('Inventory Details', item);
 
 		this._gameDisplay = gameDisplay;
 		
-		this._item = item;
+		this._item = args.selectedItem;
+		this._entity = args.entity;
     },
 
     renderGame: function () {
@@ -26,6 +26,11 @@ Lootr.Screens.InventoryDetail = {
 		switch(inputData.keyCode) {
 			
 			case ROT.KEYS.VK_ESCAPE:
+				Lootr.switchScreen(Lootr.Screens.Inventory);
+				break;
+			
+			case ROT.KEYS.VK_D:
+				DropItemSystem(this._entity, this._item)
 				Lootr.switchScreen(Lootr.Screens.Inventory);
 				break;
 
