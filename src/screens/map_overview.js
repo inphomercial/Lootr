@@ -7,7 +7,7 @@ const drawCursor = (display, x, y) => {
     const tile = Lootr.getPlayer().getMap().getTile(x, y);
     let entity = Lootr.getPlayer().getMap().getEntityAt(x, y);
     if (_.isEmpty(entity)) {
-        entity = Lootr.getPlayer().getMap().getItemAt(x, y);
+        entity = Lootr.getPlayer().getMap().getTopMostItemAt(x, y);
     }
     if (_.isEmpty(entity)) {
         entity = tile;

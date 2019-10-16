@@ -62,7 +62,12 @@ Lootr.Screens.Inventory = {
 				
 				case ROT.KEYS.VK_RETURN:
 				case ROT.KEYS.VK_ENTER:
-					Lootr.switchSubScreen(Lootr.Screens.InventoryDetail, this._selectedItem);
+					const args = {
+						entity: this._player,
+						selectedItem: this._selectedItem
+					}
+
+					Lootr.switchSubScreen(Lootr.Screens.InventoryDetail, args);
 					break;
 
 				default:

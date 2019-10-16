@@ -29,7 +29,16 @@ Lootr.EntityComponents.GoldHolder = (template) => {
 Lootr.EntityComponents.Inventory = (template) => {
 	return {
 		name: "Inventory",
-		inventory: template.inventory
+		inventory: template.inventory,
+		removeItem: (entity, item) => {
+			let currentInventory = entity.getComponent('Inventory').inventory;
+
+			const remainingItems = currentInventory.filter((equipItem) => {
+				return equipItem.getUid() !== item.getUid();
+			})
+		
+			entity.getComponent('Inventory').inventory = remainingItems;
+		}
 	}
 };
 

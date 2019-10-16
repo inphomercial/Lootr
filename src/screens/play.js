@@ -31,9 +31,10 @@ Lootr.Screens.Play = {
     },
 
     handleInput: function ( inputType, inputData ) {
-        console.log('Play screen input', inputType, inputData);
-        let code = inputData.keyCode;
-        const player = Lootr.getPlayer();
+		console.log('Play screen input', inputType, inputData);
+
+        const code = inputData.keyCode;
+		const player = Lootr.getPlayer();
 
 		switch(code) {
 			case ROT.KEYS.VK_H:
@@ -105,7 +106,8 @@ Lootr.Screens.Play = {
             default:
                 Logger(`Unkown Command ${code}`);
                 return;
-        }
+		}
+
         this.map.getEngine().unlock();
     }
 }

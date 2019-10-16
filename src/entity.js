@@ -54,7 +54,7 @@ class Entity extends DynamicGlyph {
 		return this._isAlive;
 	}
 
-	setMap( map ){
+	setMap(map){
 		this._map = map;
 	}
 

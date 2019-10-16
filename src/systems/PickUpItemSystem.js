@@ -3,7 +3,7 @@
 const PickUpItemSystem = (map, entity) => {
 	let currentX = entity.getX();
 	let currentY = entity.getY();
-	let item = map.getItemAt(currentX, currentY);
+	let item = map.getTopMostItemAt(currentX, currentY);
 
 	if (!item) {
 		Logger("Nothing to pick up.");
@@ -11,6 +11,8 @@ const PickUpItemSystem = (map, entity) => {
 
 	if (item.getName() == "Gold") {
 		if (!entity.hasComponent('GoldHolder')) {
+			Logger("You cannot pick that up");
+
 			return;
 		}
 
