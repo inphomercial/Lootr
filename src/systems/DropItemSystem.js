@@ -18,8 +18,8 @@ const DropItemSystem = (entity, item) => {
 	}
 
 	// Remove item from entity	
-	let Inventory = entity.getComponent('Inventory');
-	Inventory.removeItem(entity, item);
+	let InventoryComponent = entity.getComponent('Inventory');
+	InventoryComponent.removeItem(entity, item);
 
 	// Add item to map at current location
 	let map = entity.getMap();
