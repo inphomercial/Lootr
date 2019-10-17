@@ -174,8 +174,19 @@ class Map {
 	
 		tile.foreground = color;
 	}
+
+	addEntities(template, amount) {
+		if (amount == 0) {
+			return;
+		}
+
+		for(let i = 0; i < amount; i++) {
+			var entity = createEntity(template);
+			this.addEntityAt(...this.getRandomUnexploredPassableTile().getCoordinates(), entity);
+		}
+	}
 	
-	addEntityAt( x, y, entity ) {
+	addEntityAt(x, y, entity) {
 	
 		// Add map to entity
 		entity.setMap(this);
@@ -196,8 +207,19 @@ class Map {
 			this._scheduler.add(entity, true);
 		}
 	}
+
+	addItems(template, amount) {
+		if (amount == 0) {
+			return;
+		}
+
+		for(let i = 0; i < amount; i++) {
+			var item = createItem(template);
+			this.addItemAt(...this.getRandomUnexploredPassableTile().getCoordinates(), item);
+		}
+	}
 	
-	addItemAt( x, y, item ) {
+	addItemAt(x, y, item) {
 		item.setX(x);
 		item.setY(y);
 	

@@ -1,6 +1,7 @@
 'use strict';
 
 Lootr.Templates.Entities.Player = {
+	template: 'Player',
     name: "Hulk",
     char: "@",
 	foreground: "red",
@@ -10,7 +11,7 @@ Lootr.Templates.Entities.Player = {
 		"Player": {},
 		"Actor": {},
 		"Health": {
-			hp: 50
+			hp: 100
 		},
 		"Moveable": {},
 		"Bleedable": {
@@ -33,6 +34,7 @@ Lootr.Templates.Entities.Player = {
 };
 
 Lootr.Templates.Entities.Goblin = {
+	template: 'Goblin',
     name: "Goblin",
     char: "g",
 	foreground: "green",
@@ -47,11 +49,13 @@ Lootr.Templates.Entities.Goblin = {
 		"Bleedable": {
 			bleedColor: "red"
 		},
+		"Burnable": {},
 		"Corpseable": {}
 	}
 };
 
 Lootr.Templates.Entities.Slime = {
+	template: 'Slime',
 	name: "Slime",
 	char: "s",
 	foreground: "green",
@@ -70,6 +74,7 @@ Lootr.Templates.Entities.Slime = {
 }
 
 Lootr.Templates.Entities.Bat = {
+	template: 'Bat',
 	name: "Bat",
 	char: "b",
 	foreground: "black",
@@ -90,7 +95,46 @@ Lootr.Templates.Entities.Bat = {
 	}
 }
 
+Lootr.Templates.Entities.Spider = {
+	template: 'Spider',
+	name: "Spider",
+	char: "x",
+	foreground: "red",
+	background: "black",
+	speed: 6,
+	componentList: {
+		"Actor": {},
+		"Moveable": {},
+		"Enemy": {},
+		"Health": {
+			hp: 3
+		}
+	}
+}
+
+Lootr.Templates.Entities.SpiderNest = {
+	template: 'SpiderNest',
+	name: "Spider Nest",
+	char: "&",
+	foreground: "white",
+	background: "black",
+	speed: 1,
+	componentList: {
+		"Actor": {},
+		"Enemy": {},
+		"Health": {
+			hp: 10
+		},
+		"EntitySpawner": {
+			spawns: Lootr.Templates.Entities.Spider,
+			spawnChance: 10,  // 0-1000
+			spawnNumber: 5
+		}
+	}
+}
+
 Lootr.Templates.Entities.Rat = {
+	template: 'Rat',
 	name: "Rat",
 	char: "r",
 	foreground: "brown",
@@ -110,6 +154,7 @@ Lootr.Templates.Entities.Rat = {
 }
 
 Lootr.Templates.Entities.Ghost = {
+	template: 'Ghost',
     name: "Ghost",
     char: "h",
 	foreground: "white",

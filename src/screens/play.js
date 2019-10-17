@@ -31,8 +31,6 @@ Lootr.Screens.Play = {
     },
 
     handleInput: function ( inputType, inputData ) {
-		console.log('Play screen input', inputType, inputData);
-
         const code = inputData.keyCode;
 		const player = Lootr.getPlayer();
 

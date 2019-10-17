@@ -20,7 +20,7 @@ const BattleSystem = (attacker, defender) => {
 
 	// This will obviously be the Attack damage instead of just a 2
 	defender._components.Health.hp -= 2;
-	console.log(`${defender.getName()} health ${defender._components.Health.hp}`);
+	Logger(`${ defender.getName() } has taken damage.`);
 
 	if (defender.hasComponent("Bleedable")) {
 		// We need a function to get a random adjacent tile from an x, y
@@ -28,16 +28,27 @@ const BattleSystem = (attacker, defender) => {
 		tile._foreground = defender._components.Bleedable.bleedColor;
 	}
 
+	// Testing burnable
+	// if (defender.hasComponent('Burnable')) {
+	// 	let BurnableComponent = defender.getComponent('Burnable');
+
+	// 	BurnableComponent.setOnFire(defender, 'red');
+	// 	BurnableComponent.setOnFire(defender, 'yellow');
+	// }
+
 	if (defender._components.Health.hp <= 0) {
+
+		// Player has died, restart game
 		if (defender.hasComponent("Player")) {
 			Lootr.switchScreen(new Display(Lootr.Screens.GameOver));
+
 			return;
 		}
 
 		Logger(`${defender.getName()} has died.`);
 
 		if (defender.hasComponent("Corpseable")) {
-			var corpse = new Item(Lootr.Templates.Items.Corpse);
+			var corpse = createItem(Lootr.Templates.Items.Corpse);
 			map.addItemAt(currentX, currentY, corpse);
 		}
 
