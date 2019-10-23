@@ -45,8 +45,7 @@ const BattleSystem = (attacker, defender) => {
 	// 	BurnableComponent.setOnFire(defender, 'yellow');
 	// }
 
-	if (defender._components.Health.hp <= 0) {
-
+	if (Lootr.ComponentSystems.Health.getHp(defender) <= 0) {
 		// Player has died, restart game
 		if (defender.hasComponent("Player")) {
 			Lootr.switchScreen(new Display(Lootr.Screens.GameOver));

@@ -40,6 +40,10 @@ Lootr.ComponentSystems.Inventory = {
 }
 
 Lootr.ComponentSystems.Health = {
+	getHp: (entity) => {
+		return entity.getComponent('Health').hp;
+	},
+
 	removeHealth: (entity, amount) => {
 		entity.getComponent('Health').hp -= amount;
 	},
