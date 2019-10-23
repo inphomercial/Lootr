@@ -22,10 +22,9 @@ class Overworld extends Map {
 		// Start player with a placeholder item for now
 		var shield = createItem(Lootr.Templates.Items.WoodenShield);
 
-		let InventoryComponent = player.getComponent('Inventory');
-		InventoryComponent.addItem(player, createItem(Lootr.Templates.Items.Dagger));
-		InventoryComponent.addItem(player, createItem(Lootr.Templates.Items.WoodenSword));
-		InventoryComponent.addItem(player, shield);
+		Lootr.ComponentSystems.Inventory.addItem(player, createItem(Lootr.Templates.Items.Dagger));
+		Lootr.ComponentSystems.Inventory.addItem(player, createItem(Lootr.Templates.Items.WoodenSword));
+		Lootr.ComponentSystems.Inventory.addItem(player, shield);
 
 		player.getComponent("Slots").slots.hand = shield;
 

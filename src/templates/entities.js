@@ -29,6 +29,10 @@ Lootr.Templates.Entities.Player = {
 				hand: '',
 				body: ''
 			} // let's pre populate this
+		},
+		"Stats": {
+			attack: 3,
+			defense: 3
 		}
 	}
 };
@@ -50,7 +54,11 @@ Lootr.Templates.Entities.Goblin = {
 			bleedColor: "red"
 		},
 		"Burnable": {},
-		"Corpseable": {}
+		"Corpseable": {},
+		"Stats": {
+			attack: 1,
+			defense: 1
+		}
 	}
 };
 
@@ -69,6 +77,10 @@ Lootr.Templates.Entities.Slime = {
 		},
 		"Bleedable": {
 			bleedColor: "green"
+		},
+		"Stats": {
+			attack: 1,
+			defense: 1
 		}
 	}
 }
@@ -91,7 +103,11 @@ Lootr.Templates.Entities.Bat = {
 			bleedColor: "red"
 		},
 		"Flying": {},
-		"Corpseable": {}
+		"Corpseable": {},
+		"Stats": {
+			attack: 1,
+			defense: 1
+		}
 	}
 }
 
@@ -108,6 +124,10 @@ Lootr.Templates.Entities.Spider = {
 		"Enemy": {},
 		"Health": {
 			hp: 3
+		},
+		"Stats": {
+			attack: 1,
+			defense: 1
 		}
 	}
 }
@@ -129,6 +149,10 @@ Lootr.Templates.Entities.SpiderNest = {
 			spawns: Lootr.Templates.Entities.Spider,
 			spawnChance: 10,  // 0-1000
 			spawnNumber: 5
+		},
+		"Stats": {
+			attack: 0,
+			defense: 2
 		}
 	}
 }
@@ -149,7 +173,11 @@ Lootr.Templates.Entities.Rat = {
 		"Bleedable": {
 			bleedColor: "red"
 		},
-		"Corpseable": {}
+		"Corpseable": {},
+		"Stats": {
+			attack: 1,
+			defense: 1
+		}
 	}
 }
 
@@ -166,6 +194,10 @@ Lootr.Templates.Entities.Ghost = {
 			hp: 30
 		},
 		"PassThroughSolids": {},
-		"Flying": {}
+		"Flying": {},
+		"Stats": {
+			attack: 1,
+			defense: 1
+		}
 	}
 };
