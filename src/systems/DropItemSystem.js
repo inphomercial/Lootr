@@ -18,8 +18,7 @@ const DropItemSystem = (entity, item) => {
 	}
 
 	// Remove item from entity	
-	let InventoryComponent = entity.getComponent('Inventory');
-	InventoryComponent.removeItem(entity, item);
+	Lootr.ComponentSystems.Inventory.removeItem(entity, item);
 
 	// Add item to map at current location
 	let map = entity.getMap();

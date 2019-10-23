@@ -15,12 +15,21 @@ const BattleSystem = (attacker, defender) => {
 	let currentX = defender.getX();
 	let currentY = defender.getY();
 	let map = defender.getMap();
-	
-	Logger(`${attacker.getName()} attacks ${defender.getName()}`);
 
-	// This will obviously be the Attack damage instead of just a 2
-	defender._components.Health.hp -= 2;
-	Logger(`${ defender.getName() } has taken damage.`);
+	let damage = Lootr.ComponentSystems.Stats.getAttack(attacker);
+	let defense = Lootr.ComponentSystems.Stats.getDefense(defender);
+
+	let damageTaken = Lootr.Utilities.getRandomInt(0, damage) - Lootr.Utilities.getRandomInt(0, defense);
+
+	// If no damage is done, return early
+	if (damageTaken < 1) {
+		Logger(`${attacker.getName()} attacks ${defender.getName()} but takes no damage.`);
+		return;
+	}
+
+	Lootr.ComponentSystems.Health.removeHealth(defender, damageTaken);
+
+	Logger(`${attacker.getName()} attacks ${defender.getName()} for ${ damageTaken }`);
 
 	if (defender.hasComponent("Bleedable")) {
 		// We need a function to get a random adjacent tile from an x, y
@@ -36,8 +45,7 @@ const BattleSystem = (attacker, defender) => {
 	// 	BurnableComponent.setOnFire(defender, 'yellow');
 	// }
 
-	if (defender._components.Health.hp <= 0) {
-
+	if (Lootr.ComponentSystems.Health.getHp(defender) <= 0) {
 		// Player has died, restart game
 		if (defender.hasComponent("Player")) {
 			Lootr.switchScreen(new Display(Lootr.Screens.GameOver));

@@ -16,8 +16,7 @@ const PickUpItemSystem = (map, entity) => {
 			return;
 		}
 
-		let GoldHolderComponent = entity.getComponent('GoldHolder');
-		GoldHolderComponent.addGold(entity, 5);
+		Lootr.ComponentSystems.GoldHolder.addGold(entity, 5);
 
 		map.removeItem(item);
 
@@ -30,8 +29,7 @@ const PickUpItemSystem = (map, entity) => {
 		return;
 	}
 
-	let InventoryComponent = entity.getComponent('Inventory');
-	InventoryComponent.addItem(entity, item);
+	Lootr.ComponentSystems.Inventory.addItem(entity, item);
 
 	map.removeItem(item);
 

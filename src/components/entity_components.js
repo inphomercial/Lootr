@@ -19,36 +19,25 @@ Lootr.EntityComponents.Actor = () => {
 	}
 };
 
+Lootr.EntityComponents.Stats = (template) => {
+	return {
+		name: "Stats",
+		attack: template.attack || 1,
+		defense: template.defense || 1
+	}
+}
+
 Lootr.EntityComponents.GoldHolder = (template) => {
 	return {
 		name: "GoldHolder",
-		gold: template.gold,
-		addGold: (entity, amount) => {
-			entity.getComponent('GoldHolder').gold += amount;
-		}
+		gold: template.gold || 0
 	}
 };
 
 Lootr.EntityComponents.Inventory = (template) => {
 	return {
 		name: "Inventory",
-		inventory: template.inventory,
-		addItem: (entity, item) => {
-			let currentInventory = entity.getComponent("Inventory").inventory;
-
-			currentInventory.push(item);
-		
-			entity.getComponent('Inventory').inventory = currentInventory;
-		},
-		removeItem: (entity, item) => {
-			let currentInventory = entity.getComponent('Inventory').inventory;
-
-			const remainingItems = currentInventory.filter((equipItem) => {
-				return equipItem.getUid() !== item.getUid();
-			})
-		
-			entity.getComponent('Inventory').inventory = remainingItems;
-		}
+		inventory: template.inventory || []
 	}
 };
 
@@ -68,18 +57,18 @@ Lootr.EntityComponents.PassThroughSolids = () => {
 Lootr.EntityComponents.Health = (template) => {
 	return {
 		name: "Health",
-		hp: template.hp,
-		maxHp: template.hp
+		hp: template.hp || 5,
+		maxHp: template.hp || 5
 	}
 }
 
-Lootr.EntityComponents.Flying = (template) => {
+Lootr.EntityComponents.Flying = () => {
 	return {
 		name: "Flying"
 	}
 }
 
-Lootr.EntityComponents.Enemy = (template) => {
+Lootr.EntityComponents.Enemy = () => {
 	return {
 		name: "Enemy"
 	}
