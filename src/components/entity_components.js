@@ -7,6 +7,12 @@ Lootr.EntityComponents.Moveable = () => {
 	}
 };
 
+Lootr.EntityComponents.GoldDropper = () => {
+	return {
+		name: "GoldDropper"
+	}
+};
+
 Lootr.EntityComponents.Player = () => {
 	return {
 		name: "Player" 

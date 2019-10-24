@@ -60,6 +60,11 @@ const BattleSystem = (attacker, defender) => {
 			map.addItemAt(currentX, currentY, corpse);
 		}
 
+		if (defender.hasComponent("GoldDropper")) {
+			let goldItem = createItem(Lootr.Templates.Items.Gold);
+			map.addItemAt(currentX, currentY, goldItem);
+		}
+
 		map.removeEntity(defender);
 	}
 }

@@ -16,6 +16,9 @@ Lootr.Screens.InventoryDetail = {
 		this._gameDisplay.drawText(1, 1, "Inventory Detail Screen");
 		this._gameDisplay.drawText(1, 3, this._item.getName());
 		this._gameDisplay.drawText(1, 5, this._item.getDescription());
+		
+		this._gameDisplay.drawText(1, 8, 'Press d to drop item');
+		this._gameDisplay.drawText(1, 9, 'Press e to equip item');
     },
 
     exit: function() {
@@ -34,6 +37,11 @@ Lootr.Screens.InventoryDetail = {
 				Lootr.switchScreen(Lootr.Screens.Inventory);
 				break;
 
+			case ROT.KEYS.VK_E:
+				EquipItemSystem(this._entity, this._item);
+				Lootr.switchScreen(Lootr.Screens.Inventory);
+				break;
+				
 			default:
 				break;
 		}

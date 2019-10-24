@@ -9,7 +9,9 @@ Lootr.Templates.Items.WoodenSword = {
 	description: "A crappy wooden sword",
 
 	componentList: {
-		'Wieldable': {},
+		'Wieldable': { 
+			slot: 'hand'
+		},
 		'Rarity': {
 			rarity: 'common'
 		},
@@ -37,12 +39,29 @@ Lootr.Templates.Items.Dagger = {
 	description: "A golden dagger",
 
 	componentList: {
-		'Wieldable': {},
+		'Wieldable': {
+			slot: 'hand'
+		},
 		'Rarity': {
 			rarity: 'common'
 		},
 		'Attack': {
 			attack: 4
+		}
+	}
+}
+
+Lootr.Templates.Items.Helm = {
+	template: "Helm",
+	name: "A Helmet",
+	char: '^',
+	foreground: 'silver',
+	background: 'brown',
+	description: "A shiny helmet",
+
+	componentList: {
+		'Wieldable': {
+			slot: 'head'
 		}
 	}
 }
@@ -69,7 +88,9 @@ Lootr.Templates.Items.WoodenShield = {
 
 	// Proposed idea for passing unique values to the components
 	componentList: {
-		'Wieldable': {},
+		'Wieldable': {
+			slot: 'hand'
+		},
 		'Defense': {
 			defense: 4 
 		},

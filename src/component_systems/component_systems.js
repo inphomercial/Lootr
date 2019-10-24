@@ -17,6 +17,10 @@ Lootr.ComponentSystems.GoldHolder = {
 
 	removeGold: (entity, amount) => {
 		entity.getComponent('GoldHolder').gold -= amount;
+	},
+
+	getGold: (entity) => {
+		return entity.getComponent('GoldHolder').gold;
 	}
 }
 
@@ -44,13 +48,17 @@ Lootr.ComponentSystems.Health = {
 		return entity.getComponent('Health').hp;
 	},
 
+	getMaxHp: (entity) => {
+		return entity.getComponent('Health').maxHp;
+	},
+
 	removeHealth: (entity, amount) => {
 		entity.getComponent('Health').hp -= amount;
 	},
 
 	addHealth: (entity, amount) => {
-		let currentHp = entity.getComponent('Health').hp;
-		let max = entity.getComponent('Health').maxHp;
+		let currentHp = entity.getComponent('Health').getHp();
+		let max = entity.getComponent('Health').getMaxHp();
 		let newTotal = currentHp + amount;
 
 		if (newTotal > max) {
@@ -58,5 +66,29 @@ Lootr.ComponentSystems.Health = {
 		}
 
 		entity.getComponent('Health').hp = newTotal;
+	}
+}
+
+Lootr.ComponentSystems.Slots = {
+	unequipItemFromSlot: (entity, slot) => {
+		// get item
+		let item = entity.getComponent('Slots').slots[slot];
+
+		// clear slot
+		entity.getComponent('Slots').slots[slot] = '';
+
+		return item;
+	},
+
+	isSlotEmpty: (entity, slot) => {
+		return entity.getComponent('Slots').slots[slot] === '';
+	},
+
+	getItemFromSlot: (entity, slot) => {
+		return entity.getComponent('Slots').slots[slot];
+	},
+
+	equipItemToSlot: (entity, slot, item) => {
+		entity.getComponent('Slots').slots[slot] = item;
 	}
 }
