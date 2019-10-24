@@ -28,7 +28,7 @@ Lootr.Templates.Entities.Player = {
 				head: '',
 				hand: '',
 				body: ''
-			} // let's pre populate this
+			} 
 		},
 		"Stats": {
 			attack: 3,
@@ -58,7 +58,8 @@ Lootr.Templates.Entities.Goblin = {
 		"Stats": {
 			attack: 1,
 			defense: 1
-		}
+		},
+		"GoldDropper": {}
 	}
 };
 

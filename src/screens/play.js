@@ -99,7 +99,13 @@ Lootr.Screens.Play = {
 			
 			case ROT.KEYS.VK_O:
 				AutoExploreSystem(player);
-                break;
+				break;
+				
+			case ROT.KEYS.VK_T:
+				Lootr.switchScreen(new Display(Lootr.Screens.Equipped));
+				// let item = Lootr.ComponentSystems.Slots.unequipItemFromSlot(player, 'hand');
+				// Lootr.ComponentSystems.Inventory.addItem(player, item);
+				break;
             
             default:
                 Logger(`Unkown Command ${code}`);

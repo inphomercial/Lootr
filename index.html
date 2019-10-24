@@ -1,59 +1,63 @@
 <html>
-    <head>
-    <title>Lootr</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<head>
+	<title>Lootr</title>
+	<link type="text/css" rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-    <script src="libs/rot.js"></script>
-    <script src="libs/underscore.js"></script>
+	<script src="libs/rot.js"></script>
+	<script src="libs/underscore.js"></script>
 
-    <script src="lib/lootr.js"></script>
-    <script src="lib/logger.js"></script>
+	<script src="lib/lootr.js"></script>
+	<script src="lib/logger.js"></script>
 	
-    <script src="lib/ui/ui.js"></script>
+	<script src="lib/ui/ui.js"></script>
+		
+	<script src="lib/component_systems/component_systems.js"></script>
+	<script src="lib/component_systems/item_systems.js"></script>
 	
-    <script src="lib/component_systems/component_systems.js"></script>
-	
+	<script src="lib/systems/EquipItemSystem.js"></script>
 	<script src="lib/systems/SpawnSystem.js"></script>
-    <script src="lib/systems/MoveableSystem.js"></script>
-    <script src="lib/systems/EnemyMovementSystem.js"></script>
-    <script src="lib/systems/AutoExploreSystem.js"></script>
-    <script src="lib/systems/BattleSystem.js"></script>
-    <script src="lib/systems/PickUpItemSystem.js"></script>
-    <script src="lib/systems/DropItemSystem.js"></script>
+	<script src="lib/systems/MoveableSystem.js"></script>
+	<script src="lib/systems/EnemyMovementSystem.js"></script>
+	<script src="lib/systems/AutoExploreSystem.js"></script>
+	<script src="lib/systems/BattleSystem.js"></script>
+	<script src="lib/systems/PickUpItemSystem.js"></script>
+	<script src="lib/systems/DropItemSystem.js"></script>
 
-    <script src="lib/glyph.js"></script>
-    <script src="lib/dynamic_glyph.js"></script>
-    <script src="lib/entity.js"></script>
-    <script src="lib/player.js"></script>
-    <script src="lib/tile.js"></script>
-    <script src="lib/item.js"></script>
-    <script src="lib/repository.js"></script>
-    <script src="lib/components/entity_components.js"></script>
-    <script src="lib/components/item_components.js"></script>
+	<script src="lib/glyph.js"></script>
+	<script src="lib/dynamic_glyph.js"></script>
+	<script src="lib/entity.js"></script>
+	<script src="lib/player.js"></script>
+	<script src="lib/tile.js"></script>
+	<script src="lib/item.js"></script>
+	<script src="lib/repository.js"></script>
+	<script src="lib/components/entity_components.js"></script>
+	<script src="lib/components/item_components.js"></script>
 
-    <script src="lib/utilities.js"></script>
+	<script src="lib/utilities.js"></script>
 
-    <script src="lib/templates/tiles.js"></script>
-    <script src="lib/templates/items.js"></script>
-    <script src="lib/templates/entities.js"></script>
+	<script src="lib/templates/tiles.js"></script>
+	<script src="lib/templates/items.js"></script>
+	<script src="lib/templates/entities.js"></script>
 
-    <script src="lib/world_holder.js"></script>
-    <script src="lib/map.js"></script>
-    <script src="lib/maps/overworld.js"></script>
+	<script src="lib/world_holder.js"></script>
+	<script src="lib/map.js"></script>
+	<script src="lib/maps/overworld.js"></script>
 
-    <script src="lib/screens/display/display.js"></script>
-    <script src="lib/screens/start.js"></script>
-    <script src="lib/screens/world_generation.js"></script>
-    <script src="lib/screens/play.js"></script>
-    <script src="lib/screens/game_over.js"></script>
-    <script src="lib/screens/help.js"></script>
-    <script src="lib/screens/inventory.js"></script>
-    <script src="lib/screens/inventory_detail.js"></script>
-    <script src="lib/screens/equipment.js"></script>
-    <script src="lib/screens/map_overview.js"></script>
-    </head>
-    <body>
+	<script src="lib/screens/equipped.js"></script>
+	<script src="lib/screens/equipped_detail.js"></script>
+	<script src="lib/screens/display/display.js"></script>
+	<script src="lib/screens/start.js"></script>
+	<script src="lib/screens/world_generation.js"></script>
+	<script src="lib/screens/play.js"></script>
+	<script src="lib/screens/game_over.js"></script>
+	<script src="lib/screens/help.js"></script>
+	<script src="lib/screens/inventory.js"></script>
+	<script src="lib/screens/inventory_detail.js"></script>
+	<script src="lib/screens/equipment.js"></script>
+	<script src="lib/screens/map_overview.js"></script>
+	</head>
+	<body>
 
 		<div id="gameDisplay"></div>
 
@@ -80,5 +84,5 @@
 				Lootr.switchScreen(new Display(Lootr.Screens.Start));
 			}
 		</script>
-    </body>
+	</body>
 </html>

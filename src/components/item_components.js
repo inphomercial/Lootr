@@ -3,7 +3,8 @@ Lootr.ItemComponents = {};
 
 Lootr.ItemComponents.Wieldable = function Wieldable(template) {
 	return {
-		name: 'Wieldable'
+		name: 'Wieldable',
+		slot: template.slot
 	}
 };
 
