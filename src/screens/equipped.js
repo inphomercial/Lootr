@@ -28,9 +28,13 @@ Lootr.Screens.Equipped = {
 		}
 
 		for (let index = 0; index < this._keys.length; index++) {
+
+			let item = Lootr.ComponentSystems.Slots.getItemFromSlot(this._player, this._keys[index]);
+			let itemName = item ? item.getName() : 'none';
+
 			const slot = this._keys[index];
 			const selected = this._selectedIndex == (index + this._startingPostition) ? '>' : '%c{black}>%c{grey}';
-			const fullText = `${selected} ${ slot }`;
+			const fullText = `${selected} ${ slot } -- ${ itemName }`;
 		
 			this._gameDisplay.drawText(1, index+this._startingPostition, fullText);
 		}
@@ -73,6 +77,10 @@ Lootr.Screens.Equipped = {
 				this._selectedSlot = this._keys[this._selectedIndex - this._startingPostition];
 
 				this._selectedItem = Lootr.ComponentSystems.Slots.getItemFromSlot(this._player, this._selectedSlot);
+
+				if (this._selectedItem === '') {
+					return;
+				}
 
 				const args = {
 					entity: this._player,
