@@ -30,7 +30,6 @@ Lootr.Screens.Equipped = {
 		for (let index = 0; index < this._keys.length; index++) {
 
 			let item = Lootr.ComponentSystems.Slots.getItemFromSlot(this._player, this._keys[index]);
-			console.log('itemNAme', item);
 			let itemName = item ? item.getName() : 'none';
 
 			const slot = this._keys[index];

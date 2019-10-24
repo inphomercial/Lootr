@@ -2,7 +2,7 @@
 
 const EquipItemSystem = (entity, item) => {
 	if (!entity.hasComponent('Slots')) {
-        return;
+		return;
 	}
 	
 	if (!item.hasComponent('Wieldable')) {
@@ -23,7 +23,7 @@ const EquipItemSystem = (entity, item) => {
 
 const UnequipItemSystem = (entity, item) => {
 	if (!entity.hasComponent('Slots')) {
-        return;
+		return;
 	}
 
 	if (!entity.hasComponent('Inventory')) {
