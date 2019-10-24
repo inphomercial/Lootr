@@ -22,7 +22,6 @@ const EquipItemSystem = (entity, item) => {
 }
 
 const UnequipItemSystem = (entity, item) => {
-	debugger;
 	if (!entity.hasComponent('Slots')) {
         return;
 	}
