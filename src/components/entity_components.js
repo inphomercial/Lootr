@@ -33,6 +33,13 @@ Lootr.EntityComponents.Stats = (template) => {
 	}
 }
 
+Lootr.EntityComponents.Race = (template) => {
+	return {
+		name: "Race",
+		race: template.race || 'unknown race'
+	}
+}
+
 Lootr.EntityComponents.GoldHolder = (template) => {
 	return {
 		name: "GoldHolder",
