@@ -14,6 +14,12 @@ function Logger(log) {
 	logDisplay.innerHTML = logs.toString();
 }
 
+function DebugLogger(msg, value = '') {
+	if (Lootr.isDebug()) {
+		console.log(msg, value);
+	}
+}
+
 function LoggerPlayer(entity, log) {
 	if (!entity.hasComponent('Player')) {
 		return;

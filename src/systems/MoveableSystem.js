@@ -86,7 +86,8 @@ const moveTowardsCoords = (entity, coords) => {
     if (path.length > 1) {
         const x = -(entityCoords[0] - path[1][0]);
         const y = -(entityCoords[1] - path[1][1]);
-        // console.log(`${entity.getCoordinates()} moving to ${x},${y}`);
+        DebugLogger(`${entity.getCoordinates()} moving to ${x},${y}`);
+        
         return MoveableSystem(entity, x, y);
     } else {
         // no path to coords

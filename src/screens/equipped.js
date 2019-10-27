@@ -4,7 +4,7 @@ Lootr.Screens.Equipped = {
     _caption: "Equipped Inventory Screen",
 
     enter: function( gameDisplay ) {
-        console.log("Entered Equipped Inventory Screen");
+        DebugLogger("Entered Equipped Inventory Screen");
 
 			this._gameDisplay = gameDisplay;
 			
@@ -41,11 +41,11 @@ Lootr.Screens.Equipped = {
     },
 
     exit: function() {
-        console.log("Exited Equipped Inventory Screen");
+        DebugLogger("Exited Equipped Inventory Screen");
     },
 
     handleInput( inputType, inputData ) {
-		console.log('Equipped Inventory screen input', inputType, inputData);
+		DebugLogger('Equipped Inventory screen input', inputType, inputData);
 
 		switch(inputData.keyCode) {
 			case ROT.KEYS.VK_DOWN:

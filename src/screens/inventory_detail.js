@@ -4,7 +4,7 @@ Lootr.Screens.InventoryDetail = {
     _caption: "Inventory Detail Screen",
 
     enter: function(gameDisplay, args) {
-		console.log("Entered Inventory Detail Screen");
+		DebugLogger("Entered Inventory Detail Screen");
 
 		this._gameDisplay = gameDisplay;
 		
@@ -18,11 +18,15 @@ Lootr.Screens.InventoryDetail = {
 		this._gameDisplay.drawText(1, 5, this._item.getDescription());
 		
 		this._gameDisplay.drawText(1, 8, 'Press d to drop item');
-		this._gameDisplay.drawText(1, 9, 'Press e to equip item');
+
+		if (this._item.hasComponent('Wieldable')) {
+			this._gameDisplay.drawText(1, 9, 'Press e to equip item');
+		}
+		
     },
 
     exit: function() {
-        console.log("Exited Inventory Detail Screen");
+        DebugLogger("Exited Inventory Detail Screen");
     },
 
     handleInput( inputType, inputData ) {
@@ -38,6 +42,10 @@ Lootr.Screens.InventoryDetail = {
 				break;
 
 			case ROT.KEYS.VK_E:
+				if (!this._item.hasComponent('Wieldable')) {
+					return;
+				}
+
 				EquipItemSystem(this._entity, this._item);
 				Lootr.switchScreen(Lootr.Screens.Inventory);
 				break;

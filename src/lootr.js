@@ -10,7 +10,9 @@ var Lootr = ( function( window ) {
     var Screens = {};
     var Maps = {};
     var World = {};
-	var _player = {};
+    var _player = {};
+    
+    var _IS_DEBUG = true;
 
     function init() {
 
@@ -35,6 +37,14 @@ var Lootr = ( function( window ) {
 
 		// Bind keyboard input events
 		bindEventToScreen('keydown');
+    }
+
+    function toggleDebug() {
+        _IS_DEBUG = !_IS_DEBUG;
+    }
+
+    function isDebug() {
+        return _IS_DEBUG;
     }
 
     function getGameDisplayWidth() {
@@ -124,6 +134,9 @@ var Lootr = ( function( window ) {
         getGameDisplayContainer: getGameDisplayContainer,
 
         refreshScreens: refreshScreens,
+
+        toggleDebug,
+        isDebug,
 
         getTile: getTile
     }

@@ -4,7 +4,7 @@ Lootr.Screens.EquippedDetail = {
     _caption: "Equipped Detail Screen",
 
     enter: function(gameDisplay, args) {
-		console.log("Entered Equipped Detail Screen");
+		DebugLogger("Entered Equipped Detail Screen");
 
 		this._gameDisplay = gameDisplay;
 		
@@ -21,7 +21,7 @@ Lootr.Screens.EquippedDetail = {
     },
 
     exit: function() {
-        console.log("Exited Equipped Detail Screen");
+        DebugLogger("Exited Equipped Detail Screen");
     },
 
     handleInput( inputType, inputData ) {

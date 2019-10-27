@@ -33,7 +33,7 @@ class Overworld extends Map {
 
 		this.getEngine().start();
 		
-		console.log('overworld', this);
+		DebugLogger('overworld', this);
 	}
 
 	addItemsToMap() {

@@ -6,13 +6,14 @@ const EquipItemSystem = (entity, item) => {
 	}
 	
 	if (!item.hasComponent('Wieldable')) {
-		console.log('item cannot be equipped');
+		Logger(`You cannot figure out a way to equip the ${ item.getName() }`);
+		return;
 	}
 
 	let slot = Lootr.ItemSystems.Wieldable.getSlot(item);
 
 	if (entity.getComponent('Slots').slots[slot] !== '') {
-		console.log('already have an item in that slot');
+		Logger(`You already have an item in that slow`);		
 	}
 
 	Lootr.ComponentSystems.Inventory.removeItem(entity, item);
