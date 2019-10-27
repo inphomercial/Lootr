@@ -5,7 +5,7 @@ Lootr.Screens.Play = {
     _caption: "Play Screen",
 
     enter: function( gameDisplay ) {
-        console.log("Entered Play Screen");
+        DebugLogger("Entered Play Screen");
 
 		this._gameDisplay = gameDisplay;
     },
@@ -27,7 +27,7 @@ Lootr.Screens.Play = {
     },
 
     exit: function() {
-        console.log("Exited Play Screen");
+        DebugLogger("Exited Play Screen");
     },
 
     handleInput: function ( inputType, inputData ) {

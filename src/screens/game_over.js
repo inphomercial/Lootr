@@ -4,7 +4,7 @@ Lootr.Screens.GameOver = {
     _caption: "Game Over Screen",
 
     enter: function( gameDisplay ) {
-        console.log("Entered Game Over Screen");
+        DebugLogger("Entered Game Over Screen");
 
         this._gameDisplay = gameDisplay;
     },
@@ -17,7 +17,7 @@ Lootr.Screens.GameOver = {
     },
 
     exit: function() {
-        console.log("Exited Game Over Screen");
+        DebugLogger("Exited Game Over Screen");
     },
 
     handleInput( inputType, inputData ) {

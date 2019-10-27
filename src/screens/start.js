@@ -4,7 +4,7 @@ Lootr.Screens.Start = {
     _caption: "Start Screen",
 
     enter: function( gameDisplay ) {
-        console.log("Entered Start Screen");
+        DebugLogger("Entered Start Screen");
 
         this._gameDisplay = gameDisplay;
 
@@ -12,12 +12,13 @@ Lootr.Screens.Start = {
     },
 
     renderGame: function () {
-        console.log("Start renderGame Screen");
+        DebugLogger("Start renderGame Screen");
+        
         this._gameDisplay.drawText(1, 1, "Lootr 2014 - 2019");
     },
 
     exit: function() {
-        console.log("Exited Start Screen");
+        DebugLogger("Exited Start Screen");
     },
 
     handleInput( inputType, inputData ) {

@@ -14,22 +14,22 @@ class Display {
 	}
 
 	setup() {
-		console.log("Display setup");
+		DebugLogger("Display setup");
 	}
 
 	enter() {
-		console.log("Display enter");
+		DebugLogger("Display enter");
 	}
 
 	renderGame() {
-		console.log("Display renderGame");
+		DebugLogger("Display renderGame");
 	}
 
 	exit() {
-		console.log("Display exit");
+		DebugLogger("Display exit");
 	}
 
 	handleInput(inputType, inputDate) {
-		console.log("Handling Input");
+		DebugLogger("Handling Input");
 	}
 }
