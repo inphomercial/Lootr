@@ -15,3 +15,10 @@ Lootr.Utilities.getRandomFromArray = (array) => {
 Lootr.Utilities.getRandomInt = function(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
+// Enter a 1 - 100
+Lootr.Utilities.flipBasedOnChance = (toBeat) => {
+	let roll = Lootr.Utilities.getRandomInt(0, 100);	
+
+	return roll > toBeat;
+}

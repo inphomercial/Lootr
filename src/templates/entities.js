@@ -62,7 +62,10 @@ Lootr.Templates.Entities.Goblin = {
 			attack: 1,
 			defense: 1
 		},
-		"GoldDropper": {}
+		"GoldHolder": {
+			gold: 30,
+			randomize: true
+		}
 	}
 };
 

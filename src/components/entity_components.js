@@ -7,12 +7,6 @@ Lootr.EntityComponents.Moveable = () => {
 	}
 };
 
-Lootr.EntityComponents.GoldDropper = () => {
-	return {
-		name: "GoldDropper"
-	}
-};
-
 Lootr.EntityComponents.Player = () => {
 	return {
 		name: "Player" 
@@ -40,10 +34,18 @@ Lootr.EntityComponents.Race = (template) => {
 	}
 }
 
-Lootr.EntityComponents.GoldHolder = (template) => {
+/*
+	name (string)
+	gold (int)
+	randomize (bool)
+	dropChance (int) 0-100 lower the number the easier to hit
+*/
+Lootr.EntityComponents.GoldHolder = (template) => {		
+	let amountToGive = template.randomize ? Lootr.Utilities.getRandomInt(0, template.gold) : template.gold;	
+
 	return {
 		name: "GoldHolder",
-		gold: template.gold || 0
+		gold: amountToGive
 	}
 };
 

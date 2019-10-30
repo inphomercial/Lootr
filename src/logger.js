@@ -14,9 +14,9 @@ function Logger(log) {
 	logDisplay.innerHTML = logs.toString();
 }
 
-function DebugLogger(msg, value = '') {
+function DebugLogger(msg, value = '', ...args) {
 	if (Lootr.isDebug()) {
-		console.log(msg, value);
+		console.log(msg, value, ...args);
 	}
 }
 

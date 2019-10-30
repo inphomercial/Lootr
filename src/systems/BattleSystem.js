@@ -11,7 +11,7 @@ const BattleSystem = (attacker, defender) => {
 	if (!defender.hasComponent('Health')) {
 		return;
 	}
-	
+
 	let currentX = defender.getX();
 	let currentY = defender.getY();
 	let map = defender.getMap();
@@ -29,11 +29,11 @@ const BattleSystem = (attacker, defender) => {
 
 	Lootr.ComponentSystems.Health.removeHealth(defender, damageTaken);
 
-	Logger(`${attacker.getName()} attacks ${defender.getName()} for ${ damageTaken }`);
+	Logger(`${attacker.getName()} attacks ${defender.getName()} for ${damageTaken}`);
 
 	if (defender.hasComponent("Bleedable")) {
 		// We need a function to get a random adjacent tile from an x, y
-		let tile = map.getTile(currentX+1, currentY);
+		let tile = map.getTile(currentX + 1, currentY);
 		tile._foreground = defender._components.Bleedable.bleedColor;
 	}
 
@@ -60,9 +60,16 @@ const BattleSystem = (attacker, defender) => {
 			map.addItemAt(currentX, currentY, corpse);
 		}
 
-		if (defender.hasComponent("GoldDropper")) {
-			let goldItem = createItem(Lootr.Templates.Items.Gold);
-			map.addItemAt(currentX, currentY, goldItem);
+		if (defender.hasComponent('GoldHolder') && attacker.hasComponent('Player')) {
+			// Make this based on the GoldHolder.dropChance value
+			if (Lootr.Utilities.flipBasedOnChance(50)) {
+
+				let amountDropped = Lootr.ComponentSystems.GoldHolder.getGold(defender);
+				Lootr.ComponentSystems.GoldHolder.addGold(attacker, amountDropped);
+
+				Logger(`You get ${amountDropped} gold from the ${defender.getName()}`);
+			}
+			Lootr.Utilities.getRandomInt()
 		}
 
 		map.removeEntity(defender);
