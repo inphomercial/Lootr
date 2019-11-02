@@ -15,6 +15,10 @@ Lootr.Templates.Items.WoodenSword = {
 		'Rarity': {
 			rarity: 'common'
 		},
+		'Damage': {
+			die: 2,
+			type: 'str'
+		},
 		'Attack': {
 			attack: 2
 		}
@@ -47,6 +51,10 @@ Lootr.Templates.Items.Dagger = {
 		},
 		'Attack': {
 			attack: 4
+		},
+		"Damage": {
+			die: 4,
+			type: 'str'
 		}
 	}
 }
@@ -96,6 +104,10 @@ Lootr.Templates.Items.WoodenShield = {
 		},
 		'Rarity': {
 			rarity: 'ultra rare'
+		},
+		"Damage": {
+			die: 2,
+			type: 'str'
 		}
 	}
 };

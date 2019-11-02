@@ -23,7 +23,10 @@ Lootr.EntityComponents.Stats = (template) => {
 	return {
 		name: "Stats",
 		attack: template.attack || 1,
-		defense: template.defense || 1
+		defense: template.defense || 1,
+		str: template.str || 10,
+		dex: template.dex || 10,
+		wis: template.wis || 10
 	}
 }
 

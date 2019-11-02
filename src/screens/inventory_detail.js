@@ -13,14 +13,16 @@ Lootr.Screens.InventoryDetail = {
     },
 
     renderGame: function () {
+
+		console.log(this._item);
 		this._gameDisplay.drawText(1, 1, "Inventory Detail Screen");
 		this._gameDisplay.drawText(1, 3, this._item.getName());
 		this._gameDisplay.drawText(1, 5, this._item.getDescription());
-		
-		this._gameDisplay.drawText(1, 8, 'Press d to drop item');
+
+		this._gameDisplay.drawText(1, 9, 'Press d to drop item');
 
 		if (this._item.hasComponent('Wieldable')) {
-			this._gameDisplay.drawText(1, 9, 'Press e to equip item');
+			this._gameDisplay.drawText(1, 10, 'Press e to equip item');
 		}
 		
     },

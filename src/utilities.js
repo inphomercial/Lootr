@@ -22,3 +22,25 @@ Lootr.Utilities.flipBasedOnChance = (toBeat) => {
 
 	return roll > toBeat;
 }
+
+Lootr.Utilities.rollD = (maxSides) => {
+	return Lootr.Utilities.getRandomInt(1, maxSides);
+}
+
+Lootr.Utilities.rollD20 = () => {
+	return Lootr.Utilities.getRandomInt(1, 20);
+};
+
+Lootr.Utilities.rollD20Advantage = () => {
+	const roll1 = Lootr.Utilities.rollD20();    
+    const roll2 = Lootr.Utilities.rollD20();
+
+    return Math.max(roll1, roll2);            
+}
+
+Lootr.Utilities.rollD20Disadvantage = () => {
+	const roll1 = Lootr.Utilities.rollD20();    
+    const roll2 = Lootr.Utilities.rollD20();
+
+    return Math.min(roll1, roll2);            
+}

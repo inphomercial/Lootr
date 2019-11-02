@@ -16,8 +16,8 @@ const EquipItemSystem = (entity, item) => {
 		Logger(`You already have an item in that slow`);		
 	}
 
-	Lootr.ComponentSystems.Inventory.removeItem(entity, item);
-	Lootr.ComponentSystems.Slots.equipItemToSlot(entity, slot, item);
+	Lootr.EntitySystems.Inventory.removeItem(entity, item);
+	Lootr.EntitySystems.Slots.equipItemToSlot(entity, slot, item);
 
 	Logger(`You equip the ${ item.getName() }`);
 }
@@ -33,8 +33,8 @@ const UnequipItemSystem = (entity, item) => {
 
 	let slot = Lootr.ItemSystems.Wieldable.getSlot(item);
 
-	let itemForInventory = Lootr.ComponentSystems.Slots.unequipItemFromSlot(entity, slot);
-	Lootr.ComponentSystems.Inventory.addItem(entity, itemForInventory);
+	let itemForInventory = Lootr.EntitySystems.Slots.unequipItemFromSlot(entity, slot);
+	Lootr.EntitySystems.Inventory.addItem(entity, itemForInventory);
 
 	Logger(`You un-equip the ${ item.getName() }`);
 }
