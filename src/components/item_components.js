@@ -11,7 +11,7 @@ Lootr.ItemComponents.Wieldable = function Wieldable(template) {
 Lootr.ItemComponents.Attack = function Attack(template) {
 	return {
 		name: 'Attack',
-		defense: template.attack
+		attack: template.attack
 	}
 };
 
@@ -28,3 +28,15 @@ Lootr.ItemComponents.Rarity = function Rarity(template) {
 		rarity: template.rarity
 	}
 };
+
+/**
+ * This deteremines the damage an item can do
+ * die (the max faces of a dice. 6 = a D6, 20 = a D20, etc)
+ */
+Lootr.ItemComponents.Damage = function Damage(template) {
+	return {
+		name: 'Damage',
+		die: template.die || 6,
+		type: template.type || 'str'
+	}
+}

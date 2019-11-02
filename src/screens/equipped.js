@@ -29,7 +29,7 @@ Lootr.Screens.Equipped = {
 
 		for (let index = 0; index < this._keys.length; index++) {
 
-			let item = Lootr.ComponentSystems.Slots.getItemFromSlot(this._player, this._keys[index]);
+			let item = Lootr.EntitySystems.Slots.getItemFromSlot(this._player, this._keys[index]);
 			let itemName = item ? item.getName() : 'none';
 
 			const slot = this._keys[index];
@@ -76,7 +76,7 @@ Lootr.Screens.Equipped = {
 			case ROT.KEYS.VK_ENTER:
 				this._selectedSlot = this._keys[this._selectedIndex - this._startingPostition];
 
-				this._selectedItem = Lootr.ComponentSystems.Slots.getItemFromSlot(this._player, this._selectedSlot);
+				this._selectedItem = Lootr.EntitySystems.Slots.getItemFromSlot(this._player, this._selectedSlot);
 
 				if (this._selectedItem === '') {
 					return;

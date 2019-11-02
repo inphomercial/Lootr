@@ -12,12 +12,40 @@ const BattleSystem = (attacker, defender) => {
 		return;
 	}
 
+	// this needs to be re-worked
+	// get item being used, to determine ability type (str, dex, wis)
+	const statUsed = 'Str';
+	console.log("player components", Lootr.getPlayer());
+	if (attacker.hasComponent('Slots')) {
+		if (!Lootr.EntitySystems.Slots.isSlotEmpty(attacker, 'hand')) {
+			const item = Lootr.EntitySystems.Slots.getItemFromSlot(attacker, 'hand');	
+			const type = Lootr.ItemSystems.Damage.getDamageType(item);
+
+			console.log("item using", item);
+			console.log("item type", type);
+		}		
+	}
+	
+	// get defenders AC number
+	const defenderAc = 10
+
+	// first check if hits using ability check
+	let result = AbilityCheckSystem(attacker, statUsed, defenderAc, false, false);
+	console.log("battle system ability check result", result);
+
+
+	// then roll damage
+	// Lootr.ItemSystems.Damage.getRollDamage()
+
+	// then apply damage
+
+
 	let currentX = defender.getX();
 	let currentY = defender.getY();
 	let map = defender.getMap();
 
-	let damage = Lootr.ComponentSystems.Stats.getAttack(attacker);
-	let defense = Lootr.ComponentSystems.Stats.getDefense(defender);
+	let damage = Lootr.EntitySystems.Stats.getAttack(attacker);
+	let defense = Lootr.EntitySystems.Stats.getDefense(defender);
 
 	let damageTaken = Lootr.Utilities.getRandomInt(0, damage) - Lootr.Utilities.getRandomInt(0, defense);
 
@@ -27,7 +55,7 @@ const BattleSystem = (attacker, defender) => {
 		return;
 	}
 
-	Lootr.ComponentSystems.Health.removeHealth(defender, damageTaken);
+	Lootr.EntitySystems.Health.removeHealth(defender, damageTaken);
 
 	Logger(`${attacker.getName()} attacks ${defender.getName()} for ${damageTaken}`);
 
@@ -45,7 +73,7 @@ const BattleSystem = (attacker, defender) => {
 	// 	BurnableComponent.setOnFire(defender, 'yellow');
 	// }
 
-	if (Lootr.ComponentSystems.Health.getHp(defender) <= 0) {
+	if (Lootr.EntitySystems.Health.getHp(defender) <= 0) {
 		// Player has died, restart game
 		if (defender.hasComponent("Player")) {
 			Lootr.switchScreen(new Display(Lootr.Screens.GameOver));
@@ -64,8 +92,8 @@ const BattleSystem = (attacker, defender) => {
 			// Make this based on the GoldHolder.dropChance value
 			if (Lootr.Utilities.flipBasedOnChance(50)) {
 
-				let amountDropped = Lootr.ComponentSystems.GoldHolder.getGold(defender);
-				Lootr.ComponentSystems.GoldHolder.addGold(attacker, amountDropped);
+				let amountDropped = Lootr.EntitySystems.GoldHolder.getGold(defender);
+				Lootr.EntitySystems.GoldHolder.addGold(attacker, amountDropped);
 
 				Logger(`You get ${amountDropped} gold from the ${defender.getName()}`);
 			}

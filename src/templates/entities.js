@@ -31,8 +31,11 @@ Lootr.Templates.Entities.Player = {
 			} 
 		},
 		"Stats": {
-			attack: 3,
-			defense: 3
+			attack: 2,
+			defense: 2,
+			str: 10,
+			dex: 15,
+			wis: 11
 		},
 		"Race": {
 			race: 'Human'
