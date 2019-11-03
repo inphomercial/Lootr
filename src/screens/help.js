@@ -4,7 +4,7 @@ Lootr.Screens.Help = {
     _caption: "Help Screen",
 
     enter: function( gameDisplay ) {
-        DebugLogger("Entered Help Screen");
+        LoggerDebug("Entered Help Screen");
 
         this._gameDisplay = gameDisplay;
     },
@@ -21,7 +21,7 @@ Lootr.Screens.Help = {
     },
 
     exit: function() {
-        DebugLogger("Exited Help Screen");
+        LoggerDebug("Exited Help Screen");
     },
 
     handleInput( inputType, inputData ) {

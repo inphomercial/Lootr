@@ -6,12 +6,12 @@ const PickUpItemSystem = (map, entity) => {
 	let item = map.getTopMostItemAt(currentX, currentY);
 
 	if (!item) {
-		Logger("Nothing to pick up.");
+		LoggerPlayer("Nothing to pick up.");
 	}
 
 	if (item.getName() == "Gold") {
 		if (!entity.hasComponent('GoldHolder')) {
-			Logger("You cannot pick that up");
+			LoggerPlayer("You cannot pick that up");
 
 			return;
 		}
@@ -20,7 +20,7 @@ const PickUpItemSystem = (map, entity) => {
 
 		map.removeItem(item);
 
-		Logger(`You pick up a ${item.getName()} coin.`);
+		LoggerPlayer(`You pick up a ${item.getName()} coin.`);
 
 		return;
 	}
@@ -33,5 +33,5 @@ const PickUpItemSystem = (map, entity) => {
 
 	map.removeItem(item);
 
-	Logger(`You pick up a ${item.getName()}`);
+	LoggerPlayer(`You pick up a ${item.getName()}`);
 }

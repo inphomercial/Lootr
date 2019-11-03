@@ -3,17 +3,17 @@
 const DropItemSystem = (entity, item) => {
 
 	if (!entity) {
-		Logger('DropItemSystem requires an entity');
+		LoggerError('DropItemSystem requires an entity');
 		return;
 	}
 
 	if (!item) {
-		Logger("DropItemSystem requires an item");
+		LoggerError("DropItemSystem requires an item");
 		return;
 	}
 
 	if (!entity.hasComponent('Inventory')) {
-		Logger("DropItemSystem entity requires Inventory component")
+		LoggerError("DropItemSystem entity requires Inventory component")
 		return;
 	}
 
@@ -24,5 +24,5 @@ const DropItemSystem = (entity, item) => {
 	let map = entity.getMap();
 	map.addItemAt(entity.getX(), entity.getY(), item);
 	
-	Logger(`You drop a a ${item.getName()} on the floor.`);
+	LoggerPlayer(`You drop a a ${item.getName()} on the floor.`);
 }

@@ -14,22 +14,22 @@ class Display {
 	}
 
 	setup() {
-		DebugLogger("Display setup");
+		LoggerDebug("Display setup");
 	}
 
 	enter() {
-		DebugLogger("Display enter");
+		LoggerDebug("Display enter");
 	}
 
 	renderGame() {
-		DebugLogger("Display renderGame");
+		LoggerDebug("Display renderGame");
 	}
 
 	exit() {
-		DebugLogger("Display exit");
+		LoggerDebug("Display exit");
 	}
 
 	handleInput(inputType, inputDate) {
-		DebugLogger("Handling Input");
+		LoggerDebug("Handling Input");
 	}
 }

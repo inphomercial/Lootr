@@ -4,7 +4,7 @@ Lootr.Screens.InventoryDetail = {
     _caption: "Inventory Detail Screen",
 
     enter: function(gameDisplay, args) {
-		DebugLogger("Entered Inventory Detail Screen");
+		LoggerDebug("Entered Inventory Detail Screen");
 
 		this._gameDisplay = gameDisplay;
 		
@@ -28,7 +28,7 @@ Lootr.Screens.InventoryDetail = {
     },
 
     exit: function() {
-        DebugLogger("Exited Inventory Detail Screen");
+        LoggerDebug("Exited Inventory Detail Screen");
     },
 
     handleInput( inputType, inputData ) {

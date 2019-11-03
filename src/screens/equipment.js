@@ -4,7 +4,7 @@ Lootr.Screens.Equipment = {
     _caption: "Equipment Screen",
 
     enter: function( gameDisplay ) {
-        DebugLogger("Entered Equipment Screen");
+        LoggerDebug("Entered Equipment Screen");
         
         this._gameDisplay = gameDisplay;
     },
@@ -27,7 +27,7 @@ Lootr.Screens.Equipment = {
     },
 
     exit: function() {
-        DebugLogger("Exited Equipment Screen");
+        LoggerDebug("Exited Equipment Screen");
     },
 
     handleInput( inputType, inputData ) {

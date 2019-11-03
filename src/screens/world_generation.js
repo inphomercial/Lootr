@@ -4,7 +4,7 @@ Lootr.Screens.WorldGeneration = {
     _caption: "World Generation Screen",
 
     enter: function( gameDisplay ) {
-        DebugLogger("Entered World Generation Screen");
+        LoggerDebug("Entered World Generation Screen");
 
 		this._gameDisplay = gameDisplay;
 		
@@ -18,7 +18,7 @@ Lootr.Screens.WorldGeneration = {
     },
 
     exit: function() {
-        DebugLogger("Exited World Generation Screen");
+        LoggerDebug("Exited World Generation Screen");
     },
 
     handleInput( inputType, inputData ) {

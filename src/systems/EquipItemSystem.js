@@ -6,20 +6,20 @@ const EquipItemSystem = (entity, item) => {
 	}
 	
 	if (!item.hasComponent('Wieldable')) {
-		Logger(`You cannot figure out a way to equip the ${ item.getName() }`);
+		LoggerPlayer(`You cannot figure out a way to equip the ${ item.getName() }`);
 		return;
 	}
 
 	let slot = Lootr.ItemSystems.Wieldable.getSlot(item);
 
 	if (entity.getComponent('Slots').slots[slot] !== '') {
-		Logger(`You already have an item in that slow`);		
+		LoggerPlayer(`You already have an item in that slow`);		
 	}
 
 	Lootr.EntitySystems.Inventory.removeItem(entity, item);
 	Lootr.EntitySystems.Slots.equipItemToSlot(entity, slot, item);
 
-	Logger(`You equip the ${ item.getName() }`);
+	LoggerPlayer(`You equip the ${ item.getName() }`);
 }
 
 const UnequipItemSystem = (entity, item) => {
@@ -36,5 +36,5 @@ const UnequipItemSystem = (entity, item) => {
 	let itemForInventory = Lootr.EntitySystems.Slots.unequipItemFromSlot(entity, slot);
 	Lootr.EntitySystems.Inventory.addItem(entity, itemForInventory);
 
-	Logger(`You un-equip the ${ item.getName() }`);
+	LoggerPlayer(`You un-equip the ${ item.getName() }`);
 }

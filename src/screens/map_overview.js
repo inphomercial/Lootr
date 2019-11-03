@@ -36,7 +36,7 @@ Lootr.Screens.MapOverview = {
     _caption: "Map Overview Screen",
 
     enter: function( gameDisplay ) {
-        DebugLogger("Entered Map Overview Screen");
+        LoggerDebug("Entered Map Overview Screen");
 
 		this._gameDisplay = gameDisplay;
 		
@@ -60,11 +60,11 @@ Lootr.Screens.MapOverview = {
     },
 
     exit: function() {
-        DebugLogger("Exited Map Overview Screen");
+        LoggerDebug("Exited Map Overview Screen");
     },
 
     handleInput( inputType, inputData ) {
-        DebugLogger('Map Overview screen input', inputType, inputData);
+        LoggerDebug('Map Overview screen input', inputType, inputData);
         let code = inputData.keyCode;
 
 		switch(code) {
