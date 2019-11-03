@@ -11,7 +11,7 @@ Lootr.Templates.Entities.Player = {
 		"Player": {},
 		"Actor": {},
 		"Health": {
-			hp: 100
+			hp: 1
 		},
 		"Moveable": {},
 		"Bleedable": {
@@ -30,12 +30,15 @@ Lootr.Templates.Entities.Player = {
 				body: ''
 			} 
 		},
+		"ArmorClass": {
+			armorClass: 10
+		},
 		"Stats": {
 			attack: 2,
 			defense: 2,
 			str: 10,
-			dex: 15,
-			wis: 11
+			dex: 10,
+			wis: 10
 		},
 		"Race": {
 			race: 'Human'
@@ -65,6 +68,9 @@ Lootr.Templates.Entities.Goblin = {
 			attack: 1,
 			defense: 1
 		},
+		"ArmorClass": {
+			armorClass: 10
+		},
 		"GoldHolder": {
 			gold: 30,
 			randomize: true
@@ -87,6 +93,9 @@ Lootr.Templates.Entities.Slime = {
 		},
 		"Bleedable": {
 			bleedColor: "green"
+		},
+		"ArmorClass": {
+			armorClass: 5
 		},
 		"Stats": {
 			attack: 1,
@@ -112,6 +121,9 @@ Lootr.Templates.Entities.Bat = {
 		"Bleedable": {
 			bleedColor: "red"
 		},
+		"ArmorClass": {
+			armorClass: 12
+		},
 		"Flying": {},
 		"Corpseable": {},
 		"Stats": {
@@ -134,6 +146,9 @@ Lootr.Templates.Entities.Spider = {
 		"Enemy": {},
 		"Health": {
 			hp: 3
+		},
+		"ArmorClass": {
+			armorClass: 3
 		},
 		"Stats": {
 			attack: 1,
@@ -160,6 +175,9 @@ Lootr.Templates.Entities.SpiderNest = {
 			spawnChance: 10,  // 0-1000
 			spawnNumber: 5
 		},
+		"ArmorClass": {
+			armorClass: 5
+		},
 		"Stats": {
 			attack: 0,
 			defense: 2
@@ -183,6 +201,9 @@ Lootr.Templates.Entities.Rat = {
 		"Bleedable": {
 			bleedColor: "red"
 		},
+		"ArmorClass": {
+			armorClass: 5
+		},
 		"Corpseable": {},
 		"Stats": {
 			attack: 1,
@@ -202,6 +223,9 @@ Lootr.Templates.Entities.Ghost = {
 		"Enemy": {},
 		"Health": {
 			hp: 30
+		},
+		"ArmorClass": {
+			armorClass: 10
 		},
 		"PassThroughSolids": {},
 		"Flying": {},

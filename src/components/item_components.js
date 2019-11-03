@@ -37,6 +37,6 @@ Lootr.ItemComponents.Damage = function Damage(template) {
 	return {
 		name: 'Damage',
 		die: template.die || 6,
-		type: template.type || 'str'
+		type: template.type || ABILITY_TYPES.STR		
 	}
 }
