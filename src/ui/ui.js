@@ -2,7 +2,7 @@
 Lootr.UI = {}
 
 Lootr.UI.renderPlayerStats = function(player) {
-	DebugLogger('player', player);
+	LoggerDebug('player', player);
 
 	let display = document.getElementById('hudDisplay');
 

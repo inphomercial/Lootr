@@ -9,7 +9,7 @@ const _autoExplore = (entity) => {
         if( targetTile ) {
             targetTileCache[entity.getUid()] = targetTile;
         } else {
-            LoggerPlayer(entity, 'There are no more unexplored tiles');
+            LoggerPlayer('There are no more unexplored tiles');
         }
     }
 

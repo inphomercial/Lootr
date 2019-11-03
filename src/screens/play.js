@@ -5,7 +5,7 @@ Lootr.Screens.Play = {
     _caption: "Play Screen",
 
     enter: function( gameDisplay ) {
-        DebugLogger("Entered Play Screen");
+        LoggerDebug("Entered Play Screen");
 
 		this._gameDisplay = gameDisplay;
     },
@@ -27,7 +27,7 @@ Lootr.Screens.Play = {
     },
 
     exit: function() {
-        DebugLogger("Exited Play Screen");
+        LoggerDebug("Exited Play Screen");
     },
 
     handleInput: function ( inputType, inputData ) {
@@ -103,12 +103,10 @@ Lootr.Screens.Play = {
 				
 			case ROT.KEYS.VK_T:
 				Lootr.switchScreen(new Display(Lootr.Screens.Equipped));
-				// let item = Lootr.ComponentSystems.Slots.unequipItemFromSlot(player, 'hand');
-				// Lootr.ComponentSystems.Inventory.addItem(player, item);
 				break;
             
             default:
-                Logger(`Unkown Command ${code}`);
+                LoggerPlayer(`Unkown Command ${code}`);
                 return;
 		}
 

@@ -10,12 +10,12 @@ function MoveableSystem(entity, dX, dY) {
 	let map = entity.getMap();
 
 	if (!entity.hasComponent('Moveable')) {
-		LoggerPlayer(entity, `${entity.getName()} is unable to move`);
+		LoggerPlayer(`${entity.getName()} is unable to move`);
 		return false;
 	}
 
 	if (newX < 0 || newY < 0 || newX >= map.getWidth() || newY >= map.getHeight()) {
-		LoggerPlayer(entity, `${entity.getName()} cannot move off the map`);
+		LoggerPlayer(`${entity.getName()} cannot move off the map`);
 		return false;
 	}
 
@@ -23,7 +23,7 @@ function MoveableSystem(entity, dX, dY) {
 	if (map.isTileOccupied(newX, newY)) {
 		let occupiedBy = map.getEntityAt(newX, newY);
 
-		LoggerPlayer(entity, `${entity.getName()} tries to move into ${newX}, ${newY} but there is a ${occupiedBy.getName()} there.`);
+		LoggerPlayer(`${entity.getName()} tries to move into ${newX}, ${newY} but there is a ${occupiedBy.getName()} there.`);
 
 		//TODO Don't make enemies attack eachother when they are in the way.
 		BattleSystem(entity, occupiedBy);
@@ -38,7 +38,7 @@ function MoveableSystem(entity, dX, dY) {
 
 	let itemInLocation = map.getTopMostItemAt(newX, newY);
 	if (itemInLocation) {
-		LoggerPlayer(entity, `You see a ${ itemInLocation.getName() } on the ground.`);
+		LoggerPlayer(`You see a ${ itemInLocation.getName() } on the ground.`);
 	}
     
     entity.setPreviousCoords(...entity.getCoordinates());
@@ -86,8 +86,7 @@ const moveTowardsCoords = (entity, coords) => {
     if (path.length > 1) {
         const x = -(entityCoords[0] - path[1][0]);
         const y = -(entityCoords[1] - path[1][1]);
-        DebugLogger(`${entity.getCoordinates()} moving to ${x},${y}`);
-        
+                
         return MoveableSystem(entity, x, y);
     } else {
         // no path to coords

@@ -11,7 +11,7 @@ Lootr.Templates.Entities.Player = {
 		"Player": {},
 		"Actor": {},
 		"Health": {
-			hp: 1
+			hp: 100
 		},
 		"Moveable": {},
 		"Bleedable": {

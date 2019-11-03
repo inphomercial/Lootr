@@ -14,7 +14,7 @@
 const AbilityCheckSystem = (entity, stat, challengeNumber, hasAdvantage = false, hasDisadvantage = false) => {
 
 	if (!entity.hasComponent('Stats')) {
-		Logger("Stats component required on entity.")
+		LoggerError("Stats component required on entity.")
 		return;
 	}
     

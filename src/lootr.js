@@ -12,7 +12,7 @@ var Lootr = ( function( window ) {
     var World = {};
     var _player = {};
     
-    var _IS_DEBUG = true;
+    var _IS_DEBUG = false;
 
     function init() {
 

@@ -4,7 +4,7 @@ Lootr.Screens.Inventory = {
     _caption: "Inventory Screen",
 
     enter: function( gameDisplay ) {
-        DebugLogger("Entered Inventory Screen");
+        LoggerDebug("Entered Inventory Screen");
 
 			this._gameDisplay = gameDisplay;
 			
@@ -36,11 +36,11 @@ Lootr.Screens.Inventory = {
     },
 
     exit: function() {
-        DebugLogger("Exited Inventory Screen");
+        LoggerDebug("Exited Inventory Screen");
     },
 
     handleInput( inputType, inputData ) {
-		DebugLogger('Inventory screen input', inputType, inputData);
+		LoggerDebug('Inventory screen input', inputType, inputData);
 
 		switch(inputData.keyCode) {
 			case ROT.KEYS.VK_DOWN:

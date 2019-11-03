@@ -4,7 +4,7 @@ Lootr.Screens.GameOver = {
     _caption: "Game Over Screen",
 
     enter: function( gameDisplay ) {
-        DebugLogger("Entered Game Over Screen");
+        LoggerDebug("Entered Game Over Screen");
 
         this._gameDisplay = gameDisplay;
     },
@@ -17,14 +17,14 @@ Lootr.Screens.GameOver = {
     },
 
     exit: function() {
-        DebugLogger("Exited Game Over Screen");
+        LoggerDebug("Exited Game Over Screen");
     },
 
     handleInput( inputType, inputData ) {
 		switch(inputData.keyCode) {
 			case ROT.KEYS.VK_RETURN:
 			case ROT.KEYS.VK_ENTER:
-				Logger("Resurrecting!!")
+				LoggerPlayer("Resurrecting!!")
 				
 				let player = Lootr.getPlayer();
 				player.getComponent('Health').hp = player.getComponent('Health').maxHp;
