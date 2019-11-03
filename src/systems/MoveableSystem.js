@@ -21,11 +21,8 @@ function MoveableSystem(entity, dX, dY) {
 
 	// Attempting to pass into an occupided tile, if enemy on tile, fight
 	if (map.isTileOccupied(newX, newY)) {
-		let occupiedBy = map.getEntityAt(newX, newY);
+		let occupiedBy = map.getEntityAt(newX, newY);		
 
-		LoggerPlayer(`${entity.getName()} tries to move into ${newX}, ${newY} but there is a ${occupiedBy.getName()} there.`);
-
-		//TODO Don't make enemies attack eachother when they are in the way.
 		BattleSystem(entity, occupiedBy);
 
 		return true;
@@ -38,7 +35,9 @@ function MoveableSystem(entity, dX, dY) {
 
 	let itemInLocation = map.getTopMostItemAt(newX, newY);
 	if (itemInLocation) {
-		LoggerPlayer(`You see a ${ itemInLocation.getName() } on the ground.`);
+        if (entity.hasComponent('Player')) {
+            LoggerPlayer(`You see a ${ itemInLocation.getName() } on the ground.`);
+        }		
 	}
     
     entity.setPreviousCoords(...entity.getCoordinates());

@@ -7,7 +7,9 @@
     "pretest": "npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d lib",
-    "lint": "eslint ./src/**/*.js"
+    "lint": "eslint ./src/**/*.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d lib"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/inphomercial/Lootr/issues"
   },
-  "homepage": "https://github.com/inphomercial/Lootr#readme",
+  "homepage": "https://inphomercial.github.io/Lootr/",
   "devDependencies": {
     "eslint": "^4.7.2",
     "eslint-config-airbnb": "^15.1.0",
@@ -30,6 +32,7 @@
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
-    "babel-loader": "^8.0.6"
+    "babel-loader": "^8.0.6",
+    "gh-pages": "^2.1.1"
   }
 }

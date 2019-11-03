@@ -32,7 +32,12 @@ Lootr.Templates.Items.Gold = {
 	foreground: ["gold", 'yellow'],
 	description: "Gold coin",
 
-	componentList: {}
+	componentList: {
+		'Value': {
+			value: 5,
+			randomize: true
+		}
+	}
 }
 
 Lootr.Templates.Items.Dagger = {

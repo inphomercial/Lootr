@@ -3,8 +3,8 @@
 var Lootr = ( function( window ) {
     var _gameDisplay = null;
     var _currentScreen = null;
-    var _GAME_DISPLAY_WIDTH = 40;
-	var _GAME_DISPLAY_HEIGHT = 15;
+    var _GAME_DISPLAY_WIDTH = 50;
+	var _GAME_DISPLAY_HEIGHT = 18;
 	var _GAME_DISPLAY_FONT_SIZE = 32;
 
     var Screens = {};
