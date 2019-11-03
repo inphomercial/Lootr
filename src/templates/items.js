@@ -10,14 +10,14 @@ Lootr.Templates.Items.WoodenSword = {
 
 	componentList: {
 		'Wieldable': { 
-			slot: 'hand'
+			slot: SLOTS.HAND
 		},
 		'Rarity': {
 			rarity: 'common'
 		},
 		'Damage': {
 			die: 2,
-			type: 'str'
+			type: ABILITY_TYPES.STR
 		},
 		'Attack': {
 			attack: 2
@@ -44,7 +44,7 @@ Lootr.Templates.Items.Dagger = {
 
 	componentList: {
 		'Wieldable': {
-			slot: 'hand'
+			slot: SLOTS.HAND
 		},
 		'Rarity': {
 			rarity: 'common'
@@ -54,7 +54,7 @@ Lootr.Templates.Items.Dagger = {
 		},
 		"Damage": {
 			die: 4,
-			type: 'str'
+			type: ABILITY_TYPES.STR
 		}
 	}
 }
@@ -69,7 +69,7 @@ Lootr.Templates.Items.Helm = {
 
 	componentList: {
 		'Wieldable': {
-			slot: 'head'
+			slot: SLOTS.HEAD
 		}
 	}
 }
@@ -97,7 +97,7 @@ Lootr.Templates.Items.WoodenShield = {
 	// Proposed idea for passing unique values to the components
 	componentList: {
 		'Wieldable': {
-			slot: 'hand'
+			slot: SLOTS.HAND
 		},
 		'Defense': {
 			defense: 4 
@@ -107,7 +107,7 @@ Lootr.Templates.Items.WoodenShield = {
 		},
 		"Damage": {
 			die: 2,
-			type: 'str'
+			type: ABILITY_TYPES.STR
 		}
 	}
 };

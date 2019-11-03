@@ -37,6 +37,13 @@ Lootr.EntityComponents.Race = (template) => {
 	}
 }
 
+Lootr.EntityComponents.ArmorClass = (template) => {
+	return {
+		name: "ArmorClass",
+		armorClass: template.ac || 10 // 10 is base AC 
+	}
+}
+
 /*
 	name (string)
 	gold (int)

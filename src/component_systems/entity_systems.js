@@ -108,6 +108,26 @@ Lootr.EntitySystems.Inventory = {
 	}
 }
 
+Lootr.EntitySystems.ArmorClass = {
+	getArmorClass: (entity) => {
+		return entity.getComponent('ArmorClass').armorClass;
+	},
+
+	increaseArmorClass: (entity, amount) => {
+		let currentAc = entity.getComponent('ArmorClass').getArmorClass();
+		let newTotal = currentAc + amount;
+
+		entity.getComponent('ArmorClass').armorClass = newTotal;
+	},
+
+	decreaseArmorClass: (entity, amount) => {
+		let currentAc = entity.getComponent('ArmorClass').getArmorClass();
+		let newTotal = currentAc - amount;
+
+		entity.getComponent('ArmorClass').armorClass = newTotal;
+	}
+}
+
 Lootr.EntitySystems.Health = {
 	getHp: (entity) => {
 		return entity.getComponent('Health').hp;

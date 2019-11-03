@@ -11,83 +11,85 @@ const BattleSystem = (attacker, defender) => {
 	if (!defender.hasComponent('Health')) {
 		return;
 	}
-
-	// this needs to be re-worked
-	// get item being used, to determine ability type (str, dex, wis)
-	const statUsed = 'Str';
-	console.log("player components", Lootr.getPlayer());
-	if (attacker.hasComponent('Slots')) {
-		if (!Lootr.EntitySystems.Slots.isSlotEmpty(attacker, 'hand')) {
-			const item = Lootr.EntitySystems.Slots.getItemFromSlot(attacker, 'hand');	
-			const type = Lootr.ItemSystems.Damage.getDamageType(item);
-
-			console.log("item using", item);
-			console.log("item type", type);
-		}		
-	}
 	
-	// get defenders AC number
-	const defenderAc = 10
-
-	// first check if hits using ability check
-	let result = AbilityCheckSystem(attacker, statUsed, defenderAc, false, false);
-	console.log("battle system ability check result", result);
-
-
-	// then roll damage
-	// Lootr.ItemSystems.Damage.getRollDamage()
-
-	// then apply damage
-
-
 	let currentX = defender.getX();
 	let currentY = defender.getY();
 	let map = defender.getMap();
 
-	let damage = Lootr.EntitySystems.Stats.getAttack(attacker);
-	let defense = Lootr.EntitySystems.Stats.getDefense(defender);
+	// DEFAULTS until it's all implemented
+	//
+	// stat to use if no item
+	let statUsed = ABILITY_TYPES.STR;		
+	// get defenders AC number
+	let defenderAc = 10
+	// default to 2
+	let rollDamage = 2;
 
-	let damageTaken = Lootr.Utilities.getRandomInt(0, damage) - Lootr.Utilities.getRandomInt(0, defense);
+	// get item being used, to determine ability type (str, dex, wis)
+	if (attacker.hasComponent('Slots')) {
+		if (!Lootr.EntitySystems.Slots.isSlotEmpty(attacker, SLOTS.HAND)) {
+			const item = Lootr.EntitySystems.Slots.getItemFromSlot(attacker, SLOTS.HAND);		
+			
+			statUsed = Lootr.ItemSystems.Damage.getDamageType(item);
+			rollDamage = Lootr.ItemSystems.Damage.getRollDamage(item);
 
+			console.log("item using", item);
+			console.log("item roll damage", rollDamage);
+			console.log("item state used", statUsed);	
+		}
+	}
+
+	// then roll damage
+	let damage = rollDamage ? rollDamage : Lootr.EntitySystems.Stats.getAttack(attacker);
+	
+	if (!defender.hasComponent('ArmorClass')) {
+		console.log("Battlesystem defender has no armor class!");
+	}
+
+	// get defenders AC
+	defenderAc = Lootr.EntitySystems.ArmorClass.getArmorClass(defender);	
+
+	// first check if hits using ability check
+	// Pass false for advantage and disadvantage for now
+	const abilityCheckResult = AbilityCheckSystem(attacker, statUsed, defenderAc, false, false);	
+	if (!abilityCheckResult) {
+		Logger(`You failed to hit the ${ defender.getName() }`);
+		return;
+	}
+	
 	// If no damage is done, return early
-	if (damageTaken < 1) {
+	if (damage < 1) {
 		Logger(`${attacker.getName()} attacks ${defender.getName()} but takes no damage.`);
 		return;
 	}
 
-	Lootr.EntitySystems.Health.removeHealth(defender, damageTaken);
+	// then apply damage
+	Lootr.EntitySystems.Health.removeHealth(defender, damage);
 
-	Logger(`${attacker.getName()} attacks ${defender.getName()} for ${damageTaken}`);
+	Logger(`${attacker.getName()} attacks ${defender.getName()} for ${damage}`);
 
-	if (defender.hasComponent("Bleedable")) {
-		// We need a function to get a random adjacent tile from an x, y
-		let tile = map.getTile(currentX + 1, currentY);
-		tile._foreground = defender._components.Bleedable.bleedColor;
-	}
+	checkForBleedable(defender, map, currentX, currentY);
 
-	// Testing burnable
-	// if (defender.hasComponent('Burnable')) {
-	// 	let BurnableComponent = defender.getComponent('Burnable');
-
-	// 	BurnableComponent.setOnFire(defender, 'red');
-	// 	BurnableComponent.setOnFire(defender, 'yellow');
-	// }
+	// Testing Burning
+	// testBurning(defender);
 
 	if (Lootr.EntitySystems.Health.getHp(defender) <= 0) {
 		// Player has died, restart game
-		if (defender.hasComponent("Player")) {
-			Lootr.switchScreen(new Display(Lootr.Screens.GameOver));
-
+		if (!checkForPlayerDead(defender)) {
 			return;
 		}
 
 		Logger(`${defender.getName()} has died.`);
 
-		if (defender.hasComponent("Corpseable")) {
-			var corpse = createItem(Lootr.Templates.Items.Corpse);
-			map.addItemAt(currentX, currentY, corpse);
-		}
+		checkForCorpse(defender, map, currentX, currentY);
 
+		checkForGoldOnDefender(attacker, defender);
+
+		map.removeEntity(defender);
+	}
+
+
+	function checkForGoldOnDefender(attacker, defender) {
 		if (defender.hasComponent('GoldHolder') && attacker.hasComponent('Player')) {
 			// Make this based on the GoldHolder.dropChance value
 			if (Lootr.Utilities.flipBasedOnChance(50)) {
@@ -100,6 +102,41 @@ const BattleSystem = (attacker, defender) => {
 			Lootr.Utilities.getRandomInt()
 		}
 
-		map.removeEntity(defender);
+	}
+
+	function checkForPlayerDead(defender) {
+		// Player has died, restart game
+		if (defender.hasComponent("Player")) {
+			Lootr.switchScreen(new Display(Lootr.Screens.GameOver));
+
+			return false;
+		}
+
+		return true
+	}
+
+	function checkForCorpse(defender, map, x, y) {
+		if (defender.hasComponent("Corpseable")) {
+			var corpse = createItem(Lootr.Templates.Items.Corpse);
+			map.addItemAt(x, y, corpse);
+		}
+	}
+
+	function checkForBleedable(defender, map, x, y) {
+		if (defender.hasComponent("Bleedable")) {
+			// We need a function to get a random adjacent tile from an x, y
+			let tile = map.getTile(x + 1, y);
+			tile._foreground = defender._components.Bleedable.bleedColor;
+		}
+	}
+
+	function testBurning(defender) {		
+		if (defender.hasComponent('Burnable')) {
+			let BurnableComponent = defender.getComponent('Burnable');
+
+			BurnableComponent.setOnFire(defender, 'red');
+			BurnableComponent.setOnFire(defender, 'yellow');
+		}
 	}
 }
+
