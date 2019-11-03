@@ -40,3 +40,12 @@ Lootr.ItemComponents.Damage = function Damage(template) {
 		type: template.type || ABILITY_TYPES.STR		
 	}
 }
+
+Lootr.ItemComponents.Value = function Value(template) {
+	let valueAmount = template.randomize ? Lootr.Utilities.getRandomInt(0, template.value) : template.value;	
+
+	return {
+		name: "Value",
+		value: valueAmount
+	}
+}

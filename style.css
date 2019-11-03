@@ -6,14 +6,13 @@ body {
 
 #gameDisplay {
     float: left;
-    border: 1px solid white;
+	border: 1px solid white;
 }
 
 #hudDisplay {
 	color: white;
-	float: right;
-	width: 830px;
-	height: 400px;
+	float: right;	
+	height: 580px;
 	font-size: 24px;
 }
 
@@ -22,10 +21,8 @@ body {
     height: 400px;
 	padding: 25px;
 	width: 86%;
-    overflow: hidden;
-	position: absolute;
-	background-color: black;
-	top: 490px;
+    overflow: hidden;	
+	background-color: black;	
 }
 
 .log-item {

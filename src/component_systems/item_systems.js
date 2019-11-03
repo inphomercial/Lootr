@@ -17,3 +17,11 @@ Lootr.ItemSystems.Damage = {
 		return item.getComponent('Damage').type;
 	}
 }
+
+Lootr.ItemSystems.Value = {
+	getValue: (item) => {
+		if (item.hasComponent('Value')) {
+			return item.getComponent('Value').value;
+		}
+	}
+}
