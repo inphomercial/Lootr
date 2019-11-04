@@ -25,3 +25,19 @@ Lootr.ItemSystems.Value = {
 		}
 	}
 }
+
+Lootr.ItemSystems.Edible = {
+	getBites: (item) => {
+		return item.getComponent('Edible').bites;
+	},
+
+	hasBites: (item) => {
+		let bites = item.getComponent('Edible').bites;
+
+		return bites > 0;
+	},
+
+	getFoodValue: (item) => {
+		return item.getComponent('Edible').foodValue;
+	}
+}

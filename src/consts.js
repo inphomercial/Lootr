@@ -13,6 +13,7 @@ const ABILITY_TYPES = {
 
 const ITEM_TYPES = {
     WEAPON: 'weapon',
-    ARMOR: 'armor'
+    ARMOR: 'armor',
+    FOOD: 'food'
 }
 

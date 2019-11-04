@@ -5,10 +5,22 @@ const drawCursor = (display, x, y) => {
     const newX = x - startingCoords[0];
     const newY = y - startingCoords[1];
     const tile = Lootr.getPlayer().getMap().getTile(x, y);
+
+    // get entity
     let entity = Lootr.getPlayer().getMap().getEntityAt(x, y);
+        
+    // if no entity, check for item
     if (_.isEmpty(entity)) {
         entity = Lootr.getPlayer().getMap().getTopMostItemAt(x, y);
     }
+
+    // IF we find an entity or an item, display it for the user
+    if (entity) {       
+        console.log('entity', entity);
+        LoggerPlayer(`You see a ${ entity.getName()}`);
+    }
+
+    // if no entity or item, get tile...
     if (_.isEmpty(entity)) {
         entity = tile;
     }
@@ -17,6 +29,7 @@ const drawCursor = (display, x, y) => {
         if (tile.getIsExplored()) {
             char = entity.getChar();
         }
+        
         display.draw(newX, newY, char, 'black', 'white');
     }
 }

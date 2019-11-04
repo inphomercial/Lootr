@@ -25,6 +25,25 @@ Lootr.Templates.Items.WoodenSword = {
 	}
 }
 
+Lootr.Templates.Items.Melon = {
+	template: 'Melon',
+	name: 'Melon',
+	char: 'o',
+	foreground: 'lime',
+	description: "A ripe melon",
+
+	componentList: {
+		'Edible': {
+			bites: 3,
+			foodValue: 10
+		},
+		'Wieldable': {
+			slot: SLOTS.HEAD
+		}
+	}
+
+}
+
 Lootr.Templates.Items.Gold = {
 	template: "Gold",
 	name: "Gold",

@@ -13,16 +13,21 @@ Lootr.Screens.InventoryDetail = {
     },
 
     renderGame: function () {
-
+		let index = 1;
+		
 		console.log(this._item);
-		this._gameDisplay.drawText(1, 1, "Inventory Detail Screen");
-		this._gameDisplay.drawText(1, 3, this._item.getName());
-		this._gameDisplay.drawText(1, 5, this._item.getDescription());
+		this._gameDisplay.drawText(1, index, "Inventory Detail Screen");
+		this._gameDisplay.drawText(1, index += 2, this._item.getName());
+		this._gameDisplay.drawText(1, index += 2, this._item.getDescription());
 
-		this._gameDisplay.drawText(1, 9, 'Press d to drop item');
+		this._gameDisplay.drawText(1, index++, 'Press d to drop item');
 
 		if (this._item.hasComponent('Wieldable')) {
-			this._gameDisplay.drawText(1, 10, 'Press e to equip item');
+			this._gameDisplay.drawText(1, index++, 'Press e to equip item');
+		}
+
+		if (this._item.hasComponent('Edible')) {
+			this._gameDisplay.drawText(1, index++, 'Press b to take a bite');
 		}
 		
     },
