@@ -29,6 +29,14 @@ Lootr.ItemComponents.Rarity = function Rarity(template) {
 	}
 };
 
+Lootr.ItemComponents.Edible = function Edible(template) {
+	return {
+		name: 'Edible',
+		bites: template.bites,
+		foodValue: template.foodValue
+	}
+}
+
 /**
  * This deteremines the damage an item can do
  * die (the max faces of a dice. 6 = a D6, 20 = a D20, etc)

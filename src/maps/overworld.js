@@ -42,6 +42,7 @@ class Overworld extends Map {
 		this.addItems(Lootr.Templates.Items.Dagger, Lootr.Utilities.getRandomInt(0, 2));
 		this.addItems(Lootr.Templates.Items.WoodenShield, Lootr.Utilities.getRandomInt(0, 3));
 		this.addItems(Lootr.Templates.Items.Helm, Lootr.Utilities.getRandomInt(0, 10));
+		this.addItems(Lootr.Templates.Items.Melon, Lootr.Utilities.getRandomInt(0, 30));
 	}
 
 	addEnemiesToMap() {
