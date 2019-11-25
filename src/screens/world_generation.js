@@ -1,27 +1,27 @@
 'use strict';
 
 Lootr.Screens.WorldGeneration = {
-    _caption: "World Generation Screen",
+	_caption: "World Generation Screen",
 
-    enter: function( gameDisplay ) {
-        LoggerDebug("Entered World Generation Screen");
+	enter: function( gameDisplay ) {
+		LoggerDebug("Entered World Generation Screen");
 
 		this._gameDisplay = gameDisplay;
 		
 		let newMap = new Overworld();
 		Lootr.Screens.Play.map = newMap;
 		Lootr.World.addMap(newMap);
-    },
+	},
 
-    renderGame: function () {
+	renderGame: function () {
 		this._gameDisplay.drawText(1, 1, "Generating World...");
-    },
+	},
 
-    exit: function() {
-        LoggerDebug("Exited World Generation Screen");
-    },
+	exit: function() {
+		LoggerDebug("Exited World Generation Screen");
+	},
 
-    handleInput( inputType, inputData ) {
-        Lootr.switchScreen(new Display(Lootr.Screens.Play));
-    }
+	handleInput( inputType, inputData ) {
+		Lootr.switchScreen(new Display(Lootr.Screens.Play));
+	}
 }

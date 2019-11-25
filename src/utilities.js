@@ -3,7 +3,7 @@
 Lootr.Utilities = {};
 
 Lootr.Utilities.generateUUID = function() {
-    return (((1+Math.random())*0x10000)|0).toString(6).substring(1);
+	return (((1+Math.random())*0x10000)|0).toString(6).substring(1);
 }
 
 // Returns a random item from an array
@@ -33,14 +33,14 @@ Lootr.Utilities.rollD20 = () => {
 
 Lootr.Utilities.rollD20Advantage = () => {
 	const roll1 = Lootr.Utilities.rollD20();    
-    const roll2 = Lootr.Utilities.rollD20();
+	const roll2 = Lootr.Utilities.rollD20();
 
-    return Math.max(roll1, roll2);            
+	return Math.max(roll1, roll2);            
 }
 
 Lootr.Utilities.rollD20Disadvantage = () => {
 	const roll1 = Lootr.Utilities.rollD20();    
-    const roll2 = Lootr.Utilities.rollD20();
+	const roll2 = Lootr.Utilities.rollD20();
 
-    return Math.min(roll1, roll2);            
+	return Math.min(roll1, roll2);            
 }

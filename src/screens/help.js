@@ -1,15 +1,15 @@
 'use strict';
 
 Lootr.Screens.Help = {
-    _caption: "Help Screen",
+	_caption: "Help Screen",
 
-    enter: function( gameDisplay ) {
-        LoggerDebug("Entered Help Screen");
+	enter: function( gameDisplay ) {
+		LoggerDebug("Entered Help Screen");
 
-        this._gameDisplay = gameDisplay;
-    },
+		this._gameDisplay = gameDisplay;
+	},
 
-    renderGame: function () {
+	renderGame: function () {
 		this._gameDisplay.drawText(1, 1, "Help Screen");
 
 		this._gameDisplay.drawText(1, 3, "w a s d - Move around.");
@@ -18,13 +18,13 @@ Lootr.Screens.Help = {
 		this._gameDisplay.drawText(1, 6, "o - Autoexplore.");
 		this._gameDisplay.drawText(1, 7, "h - Open Help.");
 		this._gameDisplay.drawText(1, 8, ". - Pick up item.");
-    },
+	},
 
-    exit: function() {
-        LoggerDebug("Exited Help Screen");
-    },
+	exit: function() {
+		LoggerDebug("Exited Help Screen");
+	},
 
-    handleInput( inputType, inputData ) {
-        Lootr.switchScreen(Lootr.Screens.Play);
-    }
+	handleInput( inputType, inputData ) {
+		Lootr.switchScreen(Lootr.Screens.Play);
+	}
 }

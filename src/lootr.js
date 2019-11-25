@@ -1,20 +1,20 @@
 'use strict';
 
 var Lootr = ( function( window ) {
-    var _gameDisplay = null;
-    var _currentScreen = null;
-    var _GAME_DISPLAY_WIDTH = 50;
+	var _gameDisplay = null;
+	var _currentScreen = null;
+	var _GAME_DISPLAY_WIDTH = 50;
 	var _GAME_DISPLAY_HEIGHT = 18;
 	var _GAME_DISPLAY_FONT_SIZE = 32;
 
-    var Screens = {};
-    var Maps = {};
-    var World = {};
-    var _player = {};
-    
-    var _IS_DEBUG = false;
+	var Screens = {};
+	var Maps = {};
+	var World = {};
+	var _player = {};
+	
+	var _IS_DEBUG = false;
 
-    function init() {
+	function init() {
 
 		var displayOptions = {
 			width: _GAME_DISPLAY_WIDTH, 
@@ -37,109 +37,109 @@ var Lootr = ( function( window ) {
 
 		// Bind keyboard input events
 		bindEventToScreen('keydown');
-    }
-
-    function toggleDebug() {
-        _IS_DEBUG = !_IS_DEBUG;
-    }
-
-    function isDebug() {
-        return _IS_DEBUG;
-    }
-
-    function getGameDisplayWidth() {
-        return _GAME_DISPLAY_WIDTH;
-    }
-
-    function getGameDisplayHeight() {
-        return _GAME_DISPLAY_HEIGHT;
-    }
-
-    function getGameDisplay() {
-        return _gameDisplay;
-    }
-
-    function getGameDisplayContainer() {
-        return _gameDisplay.getContainer();
-    }
-
-    function getCurrentScreen() {
-        return _currentScreen;
-    }
-
-    function setPlayer( player ) {
-        _player = player;
-    }
-
-    function getPlayer() {
-        return _player;
 	}
 
-    function switchScreen( screen ) {
-        // If we had a screen before, call the Exit method before switching
-        if ( _currentScreen !== null ) {
-            _currentScreen.exit();
-        }
+	function toggleDebug() {
+		_IS_DEBUG = !_IS_DEBUG;
+	}
 
-        // Clear both displays
-        getGameDisplay().clear();
+	function isDebug() {
+		return _IS_DEBUG;
+	}
 
-        // Update our current screen, call Enter
-        _currentScreen = screen;
-        _currentScreen.enter(getGameDisplay());
+	function getGameDisplayWidth() {
+		return _GAME_DISPLAY_WIDTH;
+	}
 
-        // Render our game
-        _currentScreen.renderGame();
+	function getGameDisplayHeight() {
+		return _GAME_DISPLAY_HEIGHT;
+	}
+
+	function getGameDisplay() {
+		return _gameDisplay;
+	}
+
+	function getGameDisplayContainer() {
+		return _gameDisplay.getContainer();
+	}
+
+	function getCurrentScreen() {
+		return _currentScreen;
+	}
+
+	function setPlayer( player ) {
+		_player = player;
+	}
+
+	function getPlayer() {
+		return _player;
+	}
+
+	function switchScreen( screen ) {
+		// If we had a screen before, call the Exit method before switching
+		if ( _currentScreen !== null ) {
+			_currentScreen.exit();
+		}
+
+		// Clear both displays
+		getGameDisplay().clear();
+
+		// Update our current screen, call Enter
+		_currentScreen = screen;
+		_currentScreen.enter(getGameDisplay());
+
+		// Render our game
+		_currentScreen.renderGame();
 	}
 	
 	function switchSubScreen(screen, args) {
-        // Clear both displays
-        getGameDisplay().clear();
+		// Clear both displays
+		getGameDisplay().clear();
 
-        // Update our current screen, call Enter with args that can be passed in
-        _currentScreen = screen;
-        _currentScreen.enter(getGameDisplay(), args);
+		// Update our current screen, call Enter with args that can be passed in
+		_currentScreen = screen;
+		_currentScreen.enter(getGameDisplay(), args);
 
-        // Render our game
-        _currentScreen.renderGame();
+		// Render our game
+		_currentScreen.renderGame();
 	}
 
-    function refreshScreens() {
-        // Clear both displays
-        getGameDisplay().clear();
+	function refreshScreens() {
+		// Clear both displays
+		getGameDisplay().clear();
 
-        // Render our game and
-        _currentScreen.renderGame();
-    }
+		// Render our game and
+		_currentScreen.renderGame();
+	}
 
 	function getTile(x, y) {
 		return _currentScreen._map.getTile(x, y);
 	}
 
-    return {
-        init: init,
-        Screens: Screens,
-        Maps: Maps,
-        World: World,
+	return {
+		init: init,
+		Screens: Screens,
+		Maps: Maps,
+		World: World,
 
-        setPlayer: setPlayer,
+		setPlayer: setPlayer,
 		getPlayer: getPlayer,
 
-        getGameDisplayWidth: getGameDisplayWidth,
-        getGameDisplayHeight: getGameDisplayHeight,
-        switchScreen: switchScreen,
-        switchSubScreen: switchSubScreen,
-        getCurrentScreen: getCurrentScreen,
-        getGameDisplay: getGameDisplay,
-        getGameDisplayContainer: getGameDisplayContainer,
+		getGameDisplayWidth: getGameDisplayWidth,
+		getGameDisplayHeight: getGameDisplayHeight,
+		switchScreen: switchScreen,
+		switchSubScreen: switchSubScreen,
+		getCurrentScreen: getCurrentScreen,
+		getGameDisplay: getGameDisplay,
+		getGameDisplayContainer: getGameDisplayContainer,
 
-        refreshScreens: refreshScreens,
+		refreshScreens: refreshScreens,
 
-        toggleDebug,
-        isDebug,
+		toggleDebug,
+		isDebug,
 
-        getTile: getTile
-    }
+		getTile: getTile
+	}
 
 })( window );
 
