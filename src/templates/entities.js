@@ -26,8 +26,10 @@ Lootr.Templates.Entities.Player = {
 		"Slots": {
 			slots: {
 				head: '',
-				hand: '',
-				body: ''
+				hand_1: '',
+				hand_2: '',
+				body: '',
+				feet: ''
 			} 
 		},
 		"ArmorClass": {
@@ -152,6 +154,30 @@ Lootr.Templates.Entities.Spider = {
 		},
 		"Stats": {
 			attack: 1,
+			defense: 1
+		}
+	}
+}
+
+Lootr.Templates.Entities.Skeleton = {
+	template: 'Skeleton',
+	name: "Skeleton",
+	char: "s",
+	foreground: "white",
+	background: "black",
+	speed: 3,
+	componentList: {
+		"Actor": {},
+		"Moveable": {},
+		"Enemy": {},
+		"Health": {
+			hp: 5
+		},
+		"ArmorClass": {
+			armorClass: 2
+		},
+		"Stats": {
+			attack: 3,
 			defense: 1
 		}
 	}

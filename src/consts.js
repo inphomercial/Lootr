@@ -1,8 +1,9 @@
 
-const SLOTS = {
-    HAND: 'hand',
+const SLOTS = {    
     HEAD: 'head',
-    BODY: 'body'
+    BODY: 'body',
+    HAND_1: 'hand_1',
+    HAND_2: 'hand_2'
 }
 
 const ABILITY_TYPES = {

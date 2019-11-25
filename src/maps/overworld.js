@@ -26,7 +26,7 @@ class Overworld extends Map {
 		Lootr.EntitySystems.Inventory.addItem(player, createItem(Lootr.Templates.Items.WoodenSword));
 		Lootr.EntitySystems.Inventory.addItem(player, shield);
 
-		player.getComponent("Slots").slots.hand = shield;
+		player.getComponent("Slots").slots[SLOTS.HAND_2] = shield;
 
 		//compute the player's initial line of sight
 		player.computeFOV();
@@ -47,6 +47,7 @@ class Overworld extends Map {
 
 	addEnemiesToMap() {
 		// Add entities to map
+		this.addEntities(Lootr.Templates.Entities.Skeleton, Lootr.Utilities.getRandomInt(5, 10));
 		this.addEntities(Lootr.Templates.Entities.Spider, Lootr.Utilities.getRandomInt(5, 10));
 		this.addEntities(Lootr.Templates.Entities.SpiderNest, Lootr.Utilities.getRandomInt(5, 10));
 		this.addEntities(Lootr.Templates.Entities.Goblin, Lootr.Utilities.getRandomInt(5, 10));

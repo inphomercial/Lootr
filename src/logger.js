@@ -6,7 +6,7 @@ let logs = []
  * 
  * @param {string} msg 
  * @param {string|object} value 
- * @param  {...any} args 
+ * @param {...any} args 
  */
 function LoggerDebug(msg, value = '', ...args) {
 	if (Lootr.isDebug()) {
