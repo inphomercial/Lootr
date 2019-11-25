@@ -27,12 +27,12 @@ const BattleSystem = (attacker, defender) => {
 
 	// get item being used, to determine ability type (str, dex, wis)
 	if (attacker.hasComponent('Slots')) {
-		if (!Lootr.EntitySystems.Slots.isSlotEmpty(attacker, SLOTS.HAND)) {
-			const item = Lootr.EntitySystems.Slots.getItemFromSlot(attacker, SLOTS.HAND);		
+		if (!Lootr.EntitySystems.Slots.isSlotEmpty(attacker, SLOTS.HAND_1)) {
+			const item = Lootr.EntitySystems.Slots.getItemFromSlot(attacker, SLOTS.HAND_1);	
 			
 			statUsed = Lootr.ItemSystems.Damage.getDamageType(item);
 			rollDamage = Lootr.ItemSystems.Damage.getRollDamage(item);
-		}
+		}		
 	}
 
 	// then roll damage

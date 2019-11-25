@@ -28,7 +28,6 @@ Lootr.Screens.Equipped = {
 		}
 
 		for (let index = 0; index < this._keys.length; index++) {
-
 			let item = Lootr.EntitySystems.Slots.getItemFromSlot(this._player, this._keys[index]);
 			let itemName = item ? item.getName() : 'none';
 
