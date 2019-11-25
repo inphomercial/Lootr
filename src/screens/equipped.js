@@ -1,10 +1,10 @@
 'use strict';
 
 Lootr.Screens.Equipped = {
-    _caption: "Equipped Inventory Screen",
+	_caption: "Equipped Inventory Screen",
 
-    enter: function( gameDisplay ) {
-        LoggerDebug("Entered Equipped Inventory Screen");
+	enter: function( gameDisplay ) {
+		LoggerDebug("Entered Equipped Inventory Screen");
 
 			this._gameDisplay = gameDisplay;
 			
@@ -16,9 +16,9 @@ Lootr.Screens.Equipped = {
 			this._startingPostition = 3;
 			this._endingPosition = this._keys.length + this._startingPostition - 1;
 			this._selectedItem = '';
-    },
+	},
 
-    renderGame: function () {
+	renderGame: function () {
 		this._gameDisplay.drawText(1, 1, "Equipped Items Screen");
 
 		if (!this._keys.length) {
@@ -31,19 +31,19 @@ Lootr.Screens.Equipped = {
 			let item = Lootr.EntitySystems.Slots.getItemFromSlot(this._player, this._keys[index]);
 			let itemName = item ? item.getName() : 'none';
 
-			const slot = this._keys[index];
+			const slot = Lootr.EntitySystems.Slots.getProperSlotName(this._keys[index]);
 			const selected = this._selectedIndex == (index + this._startingPostition) ? '>' : '%c{black}>%c{grey}';
 			const fullText = `${selected} ${ slot } -- ${ itemName }`;
 		
 			this._gameDisplay.drawText(1, index+this._startingPostition, fullText);
 		}
-    },
+	},
 
-    exit: function() {
-        LoggerDebug("Exited Equipped Inventory Screen");
-    },
+	exit: function() {
+		LoggerDebug("Exited Equipped Inventory Screen");
+	},
 
-    handleInput( inputType, inputData ) {
+	handleInput( inputType, inputData ) {
 		LoggerDebug('Equipped Inventory screen input', inputType, inputData);
 
 		switch(inputData.keyCode) {

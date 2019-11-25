@@ -1,18 +1,18 @@
 'use strict';
 
 Lootr.Screens.InventoryDetail = {
-    _caption: "Inventory Detail Screen",
+	_caption: "Inventory Detail Screen",
 
-    enter: function(gameDisplay, args) {
+	enter: function(gameDisplay, args) {
 		LoggerDebug("Entered Inventory Detail Screen");
 
 		this._gameDisplay = gameDisplay;
 		
 		this._item = args.selectedItem;
 		this._entity = args.entity;
-    },
+	},
 
-    renderGame: function () {
+	renderGame: function () {
 		let index = 1;
 		
 		console.log(this._item);
@@ -30,13 +30,13 @@ Lootr.Screens.InventoryDetail = {
 			this._gameDisplay.drawText(1, index++, 'Press b to take a bite');
 		}
 		
-    },
+	},
 
-    exit: function() {
-        LoggerDebug("Exited Inventory Detail Screen");
-    },
+	exit: function() {
+		LoggerDebug("Exited Inventory Detail Screen");
+	},
 
-    handleInput( inputType, inputData ) {
+	handleInput( inputType, inputData ) {
 		switch(inputData.keyCode) {
 			
 			case ROT.KEYS.VK_ESCAPE:

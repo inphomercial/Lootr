@@ -20,9 +20,9 @@ const _attemptToSpawn = (entity) => {
 }
 
 const SpawnSystem = (entity) => {
-    if (!entity.hasComponent('EntitySpawner')) {
-        return;
-    }
+	if (!entity.hasComponent('EntitySpawner')) {
+		return;
+	}
 
-    _attemptToSpawn(entity);
+	_attemptToSpawn(entity);
 }

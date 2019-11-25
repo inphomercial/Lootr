@@ -3,7 +3,7 @@
 Lootr.Templates.Items.WoodenSword = {
 	template: "WoodenSword",
 	name: "Wooden Sword",
-    char: "!",
+	char: "!",
 	foreground: "brown",
 	background: "white",
 	description: "A crappy wooden sword",
@@ -62,7 +62,7 @@ Lootr.Templates.Items.Gold = {
 Lootr.Templates.Items.Dagger = {
 	template: "Dagger",
 	name: "Dagger",
-    char: ")",
+	char: ")",
 	foreground: 'white',
 	description: "A golden dagger",
 

@@ -2,8 +2,8 @@
 
 Lootr.Templates.Entities.Player = {
 	template: 'Player',
-    name: "Hulk",
-    char: "@",
+	name: "Hulk",
+	char: "@",
 	foreground: "red",
 	speed: 2,
 	isPlayer: true,
@@ -50,8 +50,8 @@ Lootr.Templates.Entities.Player = {
 
 Lootr.Templates.Entities.Goblin = {
 	template: 'Goblin',
-    name: "Goblin",
-    char: "g",
+	name: "Goblin",
+	char: "g",
 	foreground: "green",
 	speed: 1,
 	componentList: {
@@ -240,8 +240,8 @@ Lootr.Templates.Entities.Rat = {
 
 Lootr.Templates.Entities.Ghost = {
 	template: 'Ghost',
-    name: "Ghost",
-    char: "h",
+	name: "Ghost",
+	char: "h",
 	foreground: "white",
 	componentList: {
 		"Actor": {},

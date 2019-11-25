@@ -1,13 +1,13 @@
 'use strict';
 
 Lootr.WorldHolder = function ( args ) {
-    this._maps = [];
+	this._maps = [];
 };
 
 Lootr.WorldHolder.prototype.addMap = function ( map ) {
-    this._maps.push(map);
+	this._maps.push(map);
 };
 
 Lootr.WorldHolder.prototype.getMaps = function () {
-    return this._maps;
+	return this._maps;
 };

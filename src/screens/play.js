@@ -2,36 +2,36 @@
 
 Lootr.Screens.Play = {
 
-    _caption: "Play Screen",
+	_caption: "Play Screen",
 
-    enter: function( gameDisplay ) {
-        LoggerDebug("Entered Play Screen");
+	enter: function( gameDisplay ) {
+		LoggerDebug("Entered Play Screen");
 
 		this._gameDisplay = gameDisplay;
-    },
+	},
 
-    renderGame: function () {
+	renderGame: function () {
 		Lootr.getGameDisplay().clear();
 
-        // Draw map first
-        this.map.renderMap( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
-        //
-        // Draw Items
-        this.map.renderItems( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
-        //
-        // Draw entities
+		// Draw map first
+		this.map.renderMap( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
+		//
+		// Draw Items
+		this.map.renderItems( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
+		//
+		// Draw entities
 		this.map.renderEntities( this._gameDisplay, Lootr.getPlayer().getCoordinates() );
 
 		// Draw Player Stats
 		Lootr.UI.renderPlayerStats(Lootr.getPlayer());
-    },
+	},
 
-    exit: function() {
-        LoggerDebug("Exited Play Screen");
-    },
+	exit: function() {
+		LoggerDebug("Exited Play Screen");
+	},
 
-    handleInput: function ( inputType, inputData ) {
-        const code = inputData.keyCode;
+	handleInput: function ( inputType, inputData ) {
+		const code = inputData.keyCode;
 		const player = Lootr.getPlayer();
 
 		switch(code) {
@@ -45,9 +45,9 @@ Lootr.Screens.Play = {
 			
 			case ROT.KEYS.VK_E:
 				Lootr.switchScreen(new Display(Lootr.Screens.Equipment));
-                return;
-            
-            case ROT.KEYS.VK_X:
+				return;
+			
+			case ROT.KEYS.VK_X:
 				Lootr.switchScreen(new Display(Lootr.Screens.MapOverview))
 				return;
 			
@@ -60,25 +60,25 @@ Lootr.Screens.Play = {
 			case ROT.KEYS.VK_4:
 			case ROT.KEYS.VK_LEFT:
 				player.tryMovingTo(-1, 0);
-                break;
-                
-            case ROT.KEYS.VK_5:
-            case ROT.KEYS.VK_S:
-                break;
+				break;
+				
+			case ROT.KEYS.VK_5:
+			case ROT.KEYS.VK_S:
+				break;
 
 			case ROT.KEYS.VK_6:
 			case ROT.KEYS.VK_RIGHT:
-                player.tryMovingTo(1, 0);
+				player.tryMovingTo(1, 0);
 				break;
 
 			case ROT.KEYS.VK_8:
 			case ROT.KEYS.VK_UP:
-                player.tryMovingTo(0, -1);
+				player.tryMovingTo(0, -1);
 				break;
 
 			case ROT.KEYS.VK_2:
 			case ROT.KEYS.VK_DOWN:
-                player.tryMovingTo(0, 1);
+				player.tryMovingTo(0, 1);
 				break;
 
 			case ROT.KEYS.VK_1:
@@ -104,12 +104,12 @@ Lootr.Screens.Play = {
 			case ROT.KEYS.VK_T:
 				Lootr.switchScreen(new Display(Lootr.Screens.Equipped));
 				break;
-            
-            default:
-                LoggerPlayer(`Unkown Command ${code}`);
-                return;
+			
+			default:
+				LoggerPlayer(`Unkown Command ${code}`);
+				return;
 		}
 
-        this.map.getEngine().unlock();
-    }
+		this.map.getEngine().unlock();
+	}
 }

@@ -1,10 +1,10 @@
 'use strict';
 
 Lootr.Screens.Inventory = {
-    _caption: "Inventory Screen",
+	_caption: "Inventory Screen",
 
-    enter: function( gameDisplay ) {
-        LoggerDebug("Entered Inventory Screen");
+	enter: function( gameDisplay ) {
+		LoggerDebug("Entered Inventory Screen");
 
 			this._gameDisplay = gameDisplay;
 			
@@ -15,9 +15,9 @@ Lootr.Screens.Inventory = {
 			this._startingPostition = 3;
 			this._endingPosition = this._inventory.length + this._startingPostition - 1;
 			this._selectedItem = '';
-    },
+	},
 
-    renderGame: function () {
+	renderGame: function () {
 		this._gameDisplay.drawText(1, 1, "Inventory Screen");
 
 		if (!this._inventory.length) {
@@ -33,13 +33,13 @@ Lootr.Screens.Inventory = {
 		
 			this._gameDisplay.drawText(1, index+this._startingPostition, fullText);
 		}
-    },
+	},
 
-    exit: function() {
-        LoggerDebug("Exited Inventory Screen");
-    },
+	exit: function() {
+		LoggerDebug("Exited Inventory Screen");
+	},
 
-    handleInput( inputType, inputData ) {
+	handleInput( inputType, inputData ) {
 		LoggerDebug('Inventory screen input', inputType, inputData);
 
 		switch(inputData.keyCode) {
