@@ -147,3 +147,4 @@ Lootr.Templates = {};
 Lootr.Templates.Items = {};
 Lootr.Templates.Entities = {};
 Lootr.Templates.Tiles = {};
+Lootr.Templates.Spells = {};
