@@ -5,12 +5,12 @@ class Spell extends DynamicGlyph {
 		super(template);
 
 		this._name = template.name || 'unknown spell';
-        this._description = template.description || 'no desc';
-        
-        this._cast = template.cast;
-    }
+		this._description = template.description || 'no desc';
+		
+		this._cast = template.cast;
+	}
 
-    castSpell(source, target) {
-        this._cast(source, target);
-    }
+	castSpell(source, target) {
+		this._cast(source, target);
+	}
 }
