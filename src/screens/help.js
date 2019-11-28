@@ -18,6 +18,8 @@ Lootr.Screens.Help = {
 		this._gameDisplay.drawText(1, 6, "o - Autoexplore.");
 		this._gameDisplay.drawText(1, 7, "h - Open Help.");
 		this._gameDisplay.drawText(1, 8, ". - Pick up item.");
+		this._gameDisplay.drawText(1, 9, "c - Character stats");
+		this._gameDisplay.drawText(1, 10, "a - Abilities");
 	},
 
 	exit: function() {

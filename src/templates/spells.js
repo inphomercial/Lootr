@@ -1,5 +1,6 @@
 'use strict';
 
+// NOT USED YET
 Lootr.Templates.Spells.Fire = {
 	template: 'Fire',
 	name: "Fire",

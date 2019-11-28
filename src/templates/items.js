@@ -21,6 +21,12 @@ Lootr.Templates.Items.WoodenSword = {
 		},
 		'Attack': {
 			attack: 2
+		},
+		'Bonus': {
+			modifies: [{
+				stat: 'Hp',
+				amount: 30
+			}]
 		}
 	}
 }
@@ -39,6 +45,15 @@ Lootr.Templates.Items.Melon = {
 		},
 		'Wieldable': {
 			slot: SLOTS.HEAD
+		},
+		'Bonus': {
+			modifies: [{
+				stat: ABILITY_TYPES.WIS,
+				amount: -3
+			}, {
+				stat: ABILITY_TYPES.STR,
+				amount: 2
+			}]
 		}
 	}
 
