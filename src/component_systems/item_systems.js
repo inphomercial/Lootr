@@ -26,6 +26,20 @@ Lootr.ItemSystems.Value = {
 	}
 }
 
+Lootr.ItemSystems.Bonus = {
+	getAmount: (item, stat) => {
+		let bonusesArray = item.getComponent('Bonus').modifies;
+		let filteredByStat = bonusesArray.filter(bonus => bonus.stat === stat);
+
+		// If nothing exists for that stat, skip
+		if (!filteredByStat.length) {
+			return 0;
+		}
+
+		return filteredByStat[0].amount;
+	}
+}
+
 Lootr.ItemSystems.Edible = {
 	getBites: (item) => {
 		return item.getComponent('Edible').bites;

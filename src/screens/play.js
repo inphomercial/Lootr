@@ -35,6 +35,10 @@ Lootr.Screens.Play = {
 		const player = Lootr.getPlayer();
 
 		switch(code) {
+			case ROT.KEYS.VK_A:
+				console.log("ability screen");
+				break;
+
 			case ROT.KEYS.VK_H:
 				Lootr.switchScreen(new Display(Lootr.Screens.Help));
 				return;
@@ -99,6 +103,10 @@ Lootr.Screens.Play = {
 			
 			case ROT.KEYS.VK_O:
 				AutoExploreSystem(player);
+				break;
+
+			case ROT.KEYS.VK_C:
+				Lootr.switchScreen(new Display(Lootr.Screens.Stats));
 				break;
 				
 			case ROT.KEYS.VK_T:

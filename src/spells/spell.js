@@ -1,5 +1,6 @@
 'use strict';
 
+// NOT USED YET
 class Spell extends DynamicGlyph {
 	constructor(template) {
 		super(template);

@@ -37,6 +37,13 @@ Lootr.ItemComponents.Edible = function Edible(template) {
 	}
 }
 
+Lootr.ItemComponents.Bonus = function Bonus(template) {
+	return {
+		name: 'Bonus',
+		modifies: template.modifies // array of objects containing [{ stat: 'Wis', amount: 3 }]
+	}
+}
+
 /**
  * This deteremines the damage an item can do
  * die (the max faces of a dice. 6 = a D6, 20 = a D20, etc)
