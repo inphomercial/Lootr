@@ -49,8 +49,14 @@ const AbilityCheckSystem = (entity, stat, challengeNumber, hasAdvantage = false,
 	}
 
 	// get entity stat value
-	const statString = `get${ stat}`;
-	const entityStat = Lootr.EntitySystems.Stats[statString](entity);    
+	const statString = `get${ stat }`;
+	let entityStat = null;
+
+	if (entity.hasComponent('Player')) {
+		entityStat = GetTotalStatsSystem(entity, stat);		
+	} else {		
+		entityStat = Lootr.EntitySystems.Stats[statString](entity);
+	}
 	
 	// get modifier score for the stat
 	const modifier = Lootr.EntitySystems.Stats.getModiferScore(entityStat);    
