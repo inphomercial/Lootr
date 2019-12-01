@@ -17,7 +17,7 @@ Lootr.Screens.Stats = {
         this._gameDisplay.drawText(1, 1, "Stats Screen");
         
         this._gameDisplay.drawText(1, 3, `Name: ${ player.getName() }`);
-        this._gameDisplay.drawText(1, 4, `Hp: ${ Health.getHp(player) } / ${ Health.getMaxHp(player) + GetTotalStatsSystem(player, 'Hp') }`);
+        this._gameDisplay.drawText(1, 4, `Hp: ${ Health.getHp(player) } / ${ Health.getMaxHp(player) + displayStat(player, 'Hp') }`);
         this._gameDisplay.drawText(1, 5, `Gold: ${ GoldHolder.getGold(player) }`);
 
         this._gameDisplay.drawText(1, 7, `STR: ${ Stats.getStr(player) } ${ displayStat(player, 'Str') }`);
@@ -36,8 +36,8 @@ Lootr.Screens.Stats = {
 	}
 }
 
-function displayStat(player, stat) {
-    let bonusStat = GetTotalStatsSystem(player, stat);
+function displayStat(player, stat) {    
+    let bonusStat = GetTotalBonusStatSystem(player, stat);
 
     return bonusStat >= 0 ? `+${bonusStat}` : `${bonusStat}`;
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-const GetTotalStatsSystem = (entity, stat) => {
+const GetTotalBonusStatSystem = (entity, stat) => {
 
 	if (!entity) {
 		LoggerError('GetTotalStatsSystem requires an entity');
@@ -15,15 +15,7 @@ const GetTotalStatsSystem = (entity, stat) => {
     if (!entity.hasComponent('Slots')) {
         LoggerError("GetTotalStatsSystem requires an entity with Slots");
 		return;
-    }
-    
-    if (!entity.hasComponent('Stats')) {
-        LoggerError("GetTotalStatsSystem requires an entity with Stats");
-		return;
 	}
-
-    let statString = `get${ stat }`;
-    let baseStat = Lootr.EntitySystems.Stats[statString](entity);    
 
     let bonusStats = {
         Str: 0,
@@ -50,12 +42,6 @@ const GetTotalStatsSystem = (entity, stat) => {
         bonusStats[stat] += amount; 
     }
 
-    // Add our base stat to our bonus stat
-    const totalStat = baseStat + bonusStats[stat];
-
-    console.log('baseStat', baseStat);
-    console.log('bonusStat', bonusStats[stat]);
-    console.log('totalStat', totalStat);
-
-    return totalStat;
+    // If stat isnt zero return it, otherwise return 0
+    return bonusStats[stat] !== 0 ? bonusStats[stat] : 0;
 }
